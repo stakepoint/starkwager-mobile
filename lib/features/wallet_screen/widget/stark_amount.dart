@@ -1,4 +1,4 @@
-part of '../feature.dart';
+part of '../../feature.dart';
 
 class StarkAmount extends StatelessWidget {
   final bool isTablet;
@@ -19,7 +19,7 @@ class StarkAmount extends StatelessWidget {
     final amountRow = Row(
       children: [
         Image.asset(AppIcons.starknetImage),
-        const SizedBox(width: 4),
+            horizontalSpace(4),
         Text('0 Strk', style: AppTheme.of(context).textSmallMedium),
       ],
     );

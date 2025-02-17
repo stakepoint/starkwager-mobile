@@ -60,7 +60,7 @@ class WalletScreen extends ConsumerWidget {
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.2), // using withOpacity
+              color: Colors.black.withValues(alpha: 0.2),
               blurRadius: 8,
               offset: Offset(0, 4),
             ),

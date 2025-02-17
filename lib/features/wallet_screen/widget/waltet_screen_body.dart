@@ -13,7 +13,6 @@ class WalletScreenBody extends ConsumerWidget {
         builder: (BuildContext context) => FundWalletDialog(
           onClose: () => Navigator.of(context).pop(),
           onFund: () {
-            // Add your funding logic here
             Navigator.of(context).pop();
           },
         ),
@@ -24,7 +23,6 @@ class WalletScreenBody extends ConsumerWidget {
         builder: (BuildContext context) => FundWalletDialog(
           onClose: () => Navigator.of(context).pop(),
           onFund: () {
-            // Add your funding logic here
             Navigator.of(context).pop();
           },
         ),
@@ -39,16 +37,17 @@ class WalletScreenBody extends ConsumerWidget {
     return Column(
       children: [
         ContractAddress(isTablet: !isMobile),
-        const SizedBox(height: 8),
-        // Stark amount with action buttons on tablet
+        verticalSpace(8),
         StarkAmount(
           isTablet: !isMobile,
           onAddMoney: () => _showFundWalletDialog(context),
           onWithdraw: () {},
         ),
-        const SizedBox(height: 16),
+        verticalSpace(40),
         if (isMobile) HomeAddAndWithdraw(),
-        isMobile ? const SizedBox(height: 48) : const SizedBox(height: 40),
+        isMobile
+            ? const SizedBox(height: 48)
+            : const SizedBox(height: 40),
         RecentTransactions(isTablet: !isMobile),
       ],
     );

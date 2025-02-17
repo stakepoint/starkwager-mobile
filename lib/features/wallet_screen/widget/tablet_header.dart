@@ -1,6 +1,5 @@
-part of '../feature.dart';
+part of '../../feature.dart';
 
-/// A reusable header widget for tablet screens.
 class TabletHeader extends StatelessWidget {
   final String title;
   final VoidCallback? onProfileTap;

@@ -59,4 +59,13 @@ part 'wager_screen/active_screen.dart';
 part 'wager_screen/complete_screen.dart';
 part 'wager_screen/pending_screen.dart';
 part 'wager_screen/wagers_screen.dart';
-part 'wallet_screen.dart/wallet_screen.dart';
+
+part 'wallet_screen/wallet_screen.dart';
+part 'wallet_screen/widget/waltet_screen_body.dart';
+part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
+part 'wallet_screen/widget/contract_address.dart';
+part 'wallet_screen/widget/recent_transaction.dart';
+part 'wallet_screen/widget/stark_amount.dart';
+part 'wallet_screen/widget/transaction_item.dart';
+part 'wallet_screen/widget/wallet_body_padding.dart';
+part 'wallet_screen/widget/tablet_header.dart';

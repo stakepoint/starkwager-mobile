@@ -1,4 +1,4 @@
-part of '../feature.dart';
+part of '../../feature.dart';
 
 class RecentTransactions extends StatelessWidget {
   final bool isTablet;
@@ -22,8 +22,8 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: const Color(0xFFEFF1F5),
-          isUpward: true,
+          iconBgColor: AppColors.grayCool100,
+          isWithdrawal: true,
         ),
         SizedBox(height: itemSpacing),
         TransactionItem(
@@ -31,8 +31,8 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: const Color(0xFFEFF1F5),
-          isUpward: true,
+          iconBgColor: AppColors.grayCool100,
+          isWithdrawal: true,
         ),
         SizedBox(height: itemSpacing),
         TransactionItem(
@@ -40,14 +40,13 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: const Color(0xFFEFF1F5),
-          isUpward: false,
+          iconBgColor: AppColors.grayCool100,
+          isWithdrawal: false,
           showGreenAmount: true,
         ),
       ],
     );
 
-    // For tablet layout we constrain the width.
     return isTablet ? Container(width: 696, child: content) : content;
   }
 }

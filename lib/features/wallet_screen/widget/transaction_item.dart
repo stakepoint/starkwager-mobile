@@ -1,4 +1,4 @@
-part of '../feature.dart';
+part of '../../feature.dart';
 
 
 class TransactionItem extends StatelessWidget {
@@ -6,7 +6,7 @@ class TransactionItem extends StatelessWidget {
   final String date;
   final String amount;
   final Color? iconBgColor;
-  final bool isUpward;
+  final bool isWithdrawal;
   final bool showGreenAmount;
 
   const TransactionItem({
@@ -15,7 +15,7 @@ class TransactionItem extends StatelessWidget {
     required this.date,
     required this.amount,
     this.iconBgColor,
-    required this.isUpward,
+    required this.isWithdrawal,
     this.showGreenAmount = false,
   }) : super(key: key);
 
@@ -35,11 +35,8 @@ class TransactionItem extends StatelessWidget {
               color: iconBgColor,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: Image.asset(
-              isUpward ? AppIcons.upwardArrow : AppIcons.downwardArrow,
-              width: 20,
-              height: 20,
-              // Optional: Tint the icon if needed.
+            child: SvgPicture.asset(
+              isWithdrawal ? AppIcons.upwardArrow : AppIcons.downwardArrow,
             ),
           ),
           const SizedBox(width: 12),

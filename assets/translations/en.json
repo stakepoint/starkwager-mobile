@@ -48,9 +48,5 @@
   "fund": "Fund",
   "addHashtag(s)": "Add Hashtag(s)",
   "Hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
-  "fundButton": "Fund",
-  "recentTransactions": "Recent Transactions",
-  "date": "Date",
-  "description": "Description",
-  "amount": "Amount"
+  "recentTransactions": "Recent Transactions"
 }

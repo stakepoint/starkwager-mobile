@@ -1,5 +1,5 @@
 
-part of '../feature.dart';
+part of '../../feature.dart';
 
 class WalletBodyPadding extends StatelessWidget {
   final Widget child;

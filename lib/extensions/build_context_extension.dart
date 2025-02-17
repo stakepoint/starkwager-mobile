@@ -3,7 +3,7 @@ import 'package:starkwager/core/constants/screen_layout.dart';
 
 import '../theme/app_colors.dart';
 
-extension BuildContextExtension on BuildContext {
+extension ThemeModeExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   bool get isMobile => ScreenLayout.isMobile(this);
   bool get isPortrait =>

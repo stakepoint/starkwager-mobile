@@ -1,4 +1,4 @@
-part of '../feature.dart';
+part of '../../feature.dart';
 
 class ContractAddress extends StatelessWidget {
   final bool isTablet;
@@ -6,7 +6,6 @@ class ContractAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Use different text styles if needed.
     final titleStyle = isTablet
         ? AppTheme.of(context).bodyLarge16.copyWith(
               color: context.textHintColor,
@@ -14,9 +13,7 @@ class ContractAddress extends StatelessWidget {
         : AppTheme.of(context).bodyMedium14.copyWith(
               color: context.textHintColor,
             );
-    final addressStyle = isTablet
-        ? AppTheme.of(context).textRegularMedium
-        : AppTheme.of(context).textSmallMedium;
+
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,9 +29,8 @@ class ContractAddress extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('0x400e44000...', style: addressStyle),
-              SvgPicture.asset(AppIcons.copyIcon),
-            ],
+    CopyItemContainer(value: '0x400e44000...'), 
+  ],
           ),
         ),
       ],
