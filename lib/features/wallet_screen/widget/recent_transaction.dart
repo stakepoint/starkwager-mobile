@@ -50,4 +50,3 @@ class RecentTransactions extends StatelessWidget {
     return isTablet ? Container(width: 696, child: content) : content;
   }
 }
-

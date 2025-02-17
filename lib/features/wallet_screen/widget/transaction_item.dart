@@ -1,6 +1,5 @@
 part of '../../feature.dart';
 
-
 class TransactionItem extends StatelessWidget {
   final String description;
   final String date;
@@ -46,7 +45,9 @@ class TransactionItem extends StatelessWidget {
               children: [
                 Text(
                   description,
-                  style: AppTheme.of(context).bodyExtraLarge18.copyWith(color: AppColors.blue950),
+                  style: AppTheme.of(context)
+                      .bodyExtraLarge18
+                      .copyWith(color: AppColors.blue950),
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
@@ -81,5 +82,3 @@ class TransactionItem extends StatelessWidget {
     );
   }
 }
-
-

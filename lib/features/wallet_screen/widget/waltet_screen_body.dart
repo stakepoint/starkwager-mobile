@@ -45,9 +45,7 @@ class WalletScreenBody extends ConsumerWidget {
         ),
         verticalSpace(40),
         if (isMobile) HomeAddAndWithdraw(),
-        isMobile
-            ? const SizedBox(height: 48)
-            : const SizedBox(height: 40),
+        isMobile ? const SizedBox(height: 48) : const SizedBox(height: 40),
         RecentTransactions(isTablet: !isMobile),
       ],
     );

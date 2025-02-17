@@ -1,4 +1,3 @@
-
 part of '../../feature.dart';
 
 class WalletBodyPadding extends StatelessWidget {
