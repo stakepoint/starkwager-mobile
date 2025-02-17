@@ -54,7 +54,7 @@ part 'wager_screen.dart/wager_summary.dart';
 part 'wager_screen.dart/wagers_screen.dart';
 
 part 'wallet_screen/wallet_screen.dart';
-part 'wallet_screen/widget/waltet_screen_body.dart';
+part 'wallet_screen/widget/wallet_screen_body.dart';
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 
 part 'components/transaction_item.dart';
