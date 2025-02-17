@@ -5,9 +5,15 @@ class WagerCreatedScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isMobile = ScreenLayout.isMobile(context);
     return Scaffold(
-      appBar: !isMobile ? WagerCreatedAppBar() : null,
+      appBar: !context.isMobile
+          ? BaseAppbar(
+              context: context,
+              title: '',
+              userName: '@noyi_24',
+              showBackButton: false,
+            )
+          : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
@@ -16,7 +22,7 @@ class WagerCreatedScreen extends ConsumerWidget {
             builder: (context, constraints) {
               final double maxWidth = AppValues.width500;
               final double maxWidthTablet = AppValues.width1440;
-              return isMobile
+              return context.isMobile
                   ? ConstrainedBox(
                       constraints: BoxConstraints(maxWidth: maxWidth),
                       child: Center(

@@ -5,21 +5,19 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isMobile = ScreenLayout.isMobile(context);
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
-      appBar: isMobile ? HomeScreenAppBar() : null,
+      appBar: context.isMobile ? HomeScreenAppBar() : null,
       backgroundColor: context.primaryBackgroundColor,
-      floatingActionButton:
-          isMobile || isPortrait ? _floatingActionButton(context) : SizedBox(),
+      floatingActionButton: context.isMobile || context.isPortrait
+          ? _floatingActionButton(context)
+          : SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
             final double maxWidth = AppValues.width600;
             final double maxWidthTablet = AppValues.width1440;
-            return isMobile
+            return context.isMobile
                 ? ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: maxWidth),
                     child: Padding(
@@ -38,7 +36,7 @@ class HomeScreen extends ConsumerWidget {
                 : ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: maxWidthTablet),
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 32, right: 80),
+                      padding: const EdgeInsets.symmetric(horizontal: 45),
                       child: HomeScreenTabletMode(),
                     ),
                   );
@@ -56,8 +54,8 @@ class HomeScreen extends ConsumerWidget {
         GoRouter.of(context).push(Routes.createWager);
       },
       child: Container(
-        height: 56,
-        width: 160,
+        height: context.isMobile ? 56 : 76,
+        width: context.isMobile ? 160 : 200,
         decoration: BoxDecoration(
           color: context.primaryButtonColor,
           borderRadius: BorderRadius.circular(16),

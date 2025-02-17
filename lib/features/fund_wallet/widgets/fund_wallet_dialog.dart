@@ -1,42 +1,5 @@
 part of '../../feature.dart';
 
-class CurrencyTextInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    String text = newValue.text.replaceAll("\$", "");
-
-    if (text.isEmpty) {
-      return const TextEditingValue(
-        text: '',
-        selection: TextSelection.collapsed(offset: 0),
-      );
-    }
-
-    text = "\$$text";
-
-    return TextEditingValue(
-      text: text,
-      selection: TextSelection.collapsed(offset: text.length),
-    );
-  }
-}
-
-@override
-TextEditingValue formatEditUpdate(
-    TextEditingValue oldValue, TextEditingValue newValue) {
-  String text = newValue.text;
-
-  if (!text.startsWith("\$")) {
-    text = "\$${text.replaceAll("\$", "")}";
-  }
-
-  return TextEditingValue(
-    text: text,
-    selection: TextSelection.collapsed(offset: text.length),
-  );
-}
-
 class FundWalletDialog extends StatefulWidget {
   final VoidCallback? onFund;
   final VoidCallback? onClose;
@@ -64,6 +27,13 @@ class _FundWalletDialogState extends State<FundWalletDialog> {
     super.initState();
     _focusNode.addListener(_onFocusChange);
     amountController.text = "";
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (context.isMobile) {
+        _showBottomSheet(context);
+      } else {
+        _showDialog(context);
+      }
+    });
   }
 
   @override
@@ -80,42 +50,158 @@ class _FundWalletDialogState extends State<FundWalletDialog> {
     }
   }
 
-  Widget _buildMainContent() {
-    if (!showInput) {
-      return Column(
-        children: [
-          const SizedBox(height: 24),
-          SizedBox(
-            height: 100,
-            child:
-                SvgPicture.asset(AppIcons.fundWalletIcon, fit: BoxFit.contain),
-          ),
-          const SizedBox(height: 32),
-        ],
-      );
+  Future<void> _showBottomSheet(BuildContext context) async {
+    final response = await showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (context) => _buildBottomSheetContent(),
+    );
+    _handleResponse(response);
+  }
+
+  Future<void> _showDialog(BuildContext context) async {
+    final response = await showDialog(
+      context: context,
+      builder: (context) => _buildDialogContent(),
+    );
+    _handleResponse(response);
+  }
+
+  void _handleResponse(dynamic response) {
+    if (response == null && context.mounted) {
+      Navigator.of(context).pop();
     }
+  }
+
+  Widget _buildBottomSheetContent() {
+    return StatefulBuilder(
+      builder: (BuildContext context, StateSetter setModalState) {
+        return Container(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          decoration: BoxDecoration(
+            color: context.containerColor,
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          child: _buildContent(setModalState),
+        );
+      },
+    );
+  }
+
+  Widget _buildDialogContent() {
+    return Dialog(
+      backgroundColor: context.containerColor,
+      insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minWidth: 420,
+          maxWidth: 420,
+        ),
+        child: ClipRect(
+          child: StatefulBuilder(
+            builder: (BuildContext context, StateSetter setModalState) {
+              return _buildContent(setModalState);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildContent(StateSetter setModalState) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        verticalSpace(AppValues.height15),
+        _buildHeader(),
+        _buildDescription(),
+        _buildMainContent(setModalState),
+        _buildActionButton(setModalState),
+        const SizedBox(height: 16),
+      ],
+    );
+  }
+
+  Widget _buildHeader() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Expanded(child: SizedBox()),
+        Text('fundYourWallet'.tr(),
+            textAlign: TextAlign.center,
+            style: AppTheme.of(context).titleExtraLarge24),
+        Expanded(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(
+              icon: SvgPicture.asset(AppIcons.close),
+              onPressed: () => Navigator.pop(context),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDescription() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 32),
+      child: Text(
+        _dialogText,
+        textAlign: TextAlign.center,
+        style: AppTheme.of(context)
+            .bodyLarge16
+            .copyWith(color: context.subTitleTextColor),
+      ),
+    );
+  }
+
+  Widget _buildMainContent(StateSetter setModalState) {
+    return showInput ? _buildInputContent() : _buildIconContent();
+  }
+
+  Widget _buildIconContent() {
     return Column(
       children: [
-        const SizedBox(height: 24),
+        verticalSpace(24),
+        SizedBox(
+          height: 100,
+          child: SvgPicture.asset(AppIcons.fundWalletIcon, fit: BoxFit.contain),
+        ),
+        verticalSpace(32),
+      ],
+    );
+  }
+
+  Widget _buildInputContent() {
+    return Column(
+      children: [
+        verticalSpace(24),
         Material(
           color: Colors.transparent,
           child: TextField(
-              controller: amountController,
-              focusNode: _focusNode,
-              keyboardType:
-                  const TextInputType.numberWithOptions(decimal: true),
-              textAlign: TextAlign.center,
-              inputFormatters: [CurrencyTextInputFormatter()],
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: '\$0.00',
-                hintStyle: AppTheme.of(context).headingMobileH1.copyWith(
-                      color: context.textHintColor,
-                    ),
-              ),
-              style: AppTheme.of(context).headingMobileH1),
+            controller: amountController,
+            focusNode: _focusNode,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            inputFormatters: [CurrencyTextInputFormatter()],
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              hintText: '\$0.00',
+              hintStyle: AppTheme.of(context)
+                  .headingMobileH1
+                  .copyWith(color: context.textHintColor),
+            ),
+            style: AppTheme.of(context).headingMobileH1,
+          ),
         ),
-        const SizedBox(height: 8),
+        verticalSpace(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -124,149 +210,37 @@ class _FundWalletDialogState extends State<FundWalletDialog> {
             Text('0 Strk', style: AppTheme.of(context).textSmallMedium),
           ],
         ),
-        const SizedBox(height: 32),
+        verticalSpace(32),
       ],
+    );
+  }
+
+  Widget _buildActionButton(StateSetter setModalState) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        bottom: 16,
+        left: 24,
+        right: 24,
+      ),
+      child: PrimaryButton(
+          buttonText: 'fund'.tr(),
+          onPressed: () {
+            if (!showInput) {
+              setModalState(() => showInput = true);
+              Future.delayed(const Duration(milliseconds: 100), () {
+                _focusNode.requestFocus();
+              });
+            } else {
+              context.pop();
+              widget.onFund?.call();
+            }
+          },
+          isActive: true),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ScreenLayout.isMobile(context);
-    final mediaQuery = MediaQuery.of(context);
-    final keyboardHeight = mediaQuery.viewInsets.bottom;
-
-    final dialogContent = AnimatedPadding(
-      duration: const Duration(milliseconds: 200),
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (isMobile)
-            Container(
-              width: 32,
-              height: 4,
-              margin: const EdgeInsets.only(top: 8, bottom: 4),
-              decoration: BoxDecoration(
-                color: context.containerColor,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 24, top: 16),
-              child: GestureDetector(
-                onTap: widget.onClose,
-                child: const Icon(Icons.close, size: 24),
-              ),
-            ),
-          ),
-          Text('fundYourWallet'.tr(),
-              style: AppTheme.of(context).titleExtraLarge24),
-          const SizedBox(height: 8),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Text(_dialogText,
-                textAlign: TextAlign.center,
-                style: AppTheme.of(context)
-                    .bodyLarge16
-                    .copyWith(color: context.subTitleTextColor)),
-          ),
-          _buildMainContent(),
-          Padding(
-            padding: EdgeInsets.only(
-              bottom: keyboardHeight > 0 ? 16 : 0,
-              left: 24,
-              right: 24,
-            ),
-            child: SizedBox(
-              width: double.infinity,
-              height: 56,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (!showInput) {
-                    setState(() {
-                      showInput = true;
-                    });
-                    Future.delayed(const Duration(milliseconds: 100), () {
-                      _focusNode.requestFocus();
-                    });
-                  } else {
-                    widget.onFund?.call();
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: context.primaryButtonColor,
-                  foregroundColor: context.primaryTextColor,
-                  elevation: 0,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                ),
-                child: Text(
-                  'fundButton'.tr(),
-                  style: AppTheme.of(context).bodyExtraLarge18.copyWith(
-                        fontWeight: FontWeight.w500,
-                      ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 16),
-        ],
-      ),
-    );
-
-    if (isMobile) {
-      final sheetHeight = keyboardHeight > 0
-          ? MediaQuery.of(context).size.height * 0.6
-          : MediaQuery.of(context).size.height * 0.48;
-      return MediaQuery.removePadding(
-        context: context,
-        removeBottom: true,
-        child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Container(
-            height: sheetHeight,
-            decoration: BoxDecoration(
-              color: context.containerColor,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-            ),
-            child: SingleChildScrollView(
-              child: dialogContent,
-            ),
-          ),
-        ),
-      );
-    }
-
-    // ========== Tablet Section ==========
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
-    final maxHeightPercentage =
-        isLandscape ? 0.5 : 0.38; // 50% in landscape, 40% in portrait
-
-    return Dialog(
-      backgroundColor: Colors.white,
-      insetPadding: const EdgeInsets.symmetric(horizontal: 24),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * maxHeightPercentage,
-          minWidth: 420,
-          maxWidth: 420,
-        ),
-        child: ClipRect(
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: dialogContent, // No extra padding here
-          ),
-        ),
-      ),
-    );
+    return const SizedBox.shrink();
   }
 }

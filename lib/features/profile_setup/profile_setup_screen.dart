@@ -25,7 +25,6 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final isMobile = ScreenLayout.isMobile(context);
             final isLandscape =
                 MediaQuery.of(context).orientation == Orientation.landscape;
 
@@ -33,15 +32,16 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
               child: Center(
                 child: Padding(
                   padding: EdgeInsets.symmetric(
-                      horizontal: isMobile
+                      horizontal: context.isMobile
                           ? AppValues.padding24
                           : isLandscape
                               ? 184
                               : 120),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
-                        maxWidth:
-                            isMobile ? AppValues.width600 : AppValues.width400),
+                        maxWidth: context.isMobile
+                            ? AppValues.width600
+                            : AppValues.width400),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -50,7 +50,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: isMobile
+                                text: context.isMobile
                                     ? '${'setupYourProfile'.tr()}\n'
                                     : '${'setupYourProfile'.tr()} ',
                                 style: AppTheme.of(context)
@@ -64,7 +64,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                                 style: AppTheme.of(context)
                                     .headLineLarge32
                                     .copyWith(
-                                      height: isMobile ? 1.2 : 1.0,
+                                      height: context.isMobile ? 1.2 : 1.0,
                                     ),
                               ),
                             ],
@@ -72,7 +72,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                         ),
                         verticalSpace(AppValues.height8),
                         Text(
-                            isMobile
+                            context.isMobile
                                 ? 'chooseProfilePicture'.tr()
                                 : 'Choose your picture and a unique username other users can use to invite you to wagers'
                                     .split('\n')
@@ -150,39 +150,9 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           ),
                         ),
                         verticalSpace(AppValues.height20),
-                        Container(
-                          padding: const EdgeInsets.all(AppValues.padding16),
-                          decoration: BoxDecoration(
-                            color: context.secondaryBackgroundColor,
-                            borderRadius:
-                                BorderRadius.circular(AppValues.radius16),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                'wager.strk/',
-                                style: AppTheme.of(context)
-                                    .bodyExtraLarge18
-                                    .copyWith(
-                                      color: context.textHintColor,
-                                    ),
-                              ),
-                              Expanded(
-                                child: TextField(
-                                  controller: _usernameController,
-                                  onChanged: _checkUsername,
-                                  style: AppTheme.of(context).bodyExtraLarge18,
-                                  decoration: InputDecoration(
-                                    border: InputBorder.none,
-                                    prefixText: '@',
-                                    prefixStyle:
-                                        AppTheme.of(context).bodyExtraLarge18,
-                                    contentPadding: EdgeInsets.zero,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                        UsernameEditText(
+                          controller: _usernameController,
+                          onValueChanged: _checkUsername,
                         ),
                         if (_usernameController.text.isNotEmpty)
                           Align(
@@ -203,39 +173,17 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                             ),
                           ),
                         SizedBox(height: 40),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(bottom: AppValues.height40),
-                          child: ElevatedButton(
-                            onPressed: _usernameController.text.isEmpty ||
-                                    !_isUsernameAvailable
-                                ? null
-                                : () {
-                                    if (isMobile) {
-                                      GoRouter.of(context).go(Routes.home);
-                                    } else {
-                                      GoRouter.of(context)
-                                          .go(Routes.homeTablet);
-                                    }
-                                  },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: const Color(0xFFE7FF54),
-                              minimumSize: const Size(
-                                  double.infinity, AppValues.height56),
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(AppValues.radius16),
-                              ),
-                            ),
-                            child: Text(
-                              'continue'.tr(),
-                              style: AppTheme.of(context)
-                                  .bodyExtraLarge18
-                                  .copyWith(
-                                    color: Colors.black,
-                                  ),
-                            ),
-                          ),
+                        PrimaryButton(
+                          buttonText: 'continue'.tr(),
+                          isActive: _usernameController.text.isNotEmpty &&
+                              _isUsernameAvailable,
+                          onPressed: () {
+                            if (context.isMobile) {
+                              GoRouter.of(context).go(Routes.home);
+                            } else {
+                              GoRouter.of(context).go(Routes.homeTablet);
+                            }
+                          },
                         ),
                       ],
                     ),

@@ -6,8 +6,10 @@ import '../theme/app_colors.dart';
 extension BuildContextExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   bool get isMobile => ScreenLayout.isMobile(this);
-  bool get isPortrait => MediaQuery.of(this).orientation == Orientation.portrait;
-  bool get isLandscape => MediaQuery.of(this).orientation == Orientation.landscape;
+  bool get isPortrait =>
+      MediaQuery.of(this).orientation == Orientation.portrait;
+  bool get isLandscape =>
+      MediaQuery.of(this).orientation == Orientation.landscape;
 
   Color get primaryBackgroundColor =>
       isDarkMode ? AppColors.grayCool900 : AppColors.mono0;
@@ -28,7 +30,7 @@ extension BuildContextExtension on BuildContext {
       isDarkMode ? AppColors.grayCool600 : AppColors.grayCool600;
 
   Color get textBoxTextColor =>
-      isDarkMode ? AppColors.grayCool300 : AppColors.grayCool300;
+      isDarkMode ? AppColors.grayCool100 : AppColors.grayCool100;
 
   Color get dividerColor =>
       isDarkMode ? AppColors.mono80 : AppColors.dividerColour;
@@ -41,6 +43,8 @@ extension BuildContextExtension on BuildContext {
 
   Color get textHintColor =>
       isDarkMode ? AppColors.grayCool25 : AppColors.grayCool400;
+  Color get transparentColor =>
+      isDarkMode ? Colors.transparent : Colors.transparent;
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,

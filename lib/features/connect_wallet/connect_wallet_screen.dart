@@ -1,14 +1,33 @@
 part of '../feature.dart';
 
-class ConnectWalletScreen extends ConsumerWidget {
+class ConnectWalletScreen extends ConsumerStatefulWidget {
   const ConnectWalletScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ConnectWalletScreen> createState() => _ConnectWalletScreen();
+}
+
+class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
+  ReownAppKitModal? w3mService;
+
+  @override
+  void initState() {
+    super.initState();
+    SchedulerBinding.instance.addPostFrameCallback(
+        (_) => ref.read(walletConnectionProvider.notifier).initialize(context));
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final argent = ref.watch(argentCheckProvider);
     final braavos = ref.watch(braavosCheckProvider);
     final metamask = ref.watch(metamaskCheckProvider);
-    final isMobile = ScreenLayout.isMobile(context);
+    final walletState = ref.watch(walletConnectionProvider);
+
+    if (walletState is WalletConnected) {
+      w3mService = walletState.service;
+    }
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -17,7 +36,7 @@ class ConnectWalletScreen extends ConsumerWidget {
                 const EdgeInsets.symmetric(horizontal: AppValues.padding16),
             child: GestureDetector(
                 onTap: () {
-                  isMobile
+                  context.isMobile
                       ? GoRouter.of(context).go(Routes.profileSetup)
                       : GoRouter.of(context).go(Routes.profileSetup);
                 },
@@ -64,13 +83,13 @@ class ConnectWalletScreen extends ConsumerWidget {
                       verticalSpace(AppValues.height30),
                       argent.when(
                           data: (isInstalled) => InstalledWalletWidget(
-                                title: 'Argent X',
+                                title: 'Argent',
                                 icon: Image.asset(AppIcons.argentIcon),
                                 isInstalled: isInstalled,
                                 onTap: () {},
                               ),
                           error: (error, stack) => InstalledWalletWidget(
-                                title: 'Argent X',
+                                title: 'Argent',
                                 icon: Image.asset(AppIcons.argentIcon),
                                 isInstalled: false,
                                 onTap: () {},
@@ -99,7 +118,9 @@ class ConnectWalletScreen extends ConsumerWidget {
                                     width: AppValues.width24,
                                     height: AppValues.height24),
                                 isInstalled: isInstalled,
-                                onTap: () {},
+                                onTap: () {
+                                  w3mService!.openModalView();
+                                },
                               ),
                           error: (error, stack) => InstalledWalletWidget(
                                 title: 'Metamask',
@@ -107,7 +128,9 @@ class ConnectWalletScreen extends ConsumerWidget {
                                     width: AppValues.width24,
                                     height: AppValues.height24),
                                 isInstalled: false,
-                                onTap: () {},
+                                onTap: () {
+                                  w3mService!.openModalView();
+                                },
                               ),
                           loading: () => const CircularProgressIndicator()),
                       verticalSpace(AppValues.height15),

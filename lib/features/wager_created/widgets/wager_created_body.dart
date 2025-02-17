@@ -28,8 +28,6 @@ class _AccountCreatedBodyState extends ConsumerState<WagerCreatedBody> {
 
   @override
   Widget build(BuildContext context) {
-    final isMobile = ScreenLayout.isMobile(context);
-
     return Consumer(builder: (context, ref, child) {
       return GestureDetector(
         onTap: () => FocusManager.instance.primaryFocus!.unfocus(),
@@ -54,29 +52,14 @@ class _AccountCreatedBodyState extends ConsumerState<WagerCreatedBody> {
                 color: AppColors.mono60,
               ),
               verticalSpace(30),
-              FormattedTextFields(
-                height: 72,
-                title: 'inviteUsername'.tr(),
-                textFieldController: _usernameTextController,
-                textFieldHint: 'wager.strk/@username',
-                keyInputType: TextInputType.text,
-                containerColor: AppColors.grayCool200,
-                focusNode: _usernameTextControllerFocusNode,
-                inputFormatters: [],
-                onChangedFunction: (value) {
-                  if (value.isEmpty ||
-                      !_usernameTextController.text
-                          .startsWith('wager.strk/@')) {
-                    _usernameTextController.text = 'wager.strk/@';
-                    _usernameTextController.selection =
-                        TextSelection.fromPosition(TextPosition(
-                            offset: _usernameTextController.text.length));
-                  } else {
-                    return value;
-                  }
-                },
-                errorText: "",
-                errorTextActive: false,
+              Text('inviteUsername'.tr(),
+                  style: AppTheme.of(context)
+                      .bodyMedium14
+                      .copyWith(fontWeight: FontWeight.w500)),
+              verticalSpace(AppValues.height8),
+              UsernameEditText(
+                controller: _usernameTextController,
+                onValueChanged: (value) {},
               ),
               verticalSpace(20),
               Text(
@@ -111,7 +94,7 @@ class _AccountCreatedBodyState extends ConsumerState<WagerCreatedBody> {
                             text: 'https://link.wager.strk/WEpl'));
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('linkCopied'.tr()),
+                            content: Text('copiedToClipBoard'.tr()),
                           ),
                         );
                       },
@@ -131,11 +114,10 @@ class _AccountCreatedBodyState extends ConsumerState<WagerCreatedBody> {
                   ],
                 ),
               ),
-              isMobile ? verticalSpace(80) : verticalSpace(24),
-              _button(
-                title: 'sendWager'.tr(),
-                buttonColor: context.primaryButtonColor,
-                textColor: context.primaryTextColor,
+              context.isMobile ? verticalSpace(80) : verticalSpace(24),
+              PrimaryButton(
+                buttonText: 'sendWager'.tr(),
+                isActive: true,
                 onPressed: () {},
               ),
               verticalSpace(12),
