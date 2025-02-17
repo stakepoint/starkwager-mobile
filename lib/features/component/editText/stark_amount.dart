@@ -15,12 +15,12 @@ class StarkAmount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final balanceText =
-        Text('\$0.00', style: AppTheme.of(context).headingMobileH1);
+        Text('\$500.00', style: AppTheme.of(context).headingMobileH1);
     final amountRow = Row(
       children: [
         Image.asset(AppIcons.starknetImage),
-        horizontalSpace(4),
-        Text('0 Strk', style: AppTheme.of(context).textSmallMedium),
+            horizontalSpace(4),
+        Text('25 Strk', style: AppTheme.of(context).textSmallMedium),
       ],
     );
 

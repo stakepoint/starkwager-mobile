@@ -14,6 +14,7 @@ class ContractAddress extends StatelessWidget {
               color: context.textHintColor,
             );
 
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -28,8 +29,8 @@ class ContractAddress extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CopyItemContainer(value: '0x400e44000...'),
-            ],
+    CopyItemContainer(value: '0x400e44000...'), 
+  ],
           ),
         ),
       ],

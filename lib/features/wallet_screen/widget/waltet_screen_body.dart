@@ -43,9 +43,11 @@ class WalletScreenBody extends ConsumerWidget {
           onAddMoney: () => _showFundWalletDialog(context),
           onWithdraw: () {},
         ),
-        verticalSpace(40),
+        verticalSpace(16),
         if (isMobile) HomeAddAndWithdraw(),
-        isMobile ? const SizedBox(height: 48) : const SizedBox(height: 40),
+        isMobile
+            ? const SizedBox(height: 48)
+            : const SizedBox(height: 40),
         RecentTransactions(isTablet: !isMobile),
       ],
     );

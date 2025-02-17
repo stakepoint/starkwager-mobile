@@ -1,5 +1,6 @@
 part of '../../feature.dart';
 
+
 class TransactionItem extends StatelessWidget {
   final String description;
   final String date;
@@ -23,7 +24,7 @@ class TransactionItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: context.containerColor,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -45,16 +46,12 @@ class TransactionItem extends StatelessWidget {
               children: [
                 Text(
                   description,
-                  style: AppTheme.of(context)
-                      .bodyExtraLarge18
-                      .copyWith(color: AppColors.blue950),
+                  style: AppTheme.of(context).bodyExtraLarge18,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   date,
-                  style: AppTheme.of(context).bodyMedium14.copyWith(
-                        color: AppColors.blue950,
-                      ),
+                  style: AppTheme.of(context).bodyMedium14
                 ),
               ],
             ),
@@ -72,7 +69,7 @@ class TransactionItem extends StatelessWidget {
               Text(
                 amount,
                 style: AppTheme.of(context).bodyLarge16.copyWith(
-                      color: showGreenAmount ? Colors.green : null,
+                      color: showGreenAmount ? context.successColor : null,
                     ),
               ),
             ],
@@ -82,3 +79,5 @@ class TransactionItem extends StatelessWidget {
     );
   }
 }
+
+

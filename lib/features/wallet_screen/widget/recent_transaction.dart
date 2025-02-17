@@ -22,7 +22,7 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: AppColors.grayCool100,
+          iconBgColor: context.secondaryTextColor,
           isWithdrawal: true,
         ),
         SizedBox(height: itemSpacing),
@@ -31,7 +31,7 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: AppColors.grayCool100,
+          iconBgColor: context.secondaryTextColor,
           isWithdrawal: true,
         ),
         SizedBox(height: itemSpacing),
@@ -40,7 +40,7 @@ class RecentTransactions extends StatelessWidget {
               'Created Wager: Will Bitcoin Hit \$100k Before January 31, 2025?',
           date: 'November 24, 2024',
           amount: '5 Strk',
-          iconBgColor: AppColors.grayCool100,
+          iconBgColor: context.secondaryTextColor,
           isWithdrawal: false,
           showGreenAmount: true,
         ),
@@ -50,3 +50,4 @@ class RecentTransactions extends StatelessWidget {
     return isTablet ? Container(width: 696, child: content) : content;
   }
 }
+

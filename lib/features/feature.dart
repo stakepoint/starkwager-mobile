@@ -68,5 +68,6 @@ part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 part 'wallet_screen/widget/wallet_body_padding.dart';
 
-part 'component/glabal_shared/stark_amount.dart';
-part 'component/glabal_shared/tablet_header.dart';
+part 'component/appbar/tablet_header.dart';
+part 'component/appbar/mobile_header.dart';
+part 'component/editText/stark_amount.dart';

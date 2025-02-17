@@ -5,10 +5,10 @@ class WalletScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isMobile = context.isMobile;
-    final isPortrait = context.isPortrait;
+    final isMobile = context.isMobile; 
+    final isPortrait = context.isPortrait; 
     return Scaffold(
-      appBar: isMobile ? HomeScreenAppBar() : null,
+      appBar: isMobile ? MobileHeader(title: 'WALLET') : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton:
           isMobile || isPortrait ? _floatingActionButton(context) : SizedBox(),
@@ -27,7 +27,7 @@ class WalletScreen extends ConsumerWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          verticalSpace(48),
+                          verticalSpace(30),
                           WalletScreenBody(),
                           Spacer(),
                         ],
