@@ -5,8 +5,8 @@ class WalletScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isMobile = context.isMobile; 
-    final isPortrait = context.isPortrait; 
+    final isMobile = context.isMobile;
+    final isPortrait = context.isPortrait;
     return Scaffold(
       appBar: isMobile ? MobileHeader(title: 'walletCaps'.tr()) : null,
       backgroundColor: context.primaryBackgroundColor,
@@ -46,5 +46,4 @@ class WalletScreen extends ConsumerWidget {
       ),
     );
   }
-
 }
