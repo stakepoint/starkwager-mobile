@@ -12,23 +12,10 @@ class HomeScreenTabletMode extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         verticalSpace(32),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text('home'.tr(), style: AppTheme.of(context).headLineLarge32),
-            Row(
-              children: [
-                ProfileMenu(),
-                horizontalSpace(24),
-                SvgPicture.asset(
-                  AppIcons.notificationIcon,
-                  width: 20,
-                  height: 20,
-                ),
-              ],
-            )
-          ],
-        ),
+        TabletHeader(
+            title: 'home'.tr(),
+            onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
+          ),
         verticalSpace(80),
         Padding(
           padding:

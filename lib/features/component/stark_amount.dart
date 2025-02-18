@@ -1,4 +1,4 @@
-part of '../../feature.dart';
+part of '../feature.dart';
 
 class StarkAmount extends StatelessWidget {
   final bool isTablet;

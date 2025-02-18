@@ -46,7 +46,9 @@ class TransactionItem extends StatelessWidget {
               children: [
                 Text(
                   description,
-                  style: AppTheme.of(context).bodyExtraLarge18,
+                  style: AppTheme.of(context).bodyExtraLarge18.copyWith(
+                  fontWeight: FontWeight.w500
+                  ),
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
@@ -69,7 +71,9 @@ class TransactionItem extends StatelessWidget {
               Text(
                 amount,
                 style: AppTheme.of(context).bodyLarge16.copyWith(
-                      color: showGreenAmount ? context.successColor : null,
+                      color: showGreenAmount ? context.successColor : null, 
+                      fontWeight: FontWeight.w500
+                      
                     ),
               ),
             ],

@@ -8,10 +8,10 @@ class WalletScreen extends ConsumerWidget {
     final isMobile = context.isMobile; 
     final isPortrait = context.isPortrait; 
     return Scaffold(
-      appBar: isMobile ? MobileHeader(title: 'WALLET') : null,
+      appBar: isMobile ? MobileHeader(title: 'walletCaps'.tr()) : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton:
-          isMobile || isPortrait ? _floatingActionButton(context) : SizedBox(),
+          isMobile || isPortrait ? NewWagerButton(context) : SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: LayoutBuilder(
@@ -47,34 +47,4 @@ class WalletScreen extends ConsumerWidget {
     );
   }
 
-  Widget _floatingActionButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        GoRouter.of(context).push(Routes.createWager);
-      },
-      child: Container(
-        height: 56,
-        width: 160,
-        decoration: BoxDecoration(
-          color: context.primaryButtonColor,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
-              blurRadius: 8,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(AppIcons.handshakeIcon),
-            SizedBox(width: 12),
-            Text('newWager'.tr(), style: AppTheme.of(context).textMediumMedium),
-          ],
-        ),
-      ),
-    );
-  }
 }

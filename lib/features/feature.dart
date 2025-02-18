@@ -70,4 +70,5 @@ part 'wallet_screen/widget/wallet_body_padding.dart';
 
 part 'component/appbar/tablet_header.dart';
 part 'component/appbar/mobile_header.dart';
-part 'component/editText/stark_amount.dart';
+part 'component/fab/new_wager_fab.dart';
+part 'component/stark_amount.dart';

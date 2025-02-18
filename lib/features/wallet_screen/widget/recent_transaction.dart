@@ -14,7 +14,8 @@ class RecentTransactions extends StatelessWidget {
       children: [
         Text(
           'recentTransactions'.tr(),
-          style: AppTheme.of(context).bodyLarge16,
+          style: AppTheme.of(context).bodyLarge16.copyWith(
+          fontWeight: FontWeight.w500),
         ),
         SizedBox(height: titleSpacing),
         TransactionItem(

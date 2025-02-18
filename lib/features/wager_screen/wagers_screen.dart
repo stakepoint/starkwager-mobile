@@ -10,9 +10,9 @@ class WagersScreen extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: ScreenLayout.isTablet(context)
           ? isPortrait
-              ? _floatingActionButton(context)
+              ? NewWagerButton(context)
               : SizedBox()
-          : _floatingActionButton(context),
+          : NewWagerButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: LayoutBuilder(
@@ -64,36 +64,5 @@ class WagersScreen extends ConsumerWidget {
     );
   }
 
-//----------------------------------------------- FLOATING_ACTION_BUTTON ----------------------------------------------- //
 
-  Widget _floatingActionButton(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        GoRouter.of(context).push(Routes.createWager);
-      },
-      child: Container(
-        height: 56,
-        width: 160,
-        decoration: BoxDecoration(
-          color: context.primaryButtonColor,
-          borderRadius: BorderRadius.circular(16),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
-              blurRadius: 8,
-              offset: Offset(0, 4),
-            ),
-          ],
-        ),
-        child: Row(
-          spacing: 12,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(AppIcons.handshakeIcon),
-            Text('newWager'.tr(), style: AppTheme.of(context).textMediumMedium),
-          ],
-        ),
-      ),
-    );
-  }
 }

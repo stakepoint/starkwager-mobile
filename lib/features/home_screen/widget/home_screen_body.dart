@@ -27,9 +27,11 @@ class HomeScreenBody extends ConsumerWidget {
       children: [
         _walletAddressWidget(context),
         verticalSpace(8),
-        context.isMobile
-            ? _mobileStarkAmount(context)
-            : _tabletStarkAmount(context),
+         StarkAmount(
+          isTablet: !context.isMobile,
+          onAddMoney: () => _showFundWalletDialog(context),
+          onWithdraw: () {},
+        ),
         verticalSpace(16),
         context.isMobile ? HomeAddAndWithdraw() : SizedBox(),
         verticalSpace(40),
@@ -87,67 +89,6 @@ class HomeScreenBody extends ConsumerWidget {
           ),
         ],
       ),
-    );
-  }
-
-//----------------------------------------------- MOBILE_STARK_AMOUNT ----------------------------------------------- //
-
-  Widget _mobileStarkAmount(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text('\$0.00', style: AppTheme.of(context).headingMobileH1),
-        Row(
-          children: [
-            Image.asset(AppIcons.starknetImage),
-            horizontalSpace(4),
-            Text('${'0'} Strk', style: AppTheme.of(context).textSmallMedium),
-          ],
-        ),
-      ],
-    );
-  }
-
-//----------------------------------------------- TABLET_STARK_AMOUNT ----------------------------------------------- //
-
-  Widget _tabletStarkAmount(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 8,
-          children: [
-            Text('\$0.00', style: AppTheme.of(context).headingMobileH1),
-            Row(
-              children: [
-                Image.asset(AppIcons.starknetImage),
-                horizontalSpace(4),
-                Text('${'0'} Strk',
-                    style: AppTheme.of(context).textSmallMedium),
-              ],
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Row(
-            spacing: 16,
-            children: [
-              HomeActionButton(
-                text: 'addMoney'.tr(),
-                iconPath: AppIcons.addIcon,
-                onTap: () => _showFundWalletDialog(context),
-              ),
-              HomeActionButton(
-                text: 'withdraw'.tr(),
-                iconPath: AppIcons.withdrawIcon,
-                onTap: () {},
-              ),
-            ],
-          ),
-        )
-      ],
     );
   }
 
