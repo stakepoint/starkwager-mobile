@@ -2,7 +2,7 @@ part of '../../feature.dart';
 
 class ContractAddress extends StatelessWidget {
   final bool isTablet;
-  const ContractAddress({Key? key, this.isTablet = false}) : super(key: key);
+  const ContractAddress({super.key, this.isTablet = false});
 
   @override
   Widget build(BuildContext context) {

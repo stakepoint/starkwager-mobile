@@ -2,7 +2,7 @@ part of '../../feature.dart';
 
 class RecentTransactions extends StatelessWidget {
   final bool isTablet;
-  const RecentTransactions({Key? key, this.isTablet = false}) : super(key: key);
+  const RecentTransactions({super.key, this.isTablet = false});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class RecentTransactions extends StatelessWidget {
       ],
     );
 
-    return isTablet ? Container(width: 696, child: content) : content;
+    return isTablet ? SizedBox(width: 696, child: content) : content;
   }
 }
 

@@ -9,7 +9,7 @@ class HomeScreen extends ConsumerWidget {
       appBar: context.isMobile ? HomeScreenAppBar() : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton: context.isMobile || context.isPortrait
-          ? NewWagerButton(context)
+          ? newWagerButton(context)
           : SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
@@ -45,7 +45,4 @@ class HomeScreen extends ConsumerWidget {
       ),
     );
   }
-
-
- 
 }

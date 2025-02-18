@@ -4,9 +4,9 @@ part of '../../feature.dart';
 class WalletBodyPadding extends StatelessWidget {
   final Widget child;
   const WalletBodyPadding({
-    Key? key,
+    super.key,
     required this.child,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

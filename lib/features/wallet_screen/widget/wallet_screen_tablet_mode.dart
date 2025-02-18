@@ -1,7 +1,7 @@
 part of '../../feature.dart';
 
 class WalletScreenTabletMode extends ConsumerWidget {
-  const WalletScreenTabletMode({Key? key}) : super(key: key);
+  const WalletScreenTabletMode({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

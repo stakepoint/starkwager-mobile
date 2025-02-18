@@ -1,7 +1,7 @@
 part of '../../feature.dart';
 
 class WalletScreenBody extends ConsumerWidget {
-  const WalletScreenBody({Key? key}) : super(key: key);
+  const WalletScreenBody({super.key});
 
   void _showFundWalletDialog(BuildContext context) {
     final isMobile = context.isMobile;

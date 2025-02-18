@@ -6,11 +6,11 @@ class StarkAmount extends StatelessWidget {
   final VoidCallback? onWithdraw;
 
   const StarkAmount({
-    Key? key,
+    super.key,
     this.isTablet = false,
     this.onAddMoney,
     this.onWithdraw,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

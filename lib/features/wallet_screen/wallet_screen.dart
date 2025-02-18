@@ -11,7 +11,7 @@ class WalletScreen extends ConsumerWidget {
       appBar: isMobile ? MobileHeader(title: 'walletCaps'.tr()) : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton:
-          isMobile || isPortrait ? NewWagerButton(context) : SizedBox(),
+          isMobile || isPortrait ? newWagerButton(context) : SizedBox(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: LayoutBuilder(

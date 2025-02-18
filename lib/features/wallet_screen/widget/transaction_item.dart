@@ -10,14 +10,14 @@ class TransactionItem extends StatelessWidget {
   final bool showGreenAmount;
 
   const TransactionItem({
-    Key? key,
+    super.key,
     required this.description,
     required this.date,
     required this.amount,
     this.iconBgColor,
     required this.isWithdrawal,
     this.showGreenAmount = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

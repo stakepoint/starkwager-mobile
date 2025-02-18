@@ -10,9 +10,9 @@ class WagersScreen extends ConsumerWidget {
     return Scaffold(
       floatingActionButton: ScreenLayout.isTablet(context)
           ? isPortrait
-              ? NewWagerButton(context)
+              ? newWagerButton(context)
               : SizedBox()
-          : NewWagerButton(context),
+          : newWagerButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: SafeArea(
         child: LayoutBuilder(
@@ -63,6 +63,4 @@ class WagersScreen extends ConsumerWidget {
       ),
     );
   }
-
-
 }
