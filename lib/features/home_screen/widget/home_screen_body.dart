@@ -23,9 +23,11 @@ class HomeScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+        final bool isMobile = context.isMobile;
+
     return Column(
       children: [
-        _walletAddressWidget(context),
+        ContractAddress(isTablet: !isMobile),
         verticalSpace(8),
         StarkAmount(
           isTablet: !context.isMobile,
@@ -94,22 +96,4 @@ class HomeScreenBody extends ConsumerWidget {
 
 //----------------------------------------------- WALLET_ADDRESS ----------------------------------------------- //
 
-  Widget _walletAddressWidget(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          'walletBalance'.tr(),
-          style: context.isMobile
-              ? AppTheme.of(context).bodyMedium14.copyWith(
-                    color: context.textHintColor,
-                  )
-              : AppTheme.of(context).bodyLarge16.copyWith(
-                    color: context.textHintColor,
-                  ),
-        ),
-        CopyItemContainer(value: '0x234233424322'),
-      ],
-    );
-  }
 }

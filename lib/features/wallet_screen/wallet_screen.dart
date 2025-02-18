@@ -8,7 +8,7 @@ class WalletScreen extends ConsumerWidget {
     final isMobile = context.isMobile;
     final isPortrait = context.isPortrait;
     return Scaffold(
-      appBar: isMobile ? MobileHeader(title: 'walletCaps'.tr()) : null,
+      appBar: isMobile ? MobileHeader(title: 'wallet'.tr().toUpperCaseString) : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton:
           isMobile || isPortrait ? newWagerButton(context) : SizedBox(),

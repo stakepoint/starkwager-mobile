@@ -10,16 +10,22 @@ class MobileHeader extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return SafeArea(
+      child: AppBar(
         automaticallyImplyLeading: false,
         scrolledUnderElevation: 0.0,
         backgroundColor: context.primaryBackgroundColor,
-        toolbarHeight: context.isMobile ? null : AppValues.height100,
         elevation: 0,
+        titleSpacing: 0,
         title: Padding(
-          padding: EdgeInsets.only(top: 30),
-          child: Text(title, style: AppTheme.of(context).headLineLarge32),
-        ));
+          padding: const EdgeInsets.only(left: 16, top: 30), 
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Text(title, style: AppTheme.of(context).headLineLarge32),
+          ),
+        ),
+      ),
+    );
   }
 
   @override

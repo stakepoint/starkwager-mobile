@@ -1,4 +1,4 @@
-part of '../../feature.dart';
+part of '../feature.dart';
 
 class ContractAddress extends StatelessWidget {
   final bool isTablet;
