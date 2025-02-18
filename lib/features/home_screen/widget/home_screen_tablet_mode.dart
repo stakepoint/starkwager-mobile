@@ -13,9 +13,9 @@ class HomeScreenTabletMode extends ConsumerWidget {
       children: [
         verticalSpace(32),
         TabletHeader(
-            title: 'home'.tr(),
-            onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
-          ),
+          title: 'home'.tr(),
+          onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
+        ),
         verticalSpace(80),
         Padding(
           padding:

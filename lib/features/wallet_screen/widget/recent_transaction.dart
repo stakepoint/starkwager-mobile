@@ -14,8 +14,9 @@ class RecentTransactions extends StatelessWidget {
       children: [
         Text(
           'recentTransactions'.tr(),
-          style: AppTheme.of(context).bodyLarge16.copyWith(
-          fontWeight: FontWeight.w500),
+          style: AppTheme.of(context)
+              .bodyLarge16
+              .copyWith(fontWeight: FontWeight.w500),
         ),
         SizedBox(height: titleSpacing),
         TransactionItem(
@@ -51,4 +52,3 @@ class RecentTransactions extends StatelessWidget {
     return isTablet ? SizedBox(width: 696, child: content) : content;
   }
 }
-

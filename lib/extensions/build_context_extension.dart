@@ -29,7 +29,7 @@ extension ThemeModeExtension on BuildContext {
   Color get subTitleTextColor =>
       isDarkMode ? AppColors.grayCool600 : AppColors.grayCool600;
 
-  Color get successColor => 
+  Color get successColor =>
       isDarkMode ? AppColors.success500 : AppColors.success500;
 
   Color get textBoxTextColor =>

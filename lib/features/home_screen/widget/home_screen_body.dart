@@ -27,7 +27,7 @@ class HomeScreenBody extends ConsumerWidget {
       children: [
         _walletAddressWidget(context),
         verticalSpace(8),
-         StarkAmount(
+        StarkAmount(
           isTablet: !context.isMobile,
           onAddMoney: () => _showFundWalletDialog(context),
           onWithdraw: () {},

@@ -19,7 +19,7 @@ class StarkAmount extends StatelessWidget {
     final amountRow = Row(
       children: [
         Image.asset(AppIcons.starknetImage),
-            horizontalSpace(4),
+        horizontalSpace(4),
         Text('25 Strk', style: AppTheme.of(context).textSmallMedium),
       ],
     );
