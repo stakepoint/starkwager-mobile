@@ -27,7 +27,6 @@ import 'connect_wallet/provider/wallet_connection_provider.dart';
 import 'connect_wallet/provider/wallet_connection_state.dart';
 import 'create_wager/provider/category_provider.dart';
 
-
 part 'component/button/primary_button.dart';
 part 'component/editText/username_editText.dart';
 part 'connect_wallet/connect_wallet_screen.dart';

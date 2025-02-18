@@ -23,7 +23,7 @@ class HomeScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-        final bool isMobile = context.isMobile;
+    final bool isMobile = context.isMobile;
 
     return Column(
       children: [
@@ -95,5 +95,4 @@ class HomeScreenBody extends ConsumerWidget {
   }
 
 //----------------------------------------------- WALLET_ADDRESS ----------------------------------------------- //
-
 }
