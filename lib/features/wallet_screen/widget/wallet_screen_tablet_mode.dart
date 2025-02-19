@@ -14,9 +14,11 @@ class WalletScreenTabletMode extends ConsumerWidget {
             title: 'wallet'.tr(),
             onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
           ),
-          verticalSpace(120),
-          WalletBodyPadding(
-            child: const WalletScreenBody(),
+          verticalSpace(80),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: context.isLandscape ? 120 : 60),
+            child: WalletScreenBody(),
           ),
         ],
       ),
