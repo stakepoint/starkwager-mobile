@@ -26,6 +26,8 @@ class AppIcons {
   static const arrowBack = '$baseIconPath/arrow_back.svg';
   static const String checked = '$baseIconPath/checked.svg';
   static const String close = '$baseIconPath/close_icon.svg';
+  static const upwardArrow = '$baseIconPath/upward_arrow.svg';
+  static const downwardArrow = '$baseIconPath/downward_arrow.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';

@@ -22,6 +22,8 @@ class AppColors {
 
   static const rambutan100 = Color(0xFFE60F41);
 
+  static const success500 = Color(0xFF17b26a);
+
   static const dividerColour = Color(0xFFE2E5EB);
 
   static const mono0 = Color(0xFFF9F9FB);
