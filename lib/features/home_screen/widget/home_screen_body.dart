@@ -32,7 +32,7 @@ class HomeScreenBody extends ConsumerWidget {
         SliverToBoxAdapter(
           child: SizedBox(height: isMobile ? 48 : 32),
         ),
-        
+
         // Collapsible Wallet Section
         SliverToBoxAdapter(
           child: Column(
@@ -48,7 +48,7 @@ class HomeScreenBody extends ConsumerWidget {
             ],
           ),
         ),
-        
+
         // Fixed Category Tabs
         SliverPersistentHeader(
           pinned: true,
@@ -58,9 +58,8 @@ class HomeScreenBody extends ConsumerWidget {
         // Wagers List
         SliverPadding(
           padding: EdgeInsets.symmetric(
-            horizontal: isMobile ? 16 : (isLandscape ? 32 : 16),
-            vertical: 16
-          ),
+              horizontal: isMobile ? 16 : (isLandscape ? 32 : 16),
+              vertical: 16),
           sliver: SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
@@ -73,7 +72,7 @@ class HomeScreenBody extends ConsumerWidget {
             ),
           ),
         ),
-        
+
         // Bottom Padding for FAB
         SliverToBoxAdapter(
           child: SizedBox(height: isMobile ? 80 : 100),
@@ -87,7 +86,8 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   int selectedIndex = 0;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: maxExtent,
       color: context.primaryBackgroundColor,
@@ -98,7 +98,8 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
           children: [
             _buildCategoryTab(context, 'Trending', AppIcons.trendingIcon, 0),
             _buildCategoryTab(context, 'Sports', AppIcons.sportsIcon, 1),
-            _buildCategoryTab(context, 'Entertainment', AppIcons.entertainmentIcon, 2),
+            _buildCategoryTab(
+                context, 'Entertainment', AppIcons.entertainmentIcon, 2),
             _buildCategoryTab(context, 'Politics', AppIcons.politicsIcon, 3),
             _buildCategoryTab(context, 'Crypto', AppIcons.cryptoIcon, 4),
             _buildCategoryTab(context, 'Stocks', AppIcons.stocksIcon, 5),
@@ -110,9 +111,10 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
     );
   }
 
-  Widget _buildCategoryTab(BuildContext context, String title, String icon, int index) {
+  Widget _buildCategoryTab(
+      BuildContext context, String title, String icon, int index) {
     final bool isSelected = selectedIndex == index;
-    
+
     return GestureDetector(
       onTap: () {
         selectedIndex = index;
@@ -125,50 +127,54 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
         margin: const EdgeInsets.only(right: 12),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
         decoration: BoxDecoration(
-          color: isSelected ? const Color.fromRGBO(16, 42, 86, 1) : const Color.fromRGBO(239, 241, 245, 1),
+          color: isSelected
+              ? const Color.fromRGBO(16, 42, 86, 1)
+              : const Color.fromRGBO(239, 241, 245, 1),
           borderRadius: BorderRadius.circular(16),
         ),
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: Row(
             mainAxisSize: MainAxisSize.min,
-            children: isSelected ? [
-              SvgPicture.asset(
-                icon,
-                width: 18,
-                height: 18,
-                colorFilter: ColorFilter.mode(
-                  Colors.white,
-                  BlendMode.srcIn,
-                ),
-              ),
-              horizontalSpace(8),
-              Text(
-                title,
-                style: AppTheme.of(context).textSmallMedium.copyWith(
-                  fontSize: 14,
-                  color: Colors.white,
-                ),
-              ),
-            ] : [
-              Text(
-                title,
-                style: AppTheme.of(context).textSmallMedium.copyWith(
-                  fontSize: 14,
-                  color: const Color.fromRGBO(16, 42, 86, 1),
-                ),
-              ),
-              horizontalSpace(8),
-              SvgPicture.asset(
-                icon,
-                width: 18,
-                height: 18,
-                colorFilter: ColorFilter.mode(
-                  const Color.fromRGBO(16, 42, 86, 1),
-                  BlendMode.srcIn,
-                ),
-              ),
-            ],
+            children: isSelected
+                ? [
+                    SvgPicture.asset(
+                      icon,
+                      width: 18,
+                      height: 18,
+                      colorFilter: ColorFilter.mode(
+                        Colors.white,
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                    horizontalSpace(8),
+                    Text(
+                      title,
+                      style: AppTheme.of(context).textSmallMedium.copyWith(
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
+                    ),
+                  ]
+                : [
+                    Text(
+                      title,
+                      style: AppTheme.of(context).textSmallMedium.copyWith(
+                            fontSize: 14,
+                            color: const Color.fromRGBO(16, 42, 86, 1),
+                          ),
+                    ),
+                    horizontalSpace(8),
+                    SvgPicture.asset(
+                      icon,
+                      width: 18,
+                      height: 18,
+                      colorFilter: ColorFilter.mode(
+                        const Color.fromRGBO(16, 42, 86, 1),
+                        BlendMode.srcIn,
+                      ),
+                    ),
+                  ],
           ),
         ),
       ),
@@ -182,5 +188,6 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 72.0;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
+      false;
 }

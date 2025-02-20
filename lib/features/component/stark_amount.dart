@@ -18,7 +18,7 @@ class StarkAmount extends StatelessWidget {
       '\$1000.00',
       style: AppTheme.of(context).headingMobileH1,
     );
-    
+
     final amountRow = Row(
       children: [
         Image.asset(

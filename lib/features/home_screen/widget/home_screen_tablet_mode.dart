@@ -8,7 +8,7 @@ class HomeScreenTabletMode extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isLandscape = context.isLandscape;
-    
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: isLandscape ? 32 : 24),
