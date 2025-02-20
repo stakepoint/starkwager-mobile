@@ -14,55 +14,33 @@ class StarkAmount extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final balanceText =
-        Text('\$500.00', style: AppTheme.of(context).headingMobileH1);
+    final balanceText = Text(
+      '\$1000.00',
+      style: AppTheme.of(context).headingMobileH1,
+    );
+    
     final amountRow = Row(
       children: [
-        Image.asset(AppIcons.starknetImage),
+        Image.asset(
+          AppIcons.starknetImage,
+          width: 20,
+          height: 20,
+        ),
         horizontalSpace(4),
-        Text('25 Strk', style: AppTheme.of(context).textSmallMedium),
+        Text(
+          '50 Strk',
+          style: AppTheme.of(context).textSmallMedium,
+        ),
       ],
     );
 
-    if (isTablet) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              balanceText,
-              amountRow,
-            ],
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Row(
-              children: [
-                HomeActionButton(
-                  text: 'addMoney'.tr(),
-                  iconPath: AppIcons.addIcon,
-                  onTap: onAddMoney,
-                ),
-                const SizedBox(width: 16),
-                HomeActionButton(
-                  text: 'withdraw'.tr(),
-                  iconPath: AppIcons.withdrawIcon,
-                  onTap: onWithdraw,
-                ),
-              ],
-            ),
-          )
-        ],
-      );
-    } else {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          balanceText,
-          amountRow,
-        ],
-      );
-    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        balanceText,
+        verticalSpace(4),
+        amountRow,
+      ],
+    );
   }
 }
