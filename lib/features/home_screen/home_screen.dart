@@ -20,8 +20,9 @@ class HomeScreen extends ConsumerWidget {
                 ? NestedScrollView(
                     headerSliverBuilder: (context, innerBoxIsScrolled) => [
                       SliverAppBar(
-                        floating: true,
-                        snap: true,
+                        floating: false,
+                        pinned: true,
+                        snap: false,
                         elevation: 0,
                         toolbarHeight: 80,
                         backgroundColor: context.primaryBackgroundColor,

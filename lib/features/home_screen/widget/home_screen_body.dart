@@ -214,7 +214,12 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
     return Container(
       height: 100.0,
       color: context.primaryBackgroundColor,
-      child: builder(overlapsContent),
+      child: Column(
+        children: [
+          if (shrinkOffset > 0) verticalSpace(8),
+          Expanded(child: builder(overlapsContent)),
+        ],
+      ),
     );
   }
 
