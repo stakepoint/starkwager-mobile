@@ -151,7 +151,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
         SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: isMobile ? AppValues.padding16 : isLandscape ? 200 : 0,
+              horizontal: isMobile ? AppValues.padding16 : 0,
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,7 +164,6 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
                   onAddMoney: () => _showFundWalletDialog(context),
                   onWithdraw: () {},
                 ),
-               
               ],
             ),
           ),
@@ -185,7 +184,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
                 if (index.isOdd) return verticalSpace(16);
                 return Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? AppValues.padding16 : isLandscape ? 200 : 0,
+                    horizontal: isMobile ? AppValues.padding16 : 0,
                   ),
                   child: const WagerWidget(),
                 );
