@@ -1,7 +1,7 @@
 class AppIcons {
   AppIcons._();
 
-  static const String baseIconPath = 'assets/icons';
+  static const baseIconPath = 'assets/icons';
   static const hamburgerIcon = '$baseIconPath/hamburger_icon.svg';
   static const metaMaskIcon = '$baseIconPath/metamask_icon.svg';
   static const copyPath = '$baseIconPath/copy.svg';
@@ -24,20 +24,20 @@ class AppIcons {
   static const ellipseIcon = '$baseIconPath/ellipse.svg';
   static const vsIcon = '$baseIconPath/VS.svg';
   static const arrowBack = '$baseIconPath/arrow_back.svg';
-  static const String checked = '$baseIconPath/checked.svg';
-  static const String close = '$baseIconPath/close_icon.svg';
+  static const checked = '$baseIconPath/checked.svg';
+  static const close = '$baseIconPath/close_icon.svg';
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
 
-  // Category Icons (temporary mapping to existing icons)
-  static String get trendingIcon => '$baseIconPath/trend_up.svg';
-  static String get sportsIcon => '$baseIconPath/SoccerBall.svg';
-  static String get entertainmentIcon => '$baseIconPath/music.svg';
-  static String get politicsIcon => '$baseIconPath/law.svg';
-  static String get cryptoIcon => '$baseIconPath/coins.svg';
-  static String get stocksIcon => '$baseIconPath/chart.svg';
-  static String get esportsIcon => '$baseIconPath/sword.svg';
-  static String get gamesIcon => '$baseIconPath/gamepad.svg';
+  // Category Icons
+  static const trendingIcon = '$baseIconPath/trend_up.svg';
+  static const sportsIcon = '$baseIconPath/SoccerBall.svg';
+  static const entertainmentIcon = '$baseIconPath/music.svg';
+  static const politicsIcon = '$baseIconPath/law.svg';
+  static const cryptoIcon = '$baseIconPath/coins.svg';
+  static const stocksIcon = '$baseIconPath/chart.svg';
+  static const esportsIcon = '$baseIconPath/sword.svg';
+  static const gamesIcon = '$baseIconPath/gamepad.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';
