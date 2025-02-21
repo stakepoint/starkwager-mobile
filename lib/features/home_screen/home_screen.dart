@@ -23,14 +23,7 @@ class HomeScreen extends ConsumerWidget {
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: AppValues.padding16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          verticalSpace(48),
-                          HomeScreenBody(),
-                          Spacer(),
-                        ],
-                      ),
+                      child: HomeScreenBody(),
                     ),
                   )
                 : ConstrainedBox(

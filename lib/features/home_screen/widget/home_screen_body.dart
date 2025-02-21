@@ -5,17 +5,26 @@ class HomeScreenBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return _HomeScreenBodyContent();
+    return const _HomeScreenBodyContent();
   }
 }
 
 class _HomeScreenBodyContent extends ConsumerStatefulWidget {
+  const _HomeScreenBodyContent();
+  
   @override
   ConsumerState<_HomeScreenBodyContent> createState() => _HomeScreenBodyContentState();
 }
 
 class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> {
   int _selectedIndex = 0;
+
+  void _onTabSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+      debugPrint('Selected tab: $_selectedIndex');
+    });
+  }
 
   void _showFundWalletDialog(BuildContext context) {
     if (context.isMobile) {
@@ -37,64 +46,71 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
     final bool isSelected = _selectedIndex == index;
 
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          _selectedIndex = index;
-        });
-      },
-      child: Container(
-        margin: const EdgeInsets.only(right: 12),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 15),
+      onTap: () => _onTabSelected(index),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        margin: const EdgeInsets.only(right: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
               ? const Color.fromRGBO(16, 42, 86, 1)
               : const Color.fromRGBO(239, 241, 245, 1),
           borderRadius: BorderRadius.circular(16),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  )
+                ]
+              : null,
         ),
-        child: AnimatedSwitcher(
-          duration: const Duration(milliseconds: 300),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: isSelected
-                ? [
-                    SvgPicture.asset(
-                      icon,
-                      width: 18,
-                      height: 18,
-                      colorFilter: ColorFilter.mode(
-                        Colors.white,
-                        BlendMode.srcIn,
-                      ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            if (isSelected) ...[
+              SvgPicture.asset(
+                icon,
+                width: 20,
+                height: 20,
+                colorFilter: const ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
+              ),
+              horizontalSpace(8),
+              Text(
+                title,
+                style: AppTheme.of(context).textSmallMedium.copyWith(
+                      fontSize: 15,
+                      color: Colors.white,
+                      height: 1.2,
                     ),
-                    horizontalSpace(8),
-                    Text(
-                      title,
-                      style: AppTheme.of(context).textSmallMedium.copyWith(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
+              ),
+            ] else ...[
+              Text(
+                title,
+                style: AppTheme.of(context).textSmallMedium.copyWith(
+                      fontSize: 15,
+                      color: const Color.fromRGBO(16, 42, 86, 1),
+                      height: 1.2,
                     ),
-                  ]
-                : [
-                    Text(
-                      title,
-                      style: AppTheme.of(context).textSmallMedium.copyWith(
-                            fontSize: 14,
-                            color: const Color.fromRGBO(16, 42, 86, 1),
-                          ),
-                    ),
-                    horizontalSpace(8),
-                    SvgPicture.asset(
-                      icon,
-                      width: 18,
-                      height: 18,
-                      colorFilter: ColorFilter.mode(
-                        const Color.fromRGBO(16, 42, 86, 1),
-                        BlendMode.srcIn,
-                      ),
-                    ),
-                  ],
-          ),
+              ),
+              horizontalSpace(8),
+              SvgPicture.asset(
+                icon,
+                width: 20,
+                height: 20,
+                colorFilter: const ColorFilter.mode(
+                  Color.fromRGBO(16, 42, 86, 1),
+                  BlendMode.srcIn,
+                ),
+              ),
+            ],
+          ],
         ),
       ),
     );
@@ -105,7 +121,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
       color: context.primaryBackgroundColor,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(left: 2, right: 2, top: 16, bottom: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 16),
         child: Row(
           children: [
             _buildCategoryTab('Trending', AppIcons.trendingIcon, 0),
@@ -125,23 +141,50 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
   @override
   Widget build(BuildContext context) {
     final bool isMobile = context.isMobile;
+    final isLandscape = context.isLandscape;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ContractAddress(isTablet: !isMobile),
-        verticalSpace(8),
-        StarkAmount(
-          isTablet: !context.isMobile,
-          onAddMoney: () => _showFundWalletDialog(context),
-          onWithdraw: () {},
+    return CustomScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(48),
+              ContractAddress(isTablet: !isMobile),
+              verticalSpace(8),
+              StarkAmount(
+                isTablet: !context.isMobile,
+                onAddMoney: () => _showFundWalletDialog(context),
+                onWithdraw: () {},
+              ),
+              verticalSpace(24),
+            ],
+          ),
         ),
-        verticalSpace(16),
-        context.isMobile ? HomeAddAndWithdraw() : SizedBox(),
-        verticalSpace(24),
-        _buildCategoryTabs(),
-        verticalSpace(24),
-        context.isMobile ? _mobileNoWager(context) : _tabletNoWager(context),
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _CategoryTabsDelegate(
+            builder: (overlapsContent) => _buildCategoryTabs(),
+          ),
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 24),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                if (index.isOdd) return verticalSpace(16);
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isMobile ? 0 : isLandscape ? 200 : 0,
+                  ),
+                  child: const WagerWidget(),
+                );
+              },
+              childCount: 6,
+            ),
+          ),
+        ),
       ],
     );
   }
@@ -193,4 +236,28 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
       ),
     );
   }
+}
+
+class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
+  final Widget Function(bool) builder;
+
+  _CategoryTabsDelegate({required this.builder});
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return Container(
+      height: 84.0,
+      color: context.primaryBackgroundColor,
+      child: builder(overlapsContent),
+    );
+  }
+
+  @override
+  double get maxExtent => 84.0;
+
+  @override
+  double get minExtent => 84.0;
+
+  @override
+  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }

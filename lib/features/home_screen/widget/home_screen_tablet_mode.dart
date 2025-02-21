@@ -11,17 +11,20 @@ class HomeScreenTabletMode extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (!isLandscape) ...[
-            verticalSpace(32),
-            TabletHeader(
+          verticalSpace(32),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: isLandscape ? 32 : 60
+            ),
+            child: TabletHeader(
               title: 'home'.tr(),
               onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
             ),
-            verticalSpace(80),
-          ],
+          ),
+          verticalSpace(isLandscape ? 40 : 80),
           Padding(
             padding: EdgeInsets.symmetric(
-              horizontal: isLandscape ? 120 : 60
+              horizontal: isLandscape ? 32 : 60
             ),
             child: HomeScreenBody(),
           ),
