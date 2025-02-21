@@ -1,9 +1,21 @@
 part of '../../feature.dart';
 
 class HomeScreenBody extends ConsumerWidget {
-  const HomeScreenBody({
-    super.key,
-  });
+  const HomeScreenBody({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return _HomeScreenBodyContent();
+  }
+}
+
+class _HomeScreenBodyContent extends ConsumerStatefulWidget {
+  @override
+  ConsumerState<_HomeScreenBodyContent> createState() => _HomeScreenBodyContentState();
+}
+
+class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> {
+  int _selectedIndex = 0;
 
   void _showFundWalletDialog(BuildContext context) {
     if (context.isMobile) {
@@ -21,119 +33,14 @@ class HomeScreenBody extends ConsumerWidget {
     }
   }
 
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final bool isMobile = context.isMobile;
-    final bool isLandscape = context.isLandscape;
-
-    return CustomScrollView(
-      slivers: [
-        if (isMobile)
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            elevation: 0,
-            backgroundColor: context.primaryBackgroundColor,
-            title: HomeScreenAppBar(),
-          ),
-
-        // Top Padding
-        SliverToBoxAdapter(
-          child: SizedBox(height: isMobile ? 48 : 32),
-        ),
-
-        // Collapsible Wallet Section
-        SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 0),
-          sliver: SliverToBoxAdapter(
-            child: Column(
-              children: [
-                ContractAddress(isTablet: !isMobile),
-                verticalSpace(8),
-                StarkAmount(
-                  isTablet: !isMobile,
-                  onAddMoney: () => _showFundWalletDialog(context),
-                  onWithdraw: () {},
-                ),
-                verticalSpace(isMobile ? 24 : 32),
-              ],
-            ),
-          ),
-        ),
-
-        // Fixed Category Tabs
-        SliverPersistentHeader(
-          pinned: true,
-          delegate: _CategoryTabsDelegate(),
-        ),
-
-        // Wagers List
-        SliverPadding(
-          padding: EdgeInsets.symmetric(
-              horizontal: isMobile ? 16 : (isLandscape ? 32 : 16),
-              vertical: 16),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: const WagerWidget(),
-                );
-              },
-              childCount: 3, // Show 3 wagers for now
-            ),
-          ),
-        ),
-
-        // Bottom Padding for FAB
-        SliverToBoxAdapter(
-          child: SizedBox(height: isMobile ? 80 : 100),
-        ),
-      ],
-    );
-  }
-}
-
-class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
-  int selectedIndex = 0;
-
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return Container(
-      height: maxExtent,
-      color: context.primaryBackgroundColor,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.only(left: 2, right: 2, top: 16, bottom: 8),
-        child: Row(
-          children: [
-            _buildCategoryTab(context, 'Trending', AppIcons.trendingIcon, 0),
-            _buildCategoryTab(context, 'Sports', AppIcons.sportsIcon, 1),
-            _buildCategoryTab(
-                context, 'Entertainment', AppIcons.entertainmentIcon, 2),
-            _buildCategoryTab(context, 'Politics', AppIcons.politicsIcon, 3),
-            _buildCategoryTab(context, 'Crypto', AppIcons.cryptoIcon, 4),
-            _buildCategoryTab(context, 'Stocks', AppIcons.stocksIcon, 5),
-            _buildCategoryTab(context, 'ESports', AppIcons.esportsIcon, 6),
-            _buildCategoryTab(context, 'Games', AppIcons.gamesIcon, 7),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCategoryTab(
-      BuildContext context, String title, String icon, int index) {
-    final bool isSelected = selectedIndex == index;
+  Widget _buildCategoryTab(String title, String icon, int index) {
+    final bool isSelected = _selectedIndex == index;
 
     return GestureDetector(
       onTap: () {
-        selectedIndex = index;
-        // Force rebuild
-        if (context.mounted) {
-          (context as Element).markNeedsBuild();
-        }
+        setState(() {
+          _selectedIndex = index;
+        });
       },
       child: Container(
         margin: const EdgeInsets.only(right: 12),
@@ -193,13 +100,97 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
     );
   }
 
-  @override
-  double get maxExtent => 72.0;
+  Widget _buildCategoryTabs() {
+    return Container(
+      color: context.primaryBackgroundColor,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.only(left: 2, right: 2, top: 16, bottom: 8),
+        child: Row(
+          children: [
+            _buildCategoryTab('Trending', AppIcons.trendingIcon, 0),
+            _buildCategoryTab('Sports', AppIcons.sportsIcon, 1),
+            _buildCategoryTab('Entertainment', AppIcons.entertainmentIcon, 2),
+            _buildCategoryTab('Politics', AppIcons.politicsIcon, 3),
+            _buildCategoryTab('Crypto', AppIcons.cryptoIcon, 4),
+            _buildCategoryTab('Stocks', AppIcons.stocksIcon, 5),
+            _buildCategoryTab('ESports', AppIcons.esportsIcon, 6),
+            _buildCategoryTab('Games', AppIcons.gamesIcon, 7),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
-  double get minExtent => 72.0;
+  Widget build(BuildContext context) {
+    final bool isMobile = context.isMobile;
 
-  @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) =>
-      false;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        ContractAddress(isTablet: !isMobile),
+        verticalSpace(8),
+        StarkAmount(
+          isTablet: !context.isMobile,
+          onAddMoney: () => _showFundWalletDialog(context),
+          onWithdraw: () {},
+        ),
+        verticalSpace(16),
+        context.isMobile ? HomeAddAndWithdraw() : SizedBox(),
+        verticalSpace(24),
+        _buildCategoryTabs(),
+        verticalSpace(24),
+        context.isMobile ? _mobileNoWager(context) : _tabletNoWager(context),
+      ],
+    );
+  }
+
+  Widget _mobileNoWager(BuildContext context) {
+    return Container(
+      height: 81,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        color: context.containerColor,
+      ),
+      child: Row(
+        spacing: 16,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          horizontalSpace(16),
+          SvgPicture.asset(AppIcons.noWagerIcon),
+          Text(
+            'noWagersCreatedYet'.tr(),
+            style: AppTheme.of(context).bodyLarge16.copyWith(
+                  color: context.textHintColor,
+                ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _tabletNoWager(BuildContext context) {
+    return Container(
+      height: 175,
+      width: 696,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        color: context.containerColor,
+      ),
+      child: Column(
+        spacing: 24,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(AppIcons.noWagerIcon, width: 88, height: 88),
+          Text(
+            'noWagersCreatedYet'.tr(),
+            style: AppTheme.of(context).textMediumNormal.copyWith(
+                  color: context.textHintColor,
+                ),
+          ),
+        ],
+      ),
+    );
+  }
 }
