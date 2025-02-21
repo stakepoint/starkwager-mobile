@@ -123,7 +123,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
       color: context.primaryBackgroundColor,
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
             _buildCategoryTab('Trending', AppIcons.trendingIcon, 0),
@@ -149,23 +149,29 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
       physics: const AlwaysScrollableScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              verticalSpace(48),
-              ContractAddress(isTablet: !isMobile),
-              verticalSpace(8),
-              StarkAmount(
-                isTablet: !context.isMobile,
-                onAddMoney: () => _showFundWalletDialog(context),
-                onWithdraw: () {},
-              ),
-              verticalSpace(24),
-            ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? AppValues.padding16 : isLandscape ? 200 : 0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpace(24),
+                ContractAddress(isTablet: !isMobile),
+                verticalSpace(8),
+                StarkAmount(
+                  isTablet: !context.isMobile,
+                  onAddMoney: () => _showFundWalletDialog(context),
+                  onWithdraw: () {},
+                ),
+               
+              ],
+            ),
           ),
         ),
         SliverPersistentHeader(
           pinned: true,
+          floating: true,
           delegate: _CategoryTabsDelegate(
             builder: (overlapsContent) => _buildCategoryTabs(),
             selectedIndex: _selectedIndex,
@@ -179,7 +185,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
                 if (index.isOdd) return verticalSpace(16);
                 return Padding(
                   padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 0 : isLandscape ? 200 : 0,
+                    horizontal: isMobile ? AppValues.padding16 : isLandscape ? 200 : 0,
                   ),
                   child: const WagerWidget(),
                 );
@@ -253,17 +259,17 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
-      height: 84.0,
+      height: 100.0,
       color: context.primaryBackgroundColor,
       child: builder(overlapsContent),
     );
   }
 
   @override
-  double get maxExtent => 84.0;
+  double get maxExtent => 100.0;
 
   @override
-  double get minExtent => 84.0;
+  double get minExtent => 100.0;
 
   @override
   bool shouldRebuild(covariant _CategoryTabsDelegate oldDelegate) {
