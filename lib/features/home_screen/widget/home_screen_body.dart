@@ -11,12 +11,14 @@ class HomeScreenBody extends ConsumerWidget {
 
 class _HomeScreenBodyContent extends ConsumerStatefulWidget {
   const _HomeScreenBodyContent();
-  
+
   @override
-  ConsumerState<_HomeScreenBodyContent> createState() => _HomeScreenBodyContentState();
+  ConsumerState<_HomeScreenBodyContent> createState() =>
+      _HomeScreenBodyContentState();
 }
 
-class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> {
+class _HomeScreenBodyContentState
+    extends ConsumerState<_HomeScreenBodyContent> {
   int _selectedIndex = 0;
 
   void _onTabSelected(int index) {
@@ -256,7 +258,8 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   });
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
     return Container(
       height: 100.0,
       color: context.primaryBackgroundColor,
