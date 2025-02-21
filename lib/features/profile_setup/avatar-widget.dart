@@ -24,7 +24,8 @@ class AvatarDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
       ),
       child: Container(
-        width: !context.isMobile ? 550 : 320,
+        margin: context.isMobile ? EdgeInsets.symmetric(horizontal: 16) : null,
+        width: !context.isMobile ? 550 : double.infinity,
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -33,26 +34,28 @@ class AvatarDialog extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Spacer(),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'Change Avatar',
-                      style: TextStyle(
-                        fontSize: !context.isMobile ? 18 : 16,
-                        fontWeight: FontWeight.bold,
+                // Spacer(),
+                Flexible(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'Change Avatar',
+                        style: TextStyle(
+                          fontSize: !context.isMobile ? 18 : 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    verticalSpace(AppValues.height8),
-                    Text(
-                      'selectANewAvatar'.tr(),
-                      style: AppTheme.of(context).bodyExtraLarge18,
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+                      verticalSpace(AppValues.height8),
+                      Text(
+                        'selectANewAvatar'.tr(),
+                        style: AppTheme.of(context).bodyLarge16,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
-                Spacer(),
+                // Spacer(),
                 IconButton(
                   icon: const Icon(Icons.close),
                   onPressed: () => Navigator.of(context).pop(),
