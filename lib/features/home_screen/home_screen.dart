@@ -6,7 +6,6 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: context.isMobile ? HomeScreenAppBar() : null,
       backgroundColor: context.primaryBackgroundColor,
       floatingActionButton: context.isMobile || context.isPortrait
           ? newWagerButton(context)
@@ -18,17 +17,14 @@ class HomeScreen extends ConsumerWidget {
                 constraints: BoxConstraints(
                   maxWidth: AppValues.width600,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppValues.padding16,
-                  ),
-                  child: HomeScreenBody(),
-                ),
+                child: HomeScreenBody(),
               )
             : HomeScreenTabletMenuBar(
-                child: SizedBox(
-                  width: AppValues.width1440,
-                  child: HomeScreenTabletMode(),
+                child: Center(
+                  child: SizedBox(
+                    width: AppValues.width1440,
+                    child: HomeScreenTabletMode(),
+                  ),
                 ),
               ),
       ),

@@ -28,24 +28,36 @@ class HomeScreenBody extends ConsumerWidget {
 
     return CustomScrollView(
       slivers: [
+        if (isMobile)
+          SliverAppBar(
+            floating: true,
+            snap: true,
+            elevation: 0,
+            backgroundColor: context.primaryBackgroundColor,
+            title: HomeScreenAppBar(),
+          ),
+
         // Top Padding
         SliverToBoxAdapter(
           child: SizedBox(height: isMobile ? 48 : 32),
         ),
 
         // Collapsible Wallet Section
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-              ContractAddress(isTablet: !isMobile),
-              verticalSpace(8),
-              StarkAmount(
-                isTablet: !isMobile,
-                onAddMoney: () => _showFundWalletDialog(context),
-                onWithdraw: () {},
-              ),
-              verticalSpace(isMobile ? 24 : 32),
-            ],
+        SliverPadding(
+          padding: EdgeInsets.symmetric(horizontal: isMobile ? 16 : 0),
+          sliver: SliverToBoxAdapter(
+            child: Column(
+              children: [
+                ContractAddress(isTablet: !isMobile),
+                verticalSpace(8),
+                StarkAmount(
+                  isTablet: !isMobile,
+                  onAddMoney: () => _showFundWalletDialog(context),
+                  onWithdraw: () {},
+                ),
+                verticalSpace(isMobile ? 24 : 32),
+              ],
+            ),
           ),
         ),
 
