@@ -39,4 +39,21 @@ class AppIcons {
   static const snSymbol = '$baseImagePath/sn_symbol.png';
   static const argentIcon = '$baseImagePath/argent_icon.png';
   static const braavosIcon = '$baseImagePath/braavos_icon.png';
+
+  //-------------------------------------------- AVATAR IMAGES -------------------------------------------- //
+  static const avatar1 = '$baseImagePath/avatar/avatar1.png';
+  static const avatar2 = '$baseImagePath/avatar/avatar2.png';
+  static const avatar3 = '$baseImagePath/avatar/avatar3.png';
+  static const avatar4 = '$baseImagePath/avatar/avatar4.png';
+  static const avatar5 = '$baseImagePath/avatar/avatar5.png';
+  static const avatar6 = '$baseImagePath/avatar/avatar6.png';
+  static const avatar7 = '$baseImagePath/avatar/avatar7.png';
+  static const avatar8 = '$baseImagePath/avatar/avatar8.png';
+  static const avatar9 = '$baseImagePath/avatar/avatar9.png';
+  static const avatar10 = '$baseImagePath/avatar/avatar10.png';
+  static const avatar11 = '$baseImagePath/avatar/avatar11.png';
+  static const avatar12 = '$baseImagePath/avatar/avatar12.png';
+  static const avatar13 = '$baseImagePath/avatar/avatar13.png';
+  static const avatar14 = '$baseImagePath/avatar/avatar14.png';
+  static const avatar15 = '$baseImagePath/avatar/avatar15.png';
 }

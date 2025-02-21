@@ -26,13 +26,12 @@ class CopyItemContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
-            spacing: 7,
+            // TODO 1:
+            // spacing: 7,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: Text(value,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppTheme.of(context).textSmallMedium),
+                child: Text(value, overflow: TextOverflow.ellipsis, style: AppTheme.of(context).textSmallMedium),
               ),
               SvgPicture.asset(AppIcons.copyIcon)
             ],
