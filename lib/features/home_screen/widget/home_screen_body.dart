@@ -20,10 +20,12 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
   int _selectedIndex = 0;
 
   void _onTabSelected(int index) {
-    setState(() {
-      _selectedIndex = index;
-      debugPrint('Selected tab: $_selectedIndex');
-    });
+    if (_selectedIndex != index) {
+      setState(() {
+        _selectedIndex = index;
+        debugPrint('Selected tab: $_selectedIndex');
+      });
+    }
   }
 
   void _showFundWalletDialog(BuildContext context) {
@@ -166,6 +168,7 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
           pinned: true,
           delegate: _CategoryTabsDelegate(
             builder: (overlapsContent) => _buildCategoryTabs(),
+            selectedIndex: _selectedIndex,
           ),
         ),
         SliverPadding(
@@ -240,8 +243,12 @@ class _HomeScreenBodyContentState extends ConsumerState<_HomeScreenBodyContent> 
 
 class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   final Widget Function(bool) builder;
+  final int selectedIndex;
 
-  _CategoryTabsDelegate({required this.builder});
+  _CategoryTabsDelegate({
+    required this.builder,
+    required this.selectedIndex,
+  });
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
@@ -259,5 +266,7 @@ class _CategoryTabsDelegate extends SliverPersistentHeaderDelegate {
   double get minExtent => 84.0;
 
   @override
-  bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
+  bool shouldRebuild(covariant _CategoryTabsDelegate oldDelegate) {
+    return oldDelegate.selectedIndex != selectedIndex;
+  }
 }
