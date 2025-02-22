@@ -41,9 +41,10 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Text(
           buttonText,
-          style: buttonTextStyle ?? AppTheme.of(context).bodyExtraLarge18.copyWith(
-                fontWeight: FontWeight.w500,
-              ),
+          style: buttonTextStyle ??
+              AppTheme.of(context).bodyExtraLarge18.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
         ),
       ),
     );
