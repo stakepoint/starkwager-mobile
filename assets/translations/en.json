@@ -58,10 +58,7 @@
   "addHashtag(s)": "Add Hashtag(s)",
   "hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
   "recentTransactions": "Recent Transactions",
-<<<<<<< HEAD
   "selectANewAvatar": "Select a new avatar from our list of specially curated avatar",
   "choose": "Choose",
-=======
->>>>>>> upstream/dev
   "notification": "Notification"
 }
