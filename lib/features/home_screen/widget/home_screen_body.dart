@@ -57,8 +57,8 @@ class _HomeScreenBodyContentState
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
-              ? const Color.fromRGBO(16, 42, 86, 1)
-              : const Color.fromRGBO(239, 241, 245, 1),
+              ? context.primaryButtonColor
+              : context.containerColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: isSelected
               ? [
@@ -80,8 +80,8 @@ class _HomeScreenBodyContentState
                 icon,
                 width: 20,
                 height: 20,
-                colorFilter: const ColorFilter.mode(
-                  Colors.white,
+                colorFilter: ColorFilter.mode(
+                  context.primaryTextColor,
                   BlendMode.srcIn,
                 ),
               ),
@@ -90,7 +90,7 @@ class _HomeScreenBodyContentState
                 title,
                 style: AppTheme.of(context).textSmallMedium.copyWith(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: context.primaryTextColor,
                       height: 1.2,
                     ),
               ),
@@ -99,7 +99,7 @@ class _HomeScreenBodyContentState
                 title,
                 style: AppTheme.of(context).textSmallMedium.copyWith(
                       fontSize: 15,
-                      color: const Color.fromRGBO(16, 42, 86, 1),
+                      color: context.primaryButtonColor,
                       height: 1.2,
                     ),
               ),
@@ -108,8 +108,8 @@ class _HomeScreenBodyContentState
                 icon,
                 width: 20,
                 height: 20,
-                colorFilter: const ColorFilter.mode(
-                  Color.fromRGBO(16, 42, 86, 1),
+                colorFilter: ColorFilter.mode(
+                  context.primaryButtonColor,
                   BlendMode.srcIn,
                 ),
               ),
