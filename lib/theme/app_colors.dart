@@ -18,8 +18,8 @@ class AppColors {
   static const grayCool900 = Color(0xFF111322);
   static const grayneutral500 = Color(0xFF6C737F);
 
-  static const tabSelectedColor = Color.fromRGBO(16, 42, 86, 1);
-  static const tabUnselectedColor = Color.fromRGBO(239, 241, 245, 1);
+  static const tabSelectedColor = Color(0xFF102A56);
+  static const tabUnselectedColor = Color(0xFFEFF1F5);
 
   static const buttonColor = Color(0xFFE0FE10);
 

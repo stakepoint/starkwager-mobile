@@ -180,17 +180,13 @@ class _HomeScreenTabletMenuBarState
               width: 64,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: isSelected
-                    ? AppColors.grayCool800
-                    : context.transparentColor,
+                color: isSelected ? context.menuBackgroundColor : context.transparentColor,
               ),
               child: Center(
                 child: SvgPicture.asset(
                   icon,
                   colorFilter: ColorFilter.mode(
-                    isSelected
-                        ? context.primaryButtonColor
-                        : AppColors.grayneutral500,
+                    isSelected ? context.primaryButtonColor : context.menuTextColor,
                     BlendMode.srcIn,
                   ),
                 ),
@@ -201,9 +197,7 @@ class _HomeScreenTabletMenuBarState
           Text(
             label,
             style: TextStyle(
-              color: isSelected
-                  ? context.primaryButtonColor
-                  : AppColors.grayneutral500,
+              color: isSelected ? context.primaryButtonColor : context.menuTextColor,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),
           ),
