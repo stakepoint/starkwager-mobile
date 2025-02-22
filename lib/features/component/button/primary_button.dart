@@ -6,16 +6,18 @@ class PrimaryButton extends StatelessWidget {
     required this.buttonText,
     required this.onPressed,
     required this.isActive,
+    this.height,
   });
 
   final String buttonText;
   final Function() onPressed;
   final bool isActive;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: AppValues.height56,
+      height: height ?? AppValues.height56,
       width: screenSize(context).width,
       child: TextButton(
         onPressed: () => isActive ? onPressed() : () {},
@@ -25,7 +27,7 @@ class PrimaryButton extends StatelessWidget {
               : context.primaryButtonColor.withValues(alpha: 0.32),
           padding: EdgeInsets.symmetric(vertical: AppValues.padding16),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(18),
           ),
         ),
         child: Text(
