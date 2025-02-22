@@ -31,7 +31,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
                             color: context.primaryBackgroundColor,
                           ),
                   buttonColor: context.primaryTextColor,
-                  buttonText: 'Disagree'.tr(),
+                  buttonText: 'disagree'.tr(),
                   height: 56,
                   isActive: true,
                   onPressed: () {},
@@ -44,7 +44,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(right: 16, left: 4),
                 child: PrimaryButton(
-                  buttonText: 'Agree'.tr(),
+                  buttonText: 'agree'.tr(),
                   height: 56,
                   isActive: true,
                   onPressed: () {
@@ -65,7 +65,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
                               color: context.primaryBackgroundColor,
                             ),
                     buttonColor: context.primaryTextColor,
-                    buttonText: 'Disagree'.tr(),
+                    buttonText: 'disagree'.tr(),
                     height: 56,
                     isActive: true,
                     onPressed: () {},
@@ -80,7 +80,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 120, left: 4),
                   child: PrimaryButton(
-                    buttonText: 'Agree'.tr(),
+                    buttonText: 'agree'.tr(),
                     height: 56,
                     isActive: true,
                     onPressed: () {
@@ -102,7 +102,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
                               color: context.primaryBackgroundColor,
                             ),
                     buttonColor: context.primaryTextColor,
-                    buttonText: 'Disagree'.tr(),
+                    buttonText: 'disagree'.tr(),
                     height: 56,
                     isActive: true,
                     onPressed: () {},
@@ -117,7 +117,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(right: 350, left: 4),
                   child: PrimaryButton(
-                    buttonText: 'Agree'.tr(),
+                    buttonText: 'agree'.tr(),
                     height: 56,
                     isActive: true,
                     onPressed: () {

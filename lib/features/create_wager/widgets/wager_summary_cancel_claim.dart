@@ -23,7 +23,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: 'You claimed this wager win, your opponent has'.tr(),
+                  text: 'youClaimedThisWagerWin'.tr(),
                   style: AppTheme.of(context).bodyMedium14,
                 ),
                 if (context.isMobile)
@@ -43,11 +43,11 @@ class WagerSummaryCancelClaim extends StatelessWidget {
                   ),
                 if (context.isTablet)
                   TextSpan(
-                    text: ' 58 mins',
+                    text: ' 58 mins ',
                     style: AppTheme.of(context).textSmallMedium,
                   ),
                 TextSpan(
-                  text: ' to accept or disagree with it.'.tr(),
+                  text: 'toAcceptOrDisagreeWithIt'.tr(),
                   style: AppTheme.of(context).bodyMedium14,
                 ),
               ],
@@ -61,7 +61,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
                   ),
               width: 140,
               buttonColor: context.primaryTextColor,
-              buttonText: 'Cancel Claim'.tr(),
+              buttonText: 'cancelClaim'.tr(),
               height: 56,
               isActive: true,
               onPressed: () {},
@@ -72,7 +72,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
                     color: context.primaryBackgroundColor,
                   ),
               buttonColor: context.primaryTextColor,
-              buttonText: 'Cancel Claim'.tr(),
+              buttonText: 'cancelClaim'.tr(),
               height: 56,
               width: 176,
               isActive: true,
@@ -85,7 +85,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
                   ),
               width: 176,
               buttonColor: context.primaryTextColor,
-              buttonText: 'Cancel Claim'.tr(),
+              buttonText: 'cancelClaim'.tr(),
               height: 56,
               isActive: true,
               onPressed: () {},

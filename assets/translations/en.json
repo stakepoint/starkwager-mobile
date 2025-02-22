@@ -41,6 +41,7 @@
   "pending": "Pending",
   "complete": "Complete",
   "inProgress": "In Progress",
+  "sendProof": "Send Proof",
   "disagree": "Disagree",
   "disagreedAndRequestedForProof": "disagreed and requested for proof.",
   "agree": "Agree",

@@ -24,7 +24,7 @@ class WagerSummarySendProof extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('@babykeem', style: AppTheme.of(context).textSmallMedium),
-              Text(' disagreed and requested for proof'.tr(),
+              Text('disagreedAndRequestedForProof'.tr(),
                   style: AppTheme.of(context).bodyMedium14),
             ],
           ),
@@ -42,7 +42,7 @@ class WagerSummarySendProof extends StatelessWidget {
                 children: [
                   SvgPicture.asset(AppIcons.sendProofPath),
                   horizontalSpace(14),
-                  Text('Send Proof'.tr(),
+                  Text('sendProof'.tr(),
                       style: AppTheme.of(context).textMediumMedium),
                 ],
               ),
@@ -60,7 +60,7 @@ class WagerSummarySendProof extends StatelessWidget {
                 children: [
                   SvgPicture.asset(AppIcons.sendProofPath),
                   horizontalSpace(14),
-                  Text('Send Proof'.tr(),
+                  Text('sendProof'.tr(),
                       style: AppTheme.of(context).textMediumMedium),
                 ],
               ),
@@ -78,7 +78,7 @@ class WagerSummarySendProof extends StatelessWidget {
                 children: [
                   SvgPicture.asset(AppIcons.sendProofPath),
                   horizontalSpace(14),
-                  Text('Send Proof'.tr(),
+                  Text('sendProof'.tr(),
                       style: AppTheme.of(context).textMediumMedium),
                 ],
               ),

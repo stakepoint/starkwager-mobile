@@ -16,7 +16,7 @@ class WagerSummaryClaimWin extends StatelessWidget {
       decoration: BoxDecoration(color: AppColors.white),
       child: Center(
         child: PrimaryButton(
-          buttonText: 'Claim Win'.tr(),
+          buttonText: 'claimWin'.tr(),
           height: 56,
           width: 343,
           isActive: true,
