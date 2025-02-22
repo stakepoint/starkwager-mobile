@@ -31,7 +31,7 @@ class AccountSettingsTabletMode extends ConsumerWidget
               height: 64,
               width: tabSize,
               child: TabletHeader(
-                title: 'ACCOUNT SETTINGS'.tr(),
+                title: 'accountSettings'.tr(),
                 onProfileTap: () =>
                     GoRouter.of(context).go(Routes.profileSetup),
                 horizontalSpaceHeader: spaceBetween,

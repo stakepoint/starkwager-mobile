@@ -73,7 +73,7 @@ part 'component/fab/new_wager_fab.dart';
 part 'component/stark_amount.dart';
 part 'component/contract_address.dart';
 
-part 'component/editText/full_name_editText.dart';
+
 part 'account_setting_screen/widget/account_setting_tablet_bar.dart';
 part 'account_setting_screen/widget/account_setting_mobile.dart';
 part 'account_setting_screen/account_setting_screen.dart';

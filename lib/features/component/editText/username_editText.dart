@@ -2,10 +2,11 @@ part of '../../feature.dart';
 
 class UsernameEditText extends StatelessWidget {
   const UsernameEditText(
-      {super.key, required this.controller, required this.onValueChanged});
+      {super.key, required this.controller, required this.onValueChanged,this.type=''});
 
   final TextEditingController controller;
   final Function(String) onValueChanged;
+  final String type;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +16,29 @@ class UsernameEditText extends StatelessWidget {
         color: context.textBoxTextColor,
         borderRadius: BorderRadius.circular(AppValues.radius16),
       ),
-      child: Row(
+      child:type=='others'?
+       Row(
+        children: [
+          Expanded(
+            child: TextField(
+              controller: controller,
+              onChanged: onValueChanged,
+              style: AppTheme.of(context)
+                  .bodyExtraLarge18
+                  .copyWith(fontWeight: FontWeight.w500),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'full_name'.tr(),
+                hintStyle: AppTheme.of(context)
+                    .bodyExtraLarge18
+                    .copyWith(color: context.textHintColor),
+                contentPadding: EdgeInsets.zero,
+              ),
+            ),
+          ),
+        ],
+      )
+      : Row(
         children: [
           Text(
             'wager.strk/',

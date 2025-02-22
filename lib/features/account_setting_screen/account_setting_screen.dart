@@ -31,6 +31,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
           builder: (context, constraints) {
             final isLandscape =
                 MediaQuery.of(context).orientation == Orientation.landscape;
+                 final double maxWidth = AppValues.width600;
 
             return SingleChildScrollView(
               child: Center(
@@ -42,10 +43,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ? 184
                               : 120),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                        maxWidth: context.isMobile
-                            ? AppValues.width600
-                            : AppValues.width400),
+                    constraints: BoxConstraints(maxWidth: maxWidth),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -112,9 +110,10 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                           ),
                         ),
                         verticalSpace(AppValues.height20),
-                        FullNameEditText(
+                        UsernameEditText(
                           controller: _fullnameController,
                           onValueChanged: (e) {},
+                          type:'others'
                         ),
                         verticalSpace(AppValues.height20),
                         UsernameEditText(
