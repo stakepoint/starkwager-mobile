@@ -142,6 +142,8 @@ class _HomeScreenBodyContentState
     );
   }
 
+  //body
+
   @override
   Widget build(BuildContext context) {
     final bool isMobile = context.isMobile;
