@@ -23,8 +23,8 @@ class AccountSettingsTabletMode extends ConsumerWidget
           children: [
             horizontalSpace(leftSpace),
             IconButton(
-              icon: Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => GoRouter.of(context).pop(),
+              icon: SvgPicture.asset(AppIcons.arrowBack),
             ),
             horizontalSpace(iconSpace),
             SizedBox(
