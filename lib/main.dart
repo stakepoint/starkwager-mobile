@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,18 +13,15 @@ void main() async {
   /// Localization
   await EasyLocalization.ensureInitialized();
 
-  runApp(DevicePreview(
-    enabled: true,
-    builder: (context) => ProviderScope(
-        observers: [AppObserver()],
-        child: EasyLocalization(
-          supportedLocales: const [Locale('en')],
-          path: 'assets/translations',
-          fallbackLocale: const Locale('en'),
-          useOnlyLangCode: true,
-          child: MainApp(),
-        )),
-  ));
+  runApp(ProviderScope(
+      observers: [AppObserver()],
+      child: EasyLocalization(
+        supportedLocales: const [Locale('en')],
+        path: 'assets/translations',
+        fallbackLocale: const Locale('en'),
+        useOnlyLangCode: true,
+        child: MainApp(),
+      )));
 }
 
 class MainApp extends ConsumerWidget {
