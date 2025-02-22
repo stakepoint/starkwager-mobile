@@ -15,12 +15,11 @@ class HomeScreenTabletMode extends ConsumerWidget {
             children: [
               verticalSpace(32),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: isLandscape ? 0 : 60
-                ),
+                padding: EdgeInsets.symmetric(horizontal: isLandscape ? 0 : 60),
                 child: TabletHeader(
                   title: 'home'.tr(),
-                  onProfileTap: () => GoRouter.of(context).go(Routes.profileSetup),
+                  onProfileTap: () =>
+                      GoRouter.of(context).go(Routes.profileSetup),
                 ),
               ),
               verticalSpace(isLandscape ? 40 : 80),
@@ -29,9 +28,7 @@ class HomeScreenTabletMode extends ConsumerWidget {
         ),
       ],
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: isLandscape ? 200 : 60
-        ),
+        padding: EdgeInsets.symmetric(horizontal: isLandscape ? 200 : 60),
         child: HomeScreenBody(),
       ),
     );
