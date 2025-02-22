@@ -52,8 +52,7 @@ class HomeScreenBody extends ConsumerWidget {
         color: context.containerColor,
       ),
       child: Row(
-        // TODO 2:
-        // spacing: 16,
+        spacing: 16,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           horizontalSpace(16),
@@ -80,8 +79,7 @@ class HomeScreenBody extends ConsumerWidget {
         color: context.containerColor,
       ),
       child: Column(
-        // TODO 1:
-        // spacing: 24,
+        spacing: 24,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SvgPicture.asset(AppIcons.noWagerIcon, width: 88, height: 88),

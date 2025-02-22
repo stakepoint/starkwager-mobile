@@ -26,8 +26,7 @@ class CopyItemContainer extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Row(
-            // TODO 1:
-            // spacing: 7,
+            spacing: 7,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(

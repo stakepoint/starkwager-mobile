@@ -14,7 +14,7 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
-import 'package:starkwager/features/profile_setup/avatar-widget.dart';
+import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 
 import '../core/constants/app_values.dart';
 import '../core/constants/assets.dart';
@@ -67,7 +67,3 @@ part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
-
-extension ColorU on Color {
-  Color withValues({double? alpha}) => withOpacity(alpha ?? 0);
-}
