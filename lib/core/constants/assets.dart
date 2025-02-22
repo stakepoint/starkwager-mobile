@@ -29,6 +29,10 @@ class AppIcons {
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
   static const sendProofPath = '$baseIconPath/sendProof.svg';
+  static const camera = '$baseIconPath/camera.svg';
+  static const boxStack = '$baseIconPath/box_stack.svg';
+  static const closeRed = '$baseIconPath/close_red.svg';
+  static const tick = '$baseIconPath/tick.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';
