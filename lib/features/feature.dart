@@ -83,4 +83,3 @@ part 'account_setting_screen/account_setting_screen.dart';
 
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
-
