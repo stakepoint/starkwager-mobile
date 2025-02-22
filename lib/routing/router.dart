@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starkwager/core/constants/screen_layout.dart';
+
 import '../features/feature.dart';
 import '../routing/routes.dart';
 
@@ -18,7 +19,6 @@ class SlideRouteTransition extends CustomTransitionPage<void> {
             );
             final tween = Tween(begin: begin, end: end);
             final offsetAnimation = tween.animate(curve);
-
             return SlideTransition(
               position: offsetAnimation,
               child: child,
@@ -80,6 +80,13 @@ final GoRouter router = GoRouter(
       pageBuilder: (context, state) => SlideRouteTransition(
         child: AccountSettings(),
         routeName: Routes.accountSettingsTablet,
+)),
+    GoRoute(
+      path: Routes.notification,
+      pageBuilder: (context, state) => SlideRouteTransition(
+        child: NotificationScreen(),
+        routeName: Routes.notification,
+
       ),
     ),
 
