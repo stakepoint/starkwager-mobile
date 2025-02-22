@@ -1,5 +1,4 @@
-import 'package:starkwager/core/constants/assets.dart';
-import 'package:starkwager/features/notification/widgets/notification_card.dart';
+part of '../../feature.dart';
 
 List<NotificationCard> notifications = [
   NotificationCard(

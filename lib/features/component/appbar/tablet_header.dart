@@ -63,11 +63,6 @@ class TabletHeader extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: context.primaryBackgroundColor,
                     borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        blurRadius: 10,
-                      ),
-                    ],
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
