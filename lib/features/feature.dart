@@ -71,7 +71,6 @@ part 'wallet_screen/wallet_screen.dart';
 part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 
-
 part 'account_setting_screen/widget/account_setting_tablet_bar.dart';
 part 'account_setting_screen/widget/account_setting_mobile.dart';
 part 'account_setting_screen/account_setting_screen.dart';
