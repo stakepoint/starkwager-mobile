@@ -19,8 +19,10 @@ class NotificationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
+          width: 400,
           padding: EdgeInsets.all(12),
           height: 90,
           decoration: BoxDecoration(
@@ -53,7 +55,8 @@ class NotificationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              width: MediaQuery.sizeOf(context).width * 0.68,
+              // width: MediaQuery.sizeOf(context).width * 0.68,
+              // width: 350,
               child: Text(
                 title,
                 overflow: TextOverflow.ellipsis,
