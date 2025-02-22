@@ -18,7 +18,6 @@ class SlideRouteTransition extends CustomTransitionPage<void> {
             );
             final tween = Tween(begin: begin, end: end);
             final offsetAnimation = tween.animate(curve);
-
             return SlideTransition(
               position: offsetAnimation,
               child: child,
