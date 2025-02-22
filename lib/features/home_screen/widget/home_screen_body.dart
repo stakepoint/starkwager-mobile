@@ -63,7 +63,7 @@ class _HomeScreenBodyContentState
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.1),
+                    color: context.shadowColor,
                     blurRadius: 4,
                     offset: const Offset(0, 2),
                   )
