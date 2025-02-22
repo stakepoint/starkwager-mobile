@@ -77,4 +77,3 @@ part 'component/contract_address.dart';
 part 'account_settings_screen/account_settings_screen.dart';
 part 'account_settings_screen/widget/account_setting_app_bar.dart';
 part 'account_settings_screen/widget/account_settings_tablet_app_bar.dart';
-

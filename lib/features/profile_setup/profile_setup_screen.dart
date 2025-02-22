@@ -181,7 +181,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                             if (context.isMobile) {
                               GoRouter.of(context).go(Routes.accountSettings);
                             } else {
-                              GoRouter.of(context).go(Routes.accountSettingsTablet);
+                              GoRouter.of(context)
+                                  .go(Routes.accountSettingsTablet);
                             }
                           },
                         ),

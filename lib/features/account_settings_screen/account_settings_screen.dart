@@ -21,9 +21,10 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
-      appBar: context.isMobile ?AccountSettingsAppBar():  AccountSettingsTabletMode() ,
+      appBar: context.isMobile
+          ? AccountSettingsAppBar()
+          : AccountSettingsTabletMode(),
       backgroundColor: context.primaryBackgroundColor,
       body: SafeArea(
         child: LayoutBuilder(
@@ -48,7 +49,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-
                         Container(
                           height: 1,
                           color: context.dividerColor,

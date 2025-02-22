@@ -42,4 +42,3 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 }
- 

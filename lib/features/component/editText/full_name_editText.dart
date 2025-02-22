@@ -20,7 +20,6 @@ class FullNameEditText extends StatelessWidget {
       ),
       child: Row(
         children: [
-         
           Expanded(
             child: TextField(
               controller: controller,
