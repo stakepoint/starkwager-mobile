@@ -27,6 +27,7 @@ import '../theme/app_colors.dart';
 import 'connect_wallet/provider/wallet_connection_provider.dart';
 import 'connect_wallet/provider/wallet_connection_state.dart';
 import 'create_wager/provider/category_provider.dart';
+import 'create_wager/widgets/wager_summary_cancel_claim.dart';
 
 part 'component/appbar/base_appbar.dart';
 part 'component/appbar/mobile_header.dart';
