@@ -65,7 +65,6 @@ class TabletHeader extends StatelessWidget {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
                         blurRadius: 10,
                       ),
                     ],
