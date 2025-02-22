@@ -56,11 +56,11 @@ extension ThemeModeExtension on BuildContext {
 
   Color get tabTextColor => isDarkMode ? AppColors.white : AppColors.white;
 
-  Color get shadowColor => AppColors.black.withOpacity(0.1);
+  Color get shadowColor => AppColors.black.withValues(alpha: 0.1);
 
   Color get sidebarBackgroundColor => AppColors.black;
 
-  Color get menuShadowColor => AppColors.black.withOpacity(0.2);
+  Color get menuShadowColor => AppColors.black.withValues(alpha: 0.2);
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,
