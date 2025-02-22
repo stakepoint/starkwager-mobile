@@ -57,8 +57,8 @@ class _HomeScreenBodyContentState
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: isSelected
-              ? context.primaryButtonColor
-              : context.containerColor,
+              ? context.tabSelectedBackgroundColor
+              : context.tabUnselectedBackgroundColor,
           borderRadius: BorderRadius.circular(16),
           boxShadow: isSelected
               ? [
@@ -81,7 +81,7 @@ class _HomeScreenBodyContentState
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  context.primaryTextColor,
+                  context.tabTextColor,
                   BlendMode.srcIn,
                 ),
               ),
@@ -90,7 +90,7 @@ class _HomeScreenBodyContentState
                 title,
                 style: AppTheme.of(context).textSmallMedium.copyWith(
                       fontSize: 15,
-                      color: context.primaryTextColor,
+                      color: context.tabTextColor,
                       height: 1.2,
                     ),
               ),
@@ -99,7 +99,7 @@ class _HomeScreenBodyContentState
                 title,
                 style: AppTheme.of(context).textSmallMedium.copyWith(
                       fontSize: 15,
-                      color: context.primaryButtonColor,
+                      color: AppColors.tabSelectedColor,
                       height: 1.2,
                     ),
               ),
@@ -109,7 +109,7 @@ class _HomeScreenBodyContentState
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  context.primaryButtonColor,
+                  AppColors.tabSelectedColor,
                   BlendMode.srcIn,
                 ),
               ),

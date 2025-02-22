@@ -41,6 +41,12 @@ extension ThemeModeExtension on BuildContext {
   Color get containerColor =>
       isDarkMode ? AppColors.gradient40 : AppColors.white;
 
+  Color get tabSelectedBackgroundColor =>
+      isDarkMode ? AppColors.gradient40 : AppColors.tabSelectedColor;
+
+  Color get tabUnselectedBackgroundColor =>
+      isDarkMode ? AppColors.gradient20 : AppColors.tabUnselectedColor;
+
   Color get primaryButtonColor =>
       isDarkMode ? AppColors.buttonColor : AppColors.buttonColor;
 
@@ -48,6 +54,9 @@ extension ThemeModeExtension on BuildContext {
       isDarkMode ? AppColors.grayCool25 : AppColors.grayCool400;
   Color get transparentColor =>
       isDarkMode ? Colors.transparent : Colors.transparent;
+
+  Color get tabTextColor =>
+      isDarkMode ? AppColors.white : AppColors.white;
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,
