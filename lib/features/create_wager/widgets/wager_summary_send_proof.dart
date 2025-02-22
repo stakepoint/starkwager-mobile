@@ -8,45 +8,31 @@ import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
 class WagerSummarySendProof extends StatelessWidget {
-  const WagerSummarySendProof({
-    super.key,
-  });
+  const WagerSummarySendProof({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          height: 172,
-          width: MediaQuery.sizeOf(context).width,
-          decoration: BoxDecoration(color: AppColors.white),
-        ),
-        if (context.isMobile)
-          Positioned(
-            left: 16,
-            right: 16,
-            top: 32,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Text('@babykeem',
-                        style: AppTheme.of(context).textSmallMedium),
-                    Text(' disagreed and requested for proof'.tr(),
-                        style: AppTheme.of(context).bodyMedium14),
-                  ],
-                ),
-              ],
-            ),
+    return Container(
+      height: 172,
+      width: MediaQuery.sizeOf(context).width,
+      decoration: BoxDecoration(color: AppColors.white),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(height: 32),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('@babykeem', style: AppTheme.of(context).textSmallMedium),
+              Text(' disagreed and requested for proof'.tr(),
+                  style: AppTheme.of(context).bodyMedium14),
+            ],
           ),
-        if (context.isMobile)
-          Positioned(
-            bottom: 32,
-            right: 109,
-            left: 109,
-            child: Container(
+          SizedBox(height: 16),
+          if (context.isMobile)
+            Container(
               height: 56,
+              width: 158,
               decoration: BoxDecoration(
                 color: context.primaryButtonColor,
                 borderRadius: BorderRadius.circular(16),
@@ -61,33 +47,10 @@ class WagerSummarySendProof extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        if (context.isTablet)
-          Positioned(
-            left: 16,
-            right: 16,
-            top: 32,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  children: [
-                    Text('@babykeem',
-                        style: AppTheme.of(context).textSmallMedium),
-                    Text(' disagreed and requested for proof'.tr(),
-                        style: AppTheme.of(context).bodyMedium14),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        if (context.isTablet == context.isPortrait)
-          Positioned(
-            bottom: 32,
-            right: 330,
-            left: 330,
-            child: Container(
+          if (context.isTablet && context.isPortrait)
+            Container(
               height: 56,
+              width: 176,
               decoration: BoxDecoration(
                 color: context.primaryButtonColor,
                 borderRadius: BorderRadius.circular(16),
@@ -102,14 +65,10 @@ class WagerSummarySendProof extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        if (context.isTablet == context.isLandscape)
-          Positioned(
-            bottom: 32,
-            right: 500,
-            left: 500,
-            child: Container(
+          if (context.isTablet && context.isLandscape)
+            Container(
               height: 56,
+              width: 176,
               decoration: BoxDecoration(
                 color: context.primaryButtonColor,
                 borderRadius: BorderRadius.circular(16),
@@ -124,8 +83,8 @@ class WagerSummarySendProof extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -92,7 +92,6 @@ class WagerSummaryScreen extends ConsumerWidget {
                         verticalSpace(AppValues.height20),
                         verticalDivider(
                           color: context.dividerColor,
-                          height: 16,
                         ),
                         verticalSpace(AppValues.height20),
                         Container(
