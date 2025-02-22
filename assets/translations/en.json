@@ -58,5 +58,13 @@
   "addHashtag(s)": "Add Hashtag(s)",
   "hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
   "recentTransactions": "Recent Transactions",
+  "trending": "Trending",
+  "sports": "Sports",
+  "entertainment": "Entertainment",
+  "politics": "Politics",
+  "crypto": "Crypto",
+  "stocks": "Stocks",
+  "esports": "ESports",
+  "games": "Games",
   "notification": "Notification"
 }
