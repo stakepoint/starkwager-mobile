@@ -21,8 +21,7 @@ class WagerSummaryScreen extends ConsumerWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(
-                      horizontal:
-                          context.isMobile ? AppValues.padding20 : 120,
+                      horizontal: context.isMobile ? AppValues.padding20 : 120,
                     ),
                     child: Column(
                       crossAxisAlignment: context.isMobile
