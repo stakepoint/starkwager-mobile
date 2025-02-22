@@ -1,14 +1,15 @@
 part of '../feature.dart';
 
-class ProfileSetupScreen extends ConsumerStatefulWidget {
-  const ProfileSetupScreen({super.key});
+class AccountSettings extends ConsumerStatefulWidget {
+  const AccountSettings({super.key});
 
   @override
-  ConsumerState<ProfileSetupScreen> createState() => _ProfileSetupScreenState();
+  ConsumerState<AccountSettings> createState() => _AccountSettingsState();
 }
 
-class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
+class _AccountSettingsState extends ConsumerState<AccountSettings> {
   final _usernameController = TextEditingController();
+  final _fullnameController = TextEditingController();
   bool _isUsernameAvailable = false;
   File? _selectedImage;
 
@@ -20,7 +21,9 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
 
   @override
   Widget build(BuildContext context) {
+   
     return Scaffold(
+      appBar: context.isMobile ?AccountSettingsAppBar():  AccountSettingsTabletMode() ,
       backgroundColor: context.primaryBackgroundColor,
       body: SafeArea(
         child: LayoutBuilder(
@@ -45,39 +48,7 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        verticalSpace(AppValues.height60),
-                        RichText(
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: context.isMobile
-                                    ? '${'setupYourProfile'.tr()}\n'
-                                    : '${'setupYourProfile'.tr()} ',
-                                style: AppTheme.of(context)
-                                    .headLineLarge32
-                                    .copyWith(
-                                      height: 1.0,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: 'PROFILE'.tr(),
-                                style: AppTheme.of(context)
-                                    .headLineLarge32
-                                    .copyWith(
-                                      height: context.isMobile ? 1.2 : 1.0,
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        verticalSpace(AppValues.height8),
-                        Text(
-                            context.isMobile
-                                ? 'chooseProfilePicture'.tr()
-                                : 'Choose your picture and a unique username other users can use to invite you to wagers'
-                                    .split('\n')
-                                    .join(' '),
-                            style: AppTheme.of(context).bodyExtraLarge18),
+
                         Container(
                           height: 1,
                           color: context.dividerColor,
@@ -150,6 +121,11 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           ),
                         ),
                         verticalSpace(AppValues.height20),
+                        FullNameEditText(
+                          controller: _fullnameController,
+                          onValueChanged: (e) {},
+                        ),
+                        verticalSpace(AppValues.height20),
                         UsernameEditText(
                           controller: _usernameController,
                           onValueChanged: _checkUsername,
@@ -172,16 +148,16 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               ),
                             ),
                           ),
-                        SizedBox(height: 40),
+                        SizedBox(height: 200),
                         PrimaryButton(
-                          buttonText: 'continue'.tr(),
+                          buttonText: 'Update Changes'.tr(),
                           isActive: _usernameController.text.isNotEmpty &&
                               _isUsernameAvailable,
                           onPressed: () {
                             if (context.isMobile) {
-                              GoRouter.of(context).go(Routes.accountSettings);
+                              GoRouter.of(context).go(Routes.home);
                             } else {
-                              GoRouter.of(context).go(Routes.accountSettingsTablet);
+                              GoRouter.of(context).go(Routes.homeTablet);
                             }
                           },
                         ),

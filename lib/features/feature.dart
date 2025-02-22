@@ -29,6 +29,7 @@ import 'create_wager/provider/category_provider.dart';
 
 part 'component/button/primary_button.dart';
 part 'component/editText/username_editText.dart';
+part 'component/editText/full_name_editText.dart';
 part 'connect_wallet/connect_wallet_screen.dart';
 part 'connect_wallet/widgets/installed_wallet_widget.dart';
 part 'create_wager/create_wager_screen.dart';
@@ -72,3 +73,8 @@ part 'component/appbar/mobile_header.dart';
 part 'component/fab/new_wager_fab.dart';
 part 'component/stark_amount.dart';
 part 'component/contract_address.dart';
+
+part 'account_settings_screen/account_settings_screen.dart';
+part 'account_settings_screen/widget/account_setting_app_bar.dart';
+part 'account_settings_screen/widget/account_settings_tablet_app_bar.dart';
+

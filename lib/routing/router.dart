@@ -69,6 +69,21 @@ final GoRouter router = GoRouter(
       ),
     ),
 
+    GoRoute(
+      path: Routes.accountSettingsTablet,
+      pageBuilder: (context, state) => SlideRouteTransition(
+        child: AccountSettings(),
+        routeName: Routes.accountSettingsTablet,
+      ),
+    ),
+    GoRoute(
+      path: Routes.accountSettings,
+      pageBuilder: (context, state) => SlideRouteTransition(
+        child: AccountSettings(),
+        routeName: Routes.accountSettings,
+      ),
+    ),
+
 //----------------------------------------------- Tablet Shell Route ----------------------------------------------- //
 
     ShellRoute(
