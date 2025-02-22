@@ -128,14 +128,46 @@ class _HomeScreenBodyContentState
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
           children: [
-            _buildCategoryTab('trending'.tr(), AppIcons.trendingIcon, 0),
-            _buildCategoryTab('sports'.tr(), AppIcons.sportsIcon, 1),
-            _buildCategoryTab('entertainment'.tr(), AppIcons.entertainmentIcon, 2),
-            _buildCategoryTab('politics'.tr(), AppIcons.politicsIcon, 3),
-            _buildCategoryTab('crypto'.tr(), AppIcons.cryptoIcon, 4),
-            _buildCategoryTab('stocks'.tr(), AppIcons.stocksIcon, 5),
-            _buildCategoryTab('esports'.tr(), AppIcons.esportsIcon, 6),
-            _buildCategoryTab('games'.tr(), AppIcons.gamesIcon, 7),
+            _buildCategoryTab(
+              'trending'.tr(),
+              AppIcons.trendingIcon,
+              0,
+            ),
+            _buildCategoryTab(
+              'sports'.tr(),
+              AppIcons.sportsIcon,
+              1,
+            ),
+            _buildCategoryTab(
+              'entertainment'.tr(),
+              AppIcons.entertainmentIcon,
+              2,
+            ),
+            _buildCategoryTab(
+              'politics'.tr(),
+              AppIcons.politicsIcon,
+              3,
+            ),
+            _buildCategoryTab(
+              'crypto'.tr(),
+              AppIcons.cryptoIcon,
+              4,
+            ),
+            _buildCategoryTab(
+              'stocks'.tr(),
+              AppIcons.stocksIcon,
+              5,
+            ),
+            _buildCategoryTab(
+              'esports'.tr(),
+              AppIcons.esportsIcon,
+              6,
+            ),
+            _buildCategoryTab(
+              'games'.tr(),
+              AppIcons.gamesIcon,
+              7,
+            ),
           ],
         ),
       ),
