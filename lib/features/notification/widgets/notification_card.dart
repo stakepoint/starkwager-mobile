@@ -68,7 +68,7 @@ class NotificationCard extends StatelessWidget {
                       text: "$name ",
                       style: AppTheme.of(context).textSmallMedium),
                   TextSpan(
-                    text: 'subTitle',
+                    text: subTitle,
                     style: AppTheme.of(context).bodySmall12.copyWith(
                           color: context.textHintColor,
                         ),
