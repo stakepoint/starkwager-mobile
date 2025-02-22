@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/features/feature.dart';
-import 'package:starkwager/theme/app_colors.dart';
 import 'package:starkwager/theme/app_theme.dart';
 
 class WagerSummaryCancelClaim extends StatelessWidget {
@@ -13,7 +12,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
     return Container(
       height: 172,
       width: MediaQuery.sizeOf(context).width,
-      decoration: BoxDecoration(color: AppColors.white, boxShadow: []),
+      decoration: BoxDecoration(color: context.primaryBackgroundColor),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
