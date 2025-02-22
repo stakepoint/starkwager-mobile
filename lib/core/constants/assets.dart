@@ -31,7 +31,7 @@ class AppIcons {
 
   // Category Icons
   static const trendingIcon = '$baseIconPath/trend_up.svg';
-  static const sportsIcon = '$baseIconPath/soccerBall.svg';
+  static const sportsIcon = '$baseIconPath/soccerball.svg';
   static const entertainmentIcon = '$baseIconPath/music.svg';
   static const politicsIcon = '$baseIconPath/law.svg';
   static const cryptoIcon = '$baseIconPath/coins.svg';

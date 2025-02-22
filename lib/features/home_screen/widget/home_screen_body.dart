@@ -171,9 +171,17 @@ class _HomeScreenBodyContentState
         ),
         SliverPersistentHeader(
           pinned: true,
-          floating: true,
+          floating: false,
           delegate: _CategoryTabsDelegate(
-            builder: (overlapsContent) => _buildCategoryTabs(),
+            builder: (overlapsContent) => Stack(
+              children: [
+                Container(
+                  color: context.primaryBackgroundColor,
+                  height: 100.0,
+                ),
+                _buildCategoryTabs(),
+              ],
+            ),
             selectedIndex: _selectedIndex,
           ),
         ),
@@ -190,7 +198,7 @@ class _HomeScreenBodyContentState
                   child: const WagerWidget(),
                 );
               },
-              childCount: 6,
+              childCount: 20,
             ),
           ),
         ),
