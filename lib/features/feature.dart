@@ -15,6 +15,11 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_cancel_claim.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_claim_win.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_disagree_agree.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_view_proof.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_send_proof.dart';
 
 import '../core/constants/app_values.dart';
 import '../core/constants/assets.dart';

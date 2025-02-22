@@ -28,6 +28,7 @@ class AppIcons {
   static const String close = '$baseIconPath/close_icon.svg';
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
+  static const sendProofPath = '$baseIconPath/sendProof.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';

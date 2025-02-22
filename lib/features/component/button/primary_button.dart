@@ -7,24 +7,33 @@ class PrimaryButton extends StatelessWidget {
     required this.onPressed,
     required this.isActive,
     this.height,
+    this.buttonColor,
+    this.buttonInactiveColor,
+    this.buttonTextStyle,
+    this.width,
   });
 
   final String buttonText;
   final Function() onPressed;
   final bool isActive;
   final double? height;
+  final Color? buttonColor;
+  final Color? buttonInactiveColor;
+  final TextStyle? buttonTextStyle;
+  final double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: height ?? AppValues.height56,
-      width: screenSize(context).width,
+      width: width ?? screenSize(context).width,
       child: TextButton(
         onPressed: () => isActive ? onPressed() : () {},
         style: TextButton.styleFrom(
           backgroundColor: isActive
-              ? context.primaryButtonColor
-              : context.primaryButtonColor.withValues(alpha: 0.32),
+              ? buttonColor ?? context.primaryButtonColor
+              : buttonInactiveColor ??
+                  context.primaryButtonColor.withValues(alpha: 0.32),
           padding: EdgeInsets.symmetric(vertical: AppValues.padding16),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18),
@@ -32,7 +41,7 @@ class PrimaryButton extends StatelessWidget {
         ),
         child: Text(
           buttonText,
-          style: AppTheme.of(context).bodyExtraLarge18.copyWith(
+          style: buttonTextStyle ?? AppTheme.of(context).bodyExtraLarge18.copyWith(
                 fontWeight: FontWeight.w500,
               ),
         ),
