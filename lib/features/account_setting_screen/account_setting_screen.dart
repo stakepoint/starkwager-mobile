@@ -31,7 +31,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
           builder: (context, constraints) {
             final isLandscape =
                 MediaQuery.of(context).orientation == Orientation.landscape;
-                 final double maxWidth = AppValues.width600;
+            final double maxWidth = AppValues.width600;
 
             return SingleChildScrollView(
               child: Center(
@@ -111,10 +111,9 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                         ),
                         verticalSpace(AppValues.height20),
                         UsernameEditText(
-                          controller: _fullnameController,
-                          onValueChanged: (e) {},
-                          type:'others'
-                        ),
+                            controller: _fullnameController,
+                            onValueChanged: (e) {},
+                            type: 'others'),
                         verticalSpace(AppValues.height20),
                         UsernameEditText(
                           controller: _usernameController,

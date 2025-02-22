@@ -15,9 +15,9 @@ class AccountSettingsMobileMode extends StatelessWidget
           children: [
             verticalSpace(33),
             IconButton(
-                onPressed: () => GoRouter.of(context).pop(),
-                icon: SvgPicture.asset(AppIcons.arrowBack),
-              ),
+              onPressed: () => GoRouter.of(context).pop(),
+              icon: SvgPicture.asset(AppIcons.arrowBack),
+            ),
             verticalSpace(24),
             Text('accountSettings'.tr(),
                 style: AppTheme.of(context).titleExtraLarge24),
