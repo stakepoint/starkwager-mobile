@@ -28,6 +28,11 @@ class AppIcons {
   static const close = '$baseIconPath/close_icon.svg';
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
+  static const sendProofPath = '$baseIconPath/sendProof.svg';
+  static const camera = '$baseIconPath/camera.svg';
+  static const boxStack = '$baseIconPath/box_stack.svg';
+  static const closeRed = '$baseIconPath/close_red.svg';
+  static const tick = '$baseIconPath/tick.svg';
 
   // Category Icons
   static const trendingIcon = '$baseIconPath/trend_up.svg';

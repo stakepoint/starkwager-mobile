@@ -6,6 +6,7 @@ import '../theme/app_colors.dart';
 extension ThemeModeExtension on BuildContext {
   bool get isDarkMode => Theme.of(this).brightness == Brightness.dark;
   bool get isMobile => ScreenLayout.isMobile(this);
+  bool get isTablet => ScreenLayout.isTablet(this);
   bool get isPortrait =>
       MediaQuery.of(this).orientation == Orientation.portrait;
   bool get isLandscape =>
