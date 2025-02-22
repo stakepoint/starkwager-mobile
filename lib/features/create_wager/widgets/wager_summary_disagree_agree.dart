@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/features/feature.dart';
 import 'package:starkwager/routing/routes.dart';
-import 'package:starkwager/theme/app_colors.dart';
 import 'package:starkwager/theme/app_theme.dart';
 
 class WagerSummaryDisagreeAndAgree extends StatelessWidget {
@@ -15,7 +14,7 @@ class WagerSummaryDisagreeAndAgree extends StatelessWidget {
     return Container(
       height: 120,
       width: MediaQuery.sizeOf(context).width,
-      decoration: BoxDecoration(color: AppColors.white),
+      decoration: BoxDecoration(color: context.primaryBackgroundColor),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

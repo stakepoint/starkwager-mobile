@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:starkwager/core/constants/assets.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
-import 'package:starkwager/theme/app_colors.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
@@ -15,7 +14,7 @@ class WagerSummarySendProof extends StatelessWidget {
     return Container(
       height: 172,
       width: MediaQuery.sizeOf(context).width,
-      decoration: BoxDecoration(color: AppColors.white),
+      decoration: BoxDecoration(color: context.primaryBackgroundColor),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
