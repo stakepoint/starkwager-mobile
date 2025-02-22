@@ -68,6 +68,20 @@ final GoRouter router = GoRouter(
         routeName: Routes.wagerCreated,
       ),
     ),
+    GoRoute(
+      path: Routes.accountSettings,
+      pageBuilder: (context, state) => SlideRouteTransition(
+        child: AccountSettings(),
+        routeName: Routes.accountSettings,
+      ),
+    ),
+    GoRoute(
+      path: Routes.accountSettingsTablet,
+      pageBuilder: (context, state) => SlideRouteTransition(
+        child: AccountSettings(),
+        routeName: Routes.accountSettingsTablet,
+      ),
+    ),
 
 //----------------------------------------------- Tablet Shell Route ----------------------------------------------- //
 

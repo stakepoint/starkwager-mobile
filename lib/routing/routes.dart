@@ -17,4 +17,6 @@ class Routes {
   static const createWager = '/create_wager';
   static const createWagerSummary = '/create_wager_summary';
   static const wagerCreated = '/wager_created';
+  static const accountSettings = '/account_settings';
+  static const accountSettingsTablet = '/account_settings_tab';
 }
