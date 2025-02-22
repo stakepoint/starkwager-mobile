@@ -22,9 +22,9 @@ class NotificationCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          width: 400,
           padding: EdgeInsets.all(12),
           height: 90,
+          width: !context.isMobile ? 500 : null,
           decoration: BoxDecoration(
             color: context.containerColor,
             borderRadius: BorderRadius.circular(16),
@@ -55,8 +55,9 @@ class NotificationCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
-              // width: MediaQuery.sizeOf(context).width * 0.68,
-              // width: 350,
+              width: context.isMobile
+                  ? MediaQuery.sizeOf(context).width * 0.68
+                  : null,
               child: Text(
                 title,
                 overflow: TextOverflow.ellipsis,

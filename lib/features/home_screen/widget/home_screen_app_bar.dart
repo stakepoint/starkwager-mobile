@@ -14,7 +14,7 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           children: [
             ProfileMenu(),
             GestureDetector(
-                onTap: () => GoRouter.of(context).go(Routes.notification),
+                onTap: () => GoRouter.of(context).push(Routes.notification),
                 child: SvgPicture.asset(AppIcons.notificationIcon)),
           ],
         ),

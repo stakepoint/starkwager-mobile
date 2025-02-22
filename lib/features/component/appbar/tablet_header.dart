@@ -50,7 +50,6 @@ class TabletHeader extends StatelessWidget {
       barrierLabel: '',
       transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, anim1, anim2) {
-        Orientation orientation = MediaQuery.of(context).orientation;
         return Stack(
           children: [
             Positioned(
@@ -59,8 +58,7 @@ class TabletHeader extends StatelessWidget {
               child: Material(
                 color: Colors.transparent,
                 child: Container(
-                  width: size.width *
-                      (orientation == Orientation.portrait ? 0.6 : 0.4),
+                  width: size.width * (context.isPortrait ? 0.6 : 0.4),
                   height: size.height * 0.9,
                   decoration: BoxDecoration(
                     color: context.primaryBackgroundColor,
