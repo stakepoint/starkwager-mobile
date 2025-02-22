@@ -13,7 +13,9 @@ class HomeScreenAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             ProfileMenu(),
-            SvgPicture.asset(AppIcons.notificationIcon),
+            GestureDetector(
+                onTap: () => GoRouter.of(context).push(Routes.notification),
+                child: SvgPicture.asset(AppIcons.notificationIcon)),
           ],
         ),
       ),
