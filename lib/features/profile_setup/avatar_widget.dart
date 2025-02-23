@@ -38,7 +38,7 @@ class AvatarDialog extends StatelessWidget {
               Text('Change Avatar', textAlign: TextAlign.center, style: AppTheme.of(context).titleExtraLarge24),
               Expanded(
                 child: Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.topRight,
                   child: IconButton(
                     icon: SvgPicture.asset(AppIcons.close),
                     onPressed: () => Navigator.pop(context),
@@ -79,11 +79,7 @@ class AvatarDialog extends StatelessWidget {
           ),
           verticalSpace(AppValues.height24),
           Padding(
-            padding: const EdgeInsets.only(
-              bottom: 16,
-              left: 24,
-              right: 24,
-            ),
+            padding: const EdgeInsets.only(bottom: 16),
             child: PrimaryButton(
                 buttonText: 'choose'.tr(),
                 onPressed: () {
@@ -109,6 +105,7 @@ class AvatarDialog extends StatelessWidget {
     }
 
     return Dialog(
+      backgroundColor: context.containerColor,
       insetPadding: context.isMobile ? const EdgeInsets.symmetric(horizontal: 20, vertical: 24) : const EdgeInsets.symmetric(horizontal: 140, vertical: 80),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
