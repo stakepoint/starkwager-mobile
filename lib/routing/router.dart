@@ -118,6 +118,13 @@ final GoRouter router = GoRouter(
             routeName: Routes.profileTablet,
           ),
         ),
+        GoRoute(
+          path: Routes.profileSettingTablet,
+          pageBuilder: (context, state) => SlideRouteTransition(
+            child: ProfileSettingScreen(),
+            routeName: Routes.profileSettingTablet,
+          ),
+        )
       ],
     ),
 
@@ -156,6 +163,13 @@ final GoRouter router = GoRouter(
             routeName: Routes.profile,
           ),
         ),
+        GoRoute(
+          path: Routes.profileSetting,
+          pageBuilder: (context, state) => SlideRouteTransition(
+            child: ProfileSettingScreen(),
+            routeName: Routes.profileSetting,
+          ),
+        )
       ],
     ),
   ],

@@ -28,6 +28,8 @@ class AppIcons {
   static const close = '$baseIconPath/close_icon.svg';
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
+  static const profileIcon2 = '$baseIconPath/profile_2.svg';
+  static const nextArrow = '$baseIconPath/next.svg';
   static const sendProofPath = '$baseIconPath/sendProof.svg';
   static const camera = '$baseIconPath/camera.svg';
   static const boxStack = '$baseIconPath/box_stack.svg';

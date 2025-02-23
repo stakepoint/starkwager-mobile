@@ -38,7 +38,7 @@ class _HomeScreenTabletMenuBarState
         route = Routes.walletTablet;
         break;
       case 3:
-        route = Routes.profileTablet;
+        route = Routes.profileSettingTablet;
         break;
       default:
         route = Routes.homeTablet;
@@ -72,7 +72,7 @@ class _HomeScreenTabletMenuBarState
             SvgPicture.asset(AppIcons.logoIcon),
             verticalSpace(40),
             _buildNewWagerButton(),
-            verticalSpace(40), // Reduced from 120
+            verticalSpace(100), // Reduced from 120
             _buildNavItems(isVertical: true),
           ],
         ),
