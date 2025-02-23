@@ -64,7 +64,7 @@ class _HomeScreenTabletMenuBarState
     return Container(
       height: MediaQuery.of(context).size.height,
       width: 208,
-      color: Colors.black,
+      color: context.sidebarBackgroundColor,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -93,7 +93,7 @@ class _HomeScreenTabletMenuBarState
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.2),
+              color: context.menuShadowColor,
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -172,7 +172,7 @@ class _HomeScreenTabletMenuBarState
             decoration: BoxDecoration(
               color: isSelected
                   ? context.textHintColor.withValues(alpha: 0.1)
-                  : Colors.transparent,
+                  : context.transparentColor,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Container(
@@ -180,16 +180,19 @@ class _HomeScreenTabletMenuBarState
               width: 64,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
-                color: isSelected ? AppColors.grayCool800 : Colors.transparent,
+                color: isSelected
+                    ? context.menuBackgroundColor
+                    : context.transparentColor,
               ),
               child: Center(
                 child: SvgPicture.asset(
                   icon,
                   colorFilter: ColorFilter.mode(
-                      isSelected
-                          ? context.primaryButtonColor
-                          : AppColors.grayneutral500,
-                      BlendMode.srcIn),
+                    isSelected
+                        ? context.primaryButtonColor
+                        : context.menuTextColor,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),
@@ -200,7 +203,7 @@ class _HomeScreenTabletMenuBarState
             style: TextStyle(
               color: isSelected
                   ? context.primaryButtonColor
-                  : AppColors.grayneutral500,
+                  : context.menuTextColor,
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
             ),
           ),
