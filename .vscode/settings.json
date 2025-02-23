@@ -1,7 +1,8 @@
 {
-  "dart.flutterSdkPath": "/Users/ifeanyichukwuobeta/flutter",
-  "dart.sdkPath": "/Users/ifeanyichukwuobeta/flutter/bin/cache/dart-sdk",
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
   "dart.flutterAdditionalArgs": [],
- 
+  "search.exclude": {
+    "**/.fvm": true
+  },
   "java.configuration.updateBuildConfiguration": "automatic"
 }
