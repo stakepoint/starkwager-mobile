@@ -73,16 +73,6 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           child: GestureDetector(
                             onTap: () async {
                               showAvatarDialog(context, onIconSelected: (v) => selectedAvatar.value = v);
-                              /**
-                                  final ImagePicker picker = ImagePicker();
-                                  final XFile? image = await picker.pickImage(
-                                  source: ImageSource.gallery);
-                                  if (image != null) {
-                                  setState(() {
-                                  _selectedImage = File(image.path);
-                                  });
-                                  }
-                               **/
                             },
                             child: Stack(
                               children: [
@@ -139,7 +129,11 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               child: Text(
                                 _isUsernameAvailable ? 'usernameAvailable'.tr() : 'usernameUnavailable'.tr(),
                                 style: AppTheme.of(context).bodyLarge16.copyWith(
-                                      color: _isUsernameAvailable ? Colors.green : Colors.red,
+                                      color: _isUsernameAvailable
+                                          ? context.successColor
+                                          : context.isDarkMode
+                                              ? context.darkTheme.colorScheme.error
+                                              : context.lightTheme.colorScheme.error,
                                     ),
                               ),
                             ),
