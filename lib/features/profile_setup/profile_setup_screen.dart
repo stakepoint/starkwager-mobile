@@ -25,7 +25,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
-            final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+            final isLandscape =
+                MediaQuery.of(context).orientation == Orientation.landscape;
 
             return SingleChildScrollView(
               child: Center(
@@ -37,7 +38,10 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               ? 184
                               : 120),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: context.isMobile ? AppValues.width600 : AppValues.width400),
+                    constraints: BoxConstraints(
+                        maxWidth: context.isMobile
+                            ? AppValues.width600
+                            : AppValues.width400),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -46,14 +50,20 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           text: TextSpan(
                             children: [
                               TextSpan(
-                                text: context.isMobile ? '${'setupYourProfile'.tr()}\n' : '${'setupYourProfile'.tr()} ',
-                                style: AppTheme.of(context).headLineLarge32.copyWith(
+                                text: context.isMobile
+                                    ? '${'setupYourProfile'.tr()}\n'
+                                    : '${'setupYourProfile'.tr()} ',
+                                style: AppTheme.of(context)
+                                    .headLineLarge32
+                                    .copyWith(
                                       height: 1.0,
                                     ),
                               ),
                               TextSpan(
                                 text: 'PROFILE'.tr(),
-                                style: AppTheme.of(context).headLineLarge32.copyWith(
+                                style: AppTheme.of(context)
+                                    .headLineLarge32
+                                    .copyWith(
                                       height: context.isMobile ? 1.2 : 1.0,
                                     ),
                               ),
@@ -61,18 +71,27 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                           ),
                         ),
                         verticalSpace(AppValues.height8),
-                        Text(context.isMobile ? 'chooseProfilePicture'.tr() : 'Choose your picture and a unique username other users can use to invite you to wagers'.split('\n').join(' '),
+                        Text(
+                            context.isMobile
+                                ? 'chooseProfilePicture'.tr()
+                                : 'Choose your picture and a unique username other users can use to invite you to wagers'
+                                    .split('\n')
+                                    .join(' '),
                             style: AppTheme.of(context).bodyExtraLarge18),
                         Container(
                           height: 1,
                           color: context.dividerColor,
-                          margin: const EdgeInsets.symmetric(vertical: AppValues.height24),
+                          margin: const EdgeInsets.symmetric(
+                              vertical: AppValues.height24),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: AppValues.padding8),
+                          padding:
+                              const EdgeInsets.only(left: AppValues.padding8),
                           child: GestureDetector(
                             onTap: () async {
-                              showAvatarDialog(context, onIconSelected: (v) => selectedAvatar.value = v);
+                              showAvatarDialog(context,
+                                  onIconSelected: (v) =>
+                                      selectedAvatar.value = v);
                             },
                             child: Stack(
                               children: [
@@ -103,13 +122,15 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                                       borderRadius: BorderRadius.circular(16),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black.withValues(alpha: 0.1),
+                                          color: Colors.black
+                                              .withValues(alpha: 0.1),
                                           blurRadius: 4,
                                           offset: const Offset(0, 2),
                                         ),
                                       ],
                                     ),
-                                    child: const Icon(Icons.camera_alt, color: Colors.black, size: 20),
+                                    child: const Icon(Icons.camera_alt,
+                                        color: Colors.black, size: 20),
                                   ),
                                 ),
                               ],
@@ -127,21 +148,27 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                             child: Padding(
                               padding: const EdgeInsets.only(top: 8, right: 8),
                               child: Text(
-                                _isUsernameAvailable ? 'usernameAvailable'.tr() : 'usernameUnavailable'.tr(),
-                                style: AppTheme.of(context).bodyLarge16.copyWith(
-                                      color: _isUsernameAvailable
-                                          ? context.successColor
-                                          : context.isDarkMode
-                                              ? context.darkTheme.colorScheme.error
-                                              : context.lightTheme.colorScheme.error,
-                                    ),
+                                _isUsernameAvailable
+                                    ? 'usernameAvailable'.tr()
+                                    : 'usernameUnavailable'.tr(),
+                                style:
+                                    AppTheme.of(context).bodyLarge16.copyWith(
+                                          color: _isUsernameAvailable
+                                              ? context.successColor
+                                              : context.isDarkMode
+                                                  ? context.darkTheme
+                                                      .colorScheme.error
+                                                  : context.lightTheme
+                                                      .colorScheme.error,
+                                        ),
                               ),
                             ),
                           ),
                         SizedBox(height: 40),
                         PrimaryButton(
                           buttonText: 'continue'.tr(),
-                          isActive: _usernameController.text.isNotEmpty && _isUsernameAvailable,
+                          isActive: _usernameController.text.isNotEmpty &&
+                              _isUsernameAvailable,
                           onPressed: () {
                             if (context.isMobile) {
                               GoRouter.of(context).go(Routes.home);

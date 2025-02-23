@@ -13,7 +13,8 @@ class AvatarDialog extends StatelessWidget {
   final Function(String) onIconSelected;
   final bool isBottomSheet;
 
-  AvatarDialog({super.key, required this.onIconSelected, this.isBottomSheet = false});
+  AvatarDialog(
+      {super.key, required this.onIconSelected, this.isBottomSheet = false});
 
   final ValueNotifier<String?> selectedImage = ValueNotifier(null);
 
@@ -24,7 +25,8 @@ class AvatarDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final content = Container(
-      margin: context.isMobile ? const EdgeInsets.symmetric(horizontal: 16) : null,
+      margin:
+          context.isMobile ? const EdgeInsets.symmetric(horizontal: 16) : null,
       width: !context.isMobile ? 550 : double.infinity,
       padding: const EdgeInsets.all(16),
       child: Column(
@@ -35,7 +37,9 @@ class AvatarDialog extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Expanded(child: SizedBox()),
-              Text('Change Avatar', textAlign: TextAlign.center, style: AppTheme.of(context).titleExtraLarge24),
+              Text('Change Avatar',
+                  textAlign: TextAlign.center,
+                  style: AppTheme.of(context).titleExtraLarge24),
               Expanded(
                 child: Align(
                   alignment: Alignment.topRight,
@@ -52,7 +56,9 @@ class AvatarDialog extends StatelessWidget {
             child: Text(
               'selectANewAvatar'.tr(),
               textAlign: TextAlign.center,
-              style: AppTheme.of(context).bodyLarge16.copyWith(color: context.subTitleTextColor),
+              style: AppTheme.of(context)
+                  .bodyLarge16
+                  .copyWith(color: context.subTitleTextColor),
             ),
           ),
           verticalSpace(AppValues.height40),
@@ -106,7 +112,9 @@ class AvatarDialog extends StatelessWidget {
 
     return Dialog(
       backgroundColor: context.containerColor,
-      insetPadding: context.isMobile ? const EdgeInsets.symmetric(horizontal: 20, vertical: 24) : const EdgeInsets.symmetric(horizontal: 140, vertical: 80),
+      insetPadding: context.isMobile
+          ? const EdgeInsets.symmetric(horizontal: 20, vertical: 24)
+          : const EdgeInsets.symmetric(horizontal: 140, vertical: 80),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -120,11 +128,24 @@ class AvatarItem extends StatelessWidget {
   final bool isSelected;
   final Function(String) onTap;
 
-  const AvatarItem({super.key, required this.index, this.isSelected = false, required this.onTap});
+  const AvatarItem(
+      {super.key,
+      required this.index,
+      this.isSelected = false,
+      required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final colors = [Colors.red, Colors.blue, Colors.green, Colors.orange, Colors.purple, Colors.teal, Colors.amber, Colors.indigo];
+    final colors = [
+      Colors.red,
+      Colors.blue,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      Colors.teal,
+      Colors.amber,
+      Colors.indigo
+    ];
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -132,7 +153,11 @@ class AvatarItem extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: isSelected ? context.primaryButtonColor : context.avatarBgColor, width: 4),
+          border: Border.all(
+              color: isSelected
+                  ? context.primaryButtonColor
+                  : context.avatarBgColor,
+              width: 4),
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
@@ -155,7 +180,8 @@ class AvatarItem extends StatelessWidget {
   }
 }
 
-void showAvatarDialog(BuildContext context, {required Function(String) onIconSelected}) {
+void showAvatarDialog(BuildContext context,
+    {required Function(String) onIconSelected}) {
   context.isMobile
       ? showModalBottomSheet(
           context: context,
