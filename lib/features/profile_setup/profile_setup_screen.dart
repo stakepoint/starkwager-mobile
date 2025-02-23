@@ -10,8 +10,8 @@ class ProfileSetupScreen extends ConsumerStatefulWidget {
 class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
   final _usernameController = TextEditingController();
   bool _isUsernameAvailable = false;
-  File? _selectedImage;
 
+  ValueNotifier<String?> selectedAvatar = ValueNotifier(null);
   @override
   void dispose() {
     _usernameController.dispose();
@@ -89,40 +89,28 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               const EdgeInsets.only(left: AppValues.padding8),
                           child: GestureDetector(
                             onTap: () async {
-                              final ImagePicker picker = ImagePicker();
-                              final XFile? image = await picker.pickImage(
-                                  source: ImageSource.gallery);
-                              if (image != null) {
-                                setState(() {
-                                  _selectedImage = File(image.path);
-                                });
-                              }
+                              showAvatarDialog(context,
+                                  onIconSelected: (v) =>
+                                      selectedAvatar.value = v);
                             },
                             child: Stack(
                               children: [
-                                Container(
-                                  width: 80,
-                                  height: 80,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
+                                ValueListenableBuilder(
+                                  valueListenable: selectedAvatar,
+                                  builder: (context, image, _) => Container(
+                                    width: 80,
+                                    height: 80,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        image ?? AppIcons.userImage,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
-                                  child: _selectedImage != null
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.file(
-                                            _selectedImage!,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      : ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            AppIcons.userImage,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
                                 ),
                                 Positioned(
                                   right: -4,
@@ -166,8 +154,12 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                                 style:
                                     AppTheme.of(context).bodyLarge16.copyWith(
                                           color: _isUsernameAvailable
-                                              ? Colors.green
-                                              : Colors.red,
+                                              ? context.successColor
+                                              : context.isDarkMode
+                                                  ? context.darkTheme
+                                                      .colorScheme.error
+                                                  : context.lightTheme
+                                                      .colorScheme.error,
                                         ),
                               ),
                             ),

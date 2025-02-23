@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starkwager/core/constants/screen_layout.dart';
+import 'package:starkwager/features/feature.dart';
 
 import '../theme/app_colors.dart';
 
@@ -53,6 +54,8 @@ extension ThemeModeExtension on BuildContext {
 
   Color get textHintColor =>
       isDarkMode ? AppColors.grayCool25 : AppColors.grayCool400;
+  Color get avatarBgColor =>
+      isDarkMode ? AppColors.grayCool200 : AppColors.grayCool200;
 
   Color get menuBackgroundColor =>
       isDarkMode ? AppColors.grayCool800 : AppColors.grayCool800;

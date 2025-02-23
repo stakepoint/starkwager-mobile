@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -8,7 +6,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:reown_appkit/modal/appkit_modal_impl.dart';
 import 'package:starkwager/core/constants/assets.dart';
 import 'package:starkwager/core/constants/screen_size.dart';
@@ -17,6 +14,7 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
+import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
