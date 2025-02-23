@@ -36,10 +36,17 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
                 const EdgeInsets.symmetric(horizontal: AppValues.padding16),
             child: GestureDetector(
                 onTap: () {
-                  context.isMobile
-                      ? GoRouter.of(context).go(Routes.profileSetup)
-                      : GoRouter.of(context).go(Routes.profileSetup);
+                  if (context.isMobile) {
+                    GoRouter.of(context).go(Routes.profileSetting);
+                  } else {
+                    GoRouter.of(context).go(Routes.profileSettingTablet);
+                  }
                 },
+                // () {
+                //   context.isMobile
+                //       ? GoRouter.of(context).go(Routes.profileSetup)
+                //       : GoRouter.of(context).go(Routes.profileSetup);
+                // },
                 child: SvgPicture.asset(AppIcons.hamburgerIcon)),
           )
         ],

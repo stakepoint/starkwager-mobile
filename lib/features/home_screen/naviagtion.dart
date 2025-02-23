@@ -59,8 +59,10 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
       icon: AppIcons.profileIcon,
       onTap: () {
         _onNavigate(ScreenLayout.isTablet(context)
-            ? Routes.profileTablet
-            : Routes.profile);
+            // ? Routes.profileTablet
+            // : Routes.profile);
+            ? Routes.profileSettingTablet
+            : Routes.profileSetting);
       },
     ),
   ];
@@ -72,7 +74,7 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
     return PopScope(
       onPopInvokedWithResult: (didPop, result) async {
         if (currentIndex != 0) {
-          _onNavigate(Routes.home);
+          _onNavigate(Routes.profileSetting);
           return;
         }
         return;
@@ -98,7 +100,7 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
                   _onNavigate(Routes.walletTablet);
                   break;
                 case 3:
-                  _onNavigate(Routes.profileTablet);
+                  _onNavigate(Routes.profileSettingTablet);
                   break;
               }
             } else {
@@ -113,7 +115,7 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
                   _onNavigate(Routes.wallet);
                   break;
                 case 3:
-                  _onNavigate(Routes.profile);
+                  _onNavigate(Routes.profileSetting);
                   break;
               }
             }
