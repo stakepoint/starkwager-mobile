@@ -27,8 +27,8 @@ class NavigationNotifier extends StateNotifier<int> {
       case Routes.walletTablet:
         state = 2;
         break;
-      case Routes.profile:
-      case Routes.profileTablet:
+      case Routes.profileSetting:
+      case Routes.profileSettingTablet:
         state = 3;
         break;
       default:
