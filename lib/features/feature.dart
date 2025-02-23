@@ -18,6 +18,14 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
+import 'package:starkwager/core/constants/app_values.dart';
+import 'package:starkwager/utils/ui_widgets.dart';
+
+import '../core/constants/assets.dart';
+import '../core/constants/screen_layout.dart';
+import '../routing/routes.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_theme.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
@@ -74,5 +82,16 @@ part 'wager_screen/widget/wager_widget.dart';
 part 'wallet_screen/wallet_screen.dart';
 part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
+
+part 'component/appbar/tablet_header.dart';
+part 'component/appbar/mobile_header.dart';
+part 'component/fab/new_wager_fab.dart';
+part 'component/stark_amount.dart';
+part 'component/contract_address.dart';
+
+part 'profile_setting/profile_setting.dart';
+part 'profile_setting/widget/profile_setting_body.dart';
+part 'profile_setting/widget/profile_setting_mobile_mode.dart';
+part 'profile_setting/widget/profile_setting_tablet_mode.dart';
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
