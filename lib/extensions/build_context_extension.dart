@@ -30,12 +30,28 @@ extension ThemeModeExtension on BuildContext {
 
   Color get containerColor => isDarkMode ? AppColors.gradient40 : AppColors.white;
 
+  Color get tabSelectedBackgroundColor => isDarkMode ? AppColors.gradient40 : AppColors.tabSelectedColor;
+
+  Color get tabUnselectedBackgroundColor => isDarkMode ? AppColors.gradient20 : AppColors.tabUnselectedColor;
+
   Color get primaryButtonColor => isDarkMode ? AppColors.buttonColor : AppColors.buttonColor;
 
   Color get textHintColor => isDarkMode ? AppColors.grayCool25 : AppColors.grayCool400;
-  Color get transparentColor => isDarkMode ? Colors.transparent : Colors.transparent;
-
   Color get avatarBgColor => isDarkMode ? AppColors.grayCool200 : AppColors.grayCool200;
+
+  Color get menuBackgroundColor => isDarkMode ? AppColors.grayCool800 : AppColors.grayCool800;
+
+  Color get menuTextColor => isDarkMode ? AppColors.grayneutral500 : AppColors.grayneutral500;
+
+  Color get transparentColor => Colors.transparent;
+
+  Color get tabTextColor => isDarkMode ? AppColors.white : AppColors.white;
+
+  Color get shadowColor => AppColors.black.withValues(alpha: 0.1);
+
+  Color get sidebarBackgroundColor => AppColors.black;
+
+  Color get menuShadowColor => AppColors.black.withValues(alpha: 0.2);
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,

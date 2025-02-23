@@ -24,8 +24,8 @@ class AppIcons {
   static const ellipseIcon = '$baseIconPath/ellipse.svg';
   static const vsIcon = '$baseIconPath/VS.svg';
   static const arrowBack = '$baseIconPath/arrow_back.svg';
-  static const String checked = '$baseIconPath/checked.svg';
-  static const String close = '$baseIconPath/close_icon.svg';
+  static const checked = '$baseIconPath/checked.svg';
+  static const close = '$baseIconPath/close_icon.svg';
   static const upwardArrow = '$baseIconPath/upward_arrow.svg';
   static const downwardArrow = '$baseIconPath/downward_arrow.svg';
   static const sendProofPath = '$baseIconPath/sendProof.svg';
@@ -33,6 +33,16 @@ class AppIcons {
   static const boxStack = '$baseIconPath/box_stack.svg';
   static const closeRed = '$baseIconPath/close_red.svg';
   static const tick = '$baseIconPath/tick.svg';
+
+  // Category Icons
+  static const trendingIcon = '$baseIconPath/trend_up.svg';
+  static const sportsIcon = '$baseIconPath/soccerball.svg';
+  static const entertainmentIcon = '$baseIconPath/music.svg';
+  static const politicsIcon = '$baseIconPath/law.svg';
+  static const cryptoIcon = '$baseIconPath/coins.svg';
+  static const stocksIcon = '$baseIconPath/chart.svg';
+  static const esportsIcon = '$baseIconPath/sword.svg';
+  static const gamesIcon = '$baseIconPath/gamepad.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';
