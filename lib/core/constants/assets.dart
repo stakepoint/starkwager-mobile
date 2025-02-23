@@ -45,8 +45,6 @@ class AppIcons {
   static const stocksIcon = '$baseIconPath/chart.svg';
   static const esportsIcon = '$baseIconPath/sword.svg';
   static const gamesIcon = '$baseIconPath/gamepad.svg';
-  static const profileIcon2 = '$baseIconPath/profile_2.svg';
-  static const nextArrow = '$baseIconPath/next.svg';
 
   //-------------------------------------------- IMAGES -------------------------------------------- //
   static const baseImagePath = 'assets/images';
