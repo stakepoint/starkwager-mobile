@@ -59,7 +59,15 @@
   "hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
   "recentTransactions": "Recent Transactions",
   "accountSettings":"ACCOUNT SETTINGS",
-  "full_name":"Full Name"
+  "full_name":"Full Name",
+  "trending": "Trending",
+  "sports": "Sports",
+  "entertainment": "Entertainment",
+  "politics": "Politics",
+  "crypto": "Crypto",
+  "stocks": "Stocks",
+  "esports": "ESports",
+  "games": "Games",
   "notification": "Notification"
 
 }
