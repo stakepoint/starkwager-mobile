@@ -16,6 +16,7 @@ class AppValues {
   static const height40 = 40.0;
   static const height50 = 50.0;
   static const height56 = 56.0;
+  static const height80 = 80.0;
   static const height60 = 60.0;
   static const height120 = 120.0;
   static const height100 = 100.0;

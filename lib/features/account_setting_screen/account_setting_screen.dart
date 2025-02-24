@@ -110,10 +110,10 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                           ),
                         ),
                         verticalSpace(AppValues.height20),
-                        UsernameEditText(
-                            controller: _fullnameController,
-                            onValueChanged: (e) {},
-                            type: 'others'),
+                        FullNameEditText(
+                          controller: _fullnameController,
+                          onValueChanged: (e) {},
+                        ),
                         verticalSpace(AppValues.height20),
                         UsernameEditText(
                           controller: _usernameController,
@@ -140,6 +140,9 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                         SizedBox(height: 200),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
+                          height: context.isMobile
+                              ? AppValues.height56
+                              : AppValues.height80,
                           isActive: _usernameController.text.isNotEmpty &&
                               _isUsernameAvailable,
                           onPressed: () {
@@ -150,6 +153,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                             }
                           },
                         ),
+                        SizedBox(height: 50),
                       ],
                     ),
                   ),
