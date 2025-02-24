@@ -18,6 +18,9 @@ class AppColors {
   static const grayCool900 = Color(0xFF111322);
   static const grayneutral500 = Color(0xFF6C737F);
 
+  static const tabSelectedColor = Color(0xFF102A56);
+  static const tabUnselectedColor = Color(0xFFEFF1F5);
+
   static const buttonColor = Color(0xFFE0FE10);
 
   static const rambutan100 = Color(0xFFE60F41);

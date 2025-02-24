@@ -26,7 +26,7 @@ class ContractAddress extends StatelessWidget {
             color: context.containerColor,
           ),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               CopyItemContainer(value: '0x400e44000...'),
             ],
