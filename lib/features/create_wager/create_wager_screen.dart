@@ -112,7 +112,7 @@ class CreateWagerScreen extends ConsumerWidget {
                     'termsOrWagerDescription'.tr(), 'wager.strk/'.tr(), 1000,
                     maxLine: 3),
                 verticalSpace(AppValues.height30),
-                buildStakeTextField(context, 'stake'.tr()),
+                buildStakeTextField(context, ref, 'stake'.tr()),
                 verticalSpace(size.height * 0.06),
                 PrimaryButton(
                   buttonText: 'continue'.tr(),
@@ -130,6 +130,122 @@ class CreateWagerScreen extends ConsumerWidget {
   }
 
   //----------------------------------------------- STAKE FIELD ----------------------------------------------- //
+
+  Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
+  final isStark = ref.watch(isStarkProvider);
+  final stakeAmount = ref.watch(stakeAmountProvider);
+
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        title,
+        style: AppTheme.of(context).textSmallMedium,
+      ),
+      SizedBox(height: 5),
+      Stack(
+        children: [
+          TextFormField( 
+            initialValue: '0',  // Set initial value
+            keyboardType: TextInputType.number,
+            style: TextStyle(  
+              color: Colors.black,
+              fontSize: 16,
+            ),
+            onChanged: (value) {
+              // Update the stake amount based on the current input
+              final newAmount = double.tryParse(value) ?? 0.0;
+              final starkAmount = isStark ? newAmount : (newAmount / 0.24);
+              ref.read(stakeAmountProvider.notifier).state = starkAmount;
+            },
+            decoration: InputDecoration(
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+              filled: true,
+              fillColor: Color(0xFFEFF1F5),
+              hintText: '0',
+              hintStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+              ),
+              suffixIcon: Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: InkWell(
+                  onTap: () {
+                    // Toggle mode
+                    ref.read(isStarkProvider.notifier).state = !isStark;
+                    
+                    // Update the amount based on the current mode
+                    if (isStark) {
+                      ref.read(stakeAmountProvider.notifier).state = stakeAmount * 0.24;
+                    } else {
+                      ref.read(stakeAmountProvider.notifier).state = stakeAmount / 0.24;
+                    }
+                  },
+                  child: Container(
+                    height: 40,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Icon(Icons.sync, color: Colors.black),
+                  ),
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(12),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 16,
+            top: 12,
+            child: Text(
+              isStark ? "Amount in Stark" : "Amount in USD",
+              style: TextStyle(
+                color: Colors.black87,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
+        ],
+      ),
+      SizedBox(height: 10),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'You have 50.0 STRK',
+            style: TextStyle(color: Colors.grey),
+          ),
+          Text(
+            '1 STRK = 0.24 USD',
+            style: TextStyle(color: Colors.grey),
+          ),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Text(
+            isStark
+                ? '≈ ${(stakeAmount * 0.24).toStringAsFixed(2)} USD'
+                : '≈ ${stakeAmount.toStringAsFixed(2)} STRK',
+            style: TextStyle(
+              color: Colors.grey,
+              fontSize: 12,
+            ),
+          )
+        ],
+      )
+    ],
+  );
+}
+
+
 
   Future<void> _showCategoryDialog(BuildContext context, WidgetRef ref) async {
     Future<String?> showBottomSheet(BuildContext context, Widget child) async {
@@ -325,47 +441,47 @@ class CreateWagerScreen extends ConsumerWidget {
     );
   }
 
-  Column buildStakeTextField(BuildContext context, String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,
-            style: AppTheme.of(context)
-                .textSmallMedium
-                .copyWith(fontWeight: FontWeight.w600)),
-        SizedBox(
-          height: 5,
-        ),
-        TextField(
-          keyboardType: TextInputType.number,
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            suffixText: "\$0",
-            prefixIcon: Image.asset(AppIcons.snSymbol),
-            filled: true,
-            fillColor: context.textBoxTextColor,
-            hintStyle: TextStyle(color: Colors.grey),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
-        verticalSpace(5),
-        Row(
-          children: [
-            Spacer(),
-            Text(
-              'youHave50.00Strk'.tr(),
-              style: TextStyle(
-                color: context.textHintColor,
-              ),
-            ),
-          ],
-        )
-      ],
-    );
-  }
+  // Column buildStakeTextField(BuildContext context, String title) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Text(title,
+  //           style: AppTheme.of(context)
+  //               .textSmallMedium
+  //               .copyWith(fontWeight: FontWeight.w600)),
+  //       SizedBox(
+  //         height: 5,
+  //       ),
+  //       TextField(
+  //         keyboardType: TextInputType.number,
+  //         textAlignVertical: TextAlignVertical.center,
+  //         decoration: InputDecoration(
+  //           suffixText: "\$0",
+  //           prefixIcon: Image.asset(AppIcons.snSymbol),
+  //           filled: true,
+  //           fillColor: context.textBoxTextColor,
+  //           hintStyle: TextStyle(color: Colors.grey),
+  //           border: OutlineInputBorder(
+  //             borderRadius: BorderRadius.circular(8),
+  //             borderSide: BorderSide.none,
+  //           ),
+  //         ),
+  //       ),
+  //       verticalSpace(5),
+  //       Row(
+  //         children: [
+  //           Spacer(),
+  //           Text(
+  //             'youHave50.00Strk'.tr(),
+  //             style: TextStyle(
+  //               color: context.textHintColor,
+  //             ),
+  //           ),
+  //         ],
+  //       )
+  //     ],
+  //   );
+  // }
 
 //----------------------------------------------- CATEGORYWAGER TEXTFIELD ----------------------------------------------- //
 
