@@ -1,0 +1,2 @@
+/home/uche/Desktop/starkwager-mobile/android/app/.cxx/Debug/2t5u553t/x86/CMakeFiles/edit_cache.dir
+/home/uche/Desktop/starkwager-mobile/android/app/.cxx/Debug/2t5u553t/x86/CMakeFiles/rebuild_cache.dir

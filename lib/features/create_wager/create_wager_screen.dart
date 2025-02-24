@@ -130,100 +130,154 @@ class CreateWagerScreen extends ConsumerWidget {
   }
 
   //----------------------------------------------- STAKE FIELD ----------------------------------------------- //
-
-  Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
+Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
   final isStark = ref.watch(isStarkProvider);
   final stakeAmount = ref.watch(stakeAmountProvider);
+
+  // Get the equivalent amount in the other currency
+  final equivalentAmount = isStark
+      ? (stakeAmount * 0.24).toStringAsFixed(2)  // USD equivalent when in Stark mode
+      : stakeAmount.toStringAsFixed(2);          // Stark equivalent when in USD mode
 
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
-        title,
-        style: AppTheme.of(context).textSmallMedium,
+        title.tr(),
+        style: AppTheme.of(context).textSmallMedium.copyWith(
+          color: context.primaryTextColor,
+        )
       ),
       SizedBox(height: 5),
-      Stack(
-        children: [
-          TextFormField( 
-            initialValue: '0',  // Set initial value
-            keyboardType: TextInputType.number,
-            style: TextStyle(  
-              color: Colors.black,
-              fontSize: 16,
-            ),
-            onChanged: (value) {
-              // Update the stake amount based on the current input
-              final newAmount = double.tryParse(value) ?? 0.0;
-              final starkAmount = isStark ? newAmount : (newAmount / 0.24);
-              ref.read(stakeAmountProvider.notifier).state = starkAmount;
-            },
-            decoration: InputDecoration(
-              contentPadding:
-                  EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
-              filled: true,
-              fillColor: Color(0xFFEFF1F5),
-              hintText: '0',
-              hintStyle: TextStyle(
-                color: Colors.grey,
-                fontSize: 16,
-              ),
-              suffixIcon: Padding(
-                padding: EdgeInsets.only(right: 10.0),
-                child: InkWell(
-                  onTap: () {
-                    // Toggle mode
-                    ref.read(isStarkProvider.notifier).state = !isStark;
+      StatefulBuilder(
+        builder: (context, setBuilderState) {
+
+           TextEditingController controller = TextEditingController();
+           FocusNode focusNode = FocusNode();
+           bool isInitialized = false;
+           bool isUserEditing = false;
+          
+          // Only initialize the controller once when widget first builds
+          if (!isInitialized) {
+            final displayValue = isStark 
+                ? stakeAmount 
+                : (stakeAmount * 0.24);
+            controller.text = displayValue > 0 ? displayValue.toStringAsFixed(2) : "";
+            isInitialized = true;
+          }
+          
+          return Stack(
+            children: [
+              TextField(
+                controller: controller,
+                focusNode: focusNode,
+                keyboardType: TextInputType.number,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                ),
+                onTap: () {
+                  isUserEditing = true;
+                },
+                onChanged: (value) {
+                  // Only process if this is a user edit
+                  if (isUserEditing) {
+                    final newAmount = double.tryParse(value) ?? 0.0;
                     
-                    // Update the amount based on the current mode
+                    // Store value in provider based on current mode
                     if (isStark) {
-                      ref.read(stakeAmountProvider.notifier).state = stakeAmount * 0.24;
+                      ref.read(stakeAmountProvider.notifier).state = newAmount;
                     } else {
-                      ref.read(stakeAmountProvider.notifier).state = stakeAmount / 0.24;
+                      ref.read(stakeAmountProvider.notifier).state = newAmount / 0.24;
                     }
-                  },
-                  child: Container(
-                    height: 40,
-                    width: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
+                  }
+                },
+                decoration: InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+                  filled: true,
+                  fillColor: Color(0xFFEFF1F5),
+                  hintText: '0',
+                  hintStyle: TextStyle(color: Colors.grey),
+                  suffixIcon: Padding(
+                    padding: EdgeInsets.only(right: 10.0),
+                    child: InkWell(
+                      onTap: () {
+                        isUserEditing = false;
+                        
+                        // Get current input value
+                        final inputValue = double.tryParse(controller.text) ?? 0.0;
+                        
+                        // Calculate the converted value
+                        final convertedValue = isStark
+                            ? inputValue * 0.24  // Stark to USD
+                            : inputValue / 0.24; // USD to Stark
+                            
+                        // Toggle the mode first
+                        ref.read(isStarkProvider.notifier).state = !isStark;
+                        
+                        // Update the text field with the converted value
+                        controller.text = convertedValue.toStringAsFixed(2);
+                        
+                        // Set cursor position at end
+                        controller.selection = TextSelection.fromPosition(
+                          TextPosition(offset: controller.text.length),
+                        );
+                        
+                        // Update provider value (always store in Stark)
+                        final starkValue = !isStark ? convertedValue : (convertedValue / 0.24);
+                        ref.read(stakeAmountProvider.notifier).state = starkValue;
+                        
+                        // Force focus and re-enable user editing
+                        focusNode.requestFocus();
+                        Future.delayed(Duration(milliseconds: 50), () {
+                          isUserEditing = true;
+                        });
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(Icons.sync, color: Colors.black),
+                      ),
                     ),
-                    child: Icon(Icons.sync, color: Colors.black),
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none,
                   ),
                 ),
               ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(12),
-                borderSide: BorderSide.none,
+              Positioned(
+                left: 16,
+                top: 12,
+                child: Text(
+                  isStark ? 'amountInStark'.tr() : "amountInUsd",
+                  style: TextStyle(
+                    color: context.primaryTextColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            left: 16,
-            top: 12,
-            child: Text(
-              isStark ? "Amount in Stark" : "Amount in USD",
-              style: TextStyle(
-                color: Colors.black87,
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
       SizedBox(height: 10),
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'You have 50.0 STRK',
-            style: TextStyle(color: Colors.grey),
+            'youHave50.00Strk'.tr(),
+            style: TextStyle( color: context.textHintColor,),
           ),
           Text(
-            '1 STRK = 0.24 USD',
-            style: TextStyle(color: Colors.grey),
+            'strkToUsdRate'.tr(),
+            style: TextStyle( color: context.textHintColor,),
           ),
         ],
       ),
@@ -232,10 +286,10 @@ class CreateWagerScreen extends ConsumerWidget {
         children: [
           Text(
             isStark
-                ? '≈ ${(stakeAmount * 0.24).toStringAsFixed(2)} USD'
-                : '≈ ${stakeAmount.toStringAsFixed(2)} STRK',
+                ? '≈ ${equivalentAmount} USD'
+                : '≈ ${equivalentAmount} STRK',
             style: TextStyle(
-              color: Colors.grey,
+              color: context.textHintColor,
               fontSize: 12,
             ),
           )
@@ -244,8 +298,6 @@ class CreateWagerScreen extends ConsumerWidget {
     ],
   );
 }
-
-
 
   Future<void> _showCategoryDialog(BuildContext context, WidgetRef ref) async {
     Future<String?> showBottomSheet(BuildContext context, Widget child) async {

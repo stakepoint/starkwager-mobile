@@ -48,5 +48,8 @@
   "fund": "Fund",
   "addHashtag(s)": "Add Hashtag(s)",
   "hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
-  "recentTransactions": "Recent Transactions"
+  "recentTransactions": "Recent Transactions",
+  "amountInStark": "Amount in Stark",
+  "strkToUsdRate": "1 STRK = 0.24 USD",
+  "amountInUsd": "Amount in USD"
 }
