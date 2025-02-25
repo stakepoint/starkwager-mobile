@@ -43,9 +43,9 @@ class AvatarDialog extends StatelessWidget {
               Expanded(
                 child: Align(
                   alignment: Alignment.topRight,
-                  child: IconButton(
-                    icon: SvgPicture.asset(AppIcons.close),
-                    onPressed: () => Navigator.pop(context),
+                  child: GestureDetector(
+                    child: SvgPicture.asset(AppIcons.close),
+                    onTap: () => Navigator.pop(context),
                   ),
                 ),
               ),
