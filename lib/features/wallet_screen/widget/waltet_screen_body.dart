@@ -30,7 +30,7 @@ class WalletScreenBody extends ConsumerWidget {
     }
   }
 
-   void _showWthdrawFundsDialog(BuildContext context) {
+  void _showWthdrawFundsDialog(BuildContext context) {
     final isMobile = context.isMobile;
     if (isMobile) {
       showModalBottomSheet(

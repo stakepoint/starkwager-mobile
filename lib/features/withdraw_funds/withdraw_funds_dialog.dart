@@ -19,8 +19,7 @@ class _WithdrawFundsDialogState extends State<WithdrawFundsDialog> {
   final TextEditingController amountController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
-  String get _dialogText =>
-    'withdrawenterAmountDescription'.tr();
+  String get _dialogText => 'withdrawenterAmountDescription'.tr();
 
   @override
   void initState() {
@@ -165,7 +164,6 @@ class _WithdrawFundsDialogState extends State<WithdrawFundsDialog> {
   Widget _buildMainContent(StateSetter setModalState) {
     return _buildInputContent();
   }
-
 
   Widget _buildInputContent() {
     return Column(
