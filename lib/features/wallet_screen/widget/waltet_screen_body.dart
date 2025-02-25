@@ -30,6 +30,33 @@ class WalletScreenBody extends ConsumerWidget {
     }
   }
 
+   void _showWthdrawFundsDialog(BuildContext context) {
+    final isMobile = context.isMobile;
+    if (isMobile) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext context) => WithdrawFundsDialog(
+          onClose: () => Navigator.of(context).pop(),
+          onFund: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => WithdrawFundsDialog(
+          onClose: () => Navigator.of(context).pop(),
+          onFund: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isMobile = context.isMobile;
@@ -41,7 +68,7 @@ class WalletScreenBody extends ConsumerWidget {
         StarkAmount(
           isTablet: !isMobile,
           onAddMoney: () => _showFundWalletDialog(context),
-          onWithdraw: () {},
+          onWithdraw: () => _showWthdrawFundsDialog(context),
         ),
         verticalSpace(16),
         if (isMobile) HomeAddAndWithdraw(),
