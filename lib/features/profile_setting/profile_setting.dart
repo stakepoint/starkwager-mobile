@@ -6,6 +6,7 @@ class ProfileSettingScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
+      appBar: context.isMobile ? MobileHeader(title: 'profile'.tr()) : null,
       backgroundColor: context.primaryBackgroundColor,
       body: SafeArea(
         child: LayoutBuilder(

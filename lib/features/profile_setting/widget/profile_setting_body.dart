@@ -24,7 +24,7 @@ class ProfileSettingBody extends ConsumerWidget {
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       // shape: BoxShape.rectangle,
-                      color: AppColors.grayCool100),
+                      color: context.textBoxTextColor),
                   child: SvgPicture.asset(
                     AppIcons.profileIcon2,
                     height: 24,

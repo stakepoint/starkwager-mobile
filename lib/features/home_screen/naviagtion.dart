@@ -59,8 +59,6 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
       icon: AppIcons.profileIcon,
       onTap: () {
         _onNavigate(ScreenLayout.isTablet(context)
-            // ? Routes.profileTablet
-            // : Routes.profile);
             ? Routes.profileSettingTablet
             : Routes.profileSetting);
       },
