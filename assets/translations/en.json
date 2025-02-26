@@ -68,5 +68,7 @@
   "stocks": "Stocks",
   "esports": "ESports",
   "games": "Games",
+  "withdrawenterAmountDescription": "Enter the amount you want to withdraw to your wallet and cash out wagers.",
+  "withdrawYourFunds": "Withdraw Your Funds",
   "notification": "Notification"
 }

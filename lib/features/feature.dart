@@ -78,3 +78,4 @@ part 'wallet_screen/widget/transaction_item.dart';
 
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
+part 'withdraw_funds/withdraw_funds_dialog.dart';
