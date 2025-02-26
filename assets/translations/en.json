@@ -21,6 +21,8 @@
   "addMoney": "Add Money",
   "withdraw": "Withdraw",
   "walletBalance": "Wallet Balance",
+  "accountSettings": "Account Settings",
+  "changeYourProfilepictureUsername": "Change your profile picture, username\n and other, important information.", 
   "noWagersCreatedYet": "No wagers created yet",
   "stake": "Stake",
   "sendWagerInvite": "Your wager has been created, send wager invite 🚀",
