@@ -14,20 +14,26 @@ class AccountSettingsMobileMode extends StatelessWidget
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          horizontalSpace(16),
+          horizontalSpace(6),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 33), // Instead of verticalSpace(33)
 
               GestureDetector(
-                  onTap: () => GoRouter.of(context).pop(), // Navigate back
+                  onTap: () {
+                     if (context.isMobile) {
+                              GoRouter.of(context).go(Routes.home);
+                            } else {
+                              GoRouter.of(context).go(Routes.homeTablet);
+                            }
+                  }, // Navigate back
                   child: SvgPicture.asset(AppIcons.arrowBack)),
 
               const SizedBox(height: 24),
               Text(
                 'accountSettings'.tr().toUpperCaseString,
-                style: AppTheme.of(context).titleExtraLarge24,
+               style: AppTheme.of(context).headLineLarge32,
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 24),

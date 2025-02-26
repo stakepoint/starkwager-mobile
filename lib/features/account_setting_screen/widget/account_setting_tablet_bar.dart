@@ -7,7 +7,7 @@ class AccountSettingsTabletMode extends ConsumerWidget
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.only(left: 120, right: 80),
+      padding: const EdgeInsets.only(left: 20, right: 80),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -16,7 +16,13 @@ class AccountSettingsTabletMode extends ConsumerWidget
             Row(
               children: [
                 IconButton(
-                  onPressed: () => GoRouter.of(context).pop(), // Navigate back
+                  onPressed: () {
+                    if (context.isMobile) {
+                      GoRouter.of(context).go(Routes.home);
+                    } else {
+                      GoRouter.of(context).go(Routes.homeTablet);
+                    }
+                  }, // Navigate back
                   icon: SvgPicture.asset(AppIcons.arrowBack),
                 ),
                 horizontalSpace(20),
