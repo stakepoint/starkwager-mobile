@@ -20,6 +20,21 @@ class HomeAddAndWithdraw extends ConsumerWidget {
     );
   }
 
+  void _showWthdrawFundsDialog(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: context.primaryBackgroundColor,
+      context: context,
+      isScrollControlled: true,
+      useRootNavigator: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (context) => WithdrawFundsDialog(),
+    );
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
@@ -33,7 +48,7 @@ class HomeAddAndWithdraw extends ConsumerWidget {
         HomeActionButton(
           text: 'withdraw'.tr(),
           iconPath: AppIcons.withdrawIcon,
-          onTap: () {},
+          onTap: () => _showWthdrawFundsDialog(context),
         ),
       ],
     );

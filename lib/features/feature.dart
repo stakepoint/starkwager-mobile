@@ -8,8 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:reown_appkit/modal/appkit_modal_impl.dart';
+import 'package:starkwager/core/constants/app_values.dart';
 import 'package:starkwager/core/constants/assets.dart';
 import 'package:starkwager/core/constants/screen_size.dart';
 import 'package:starkwager/core/providers/navigation_provider.dart';
@@ -17,10 +17,10 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
+import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
-import '../core/constants/app_values.dart';
 import '../core/constants/screen_layout.dart';
 import '../routing/routes.dart';
 import '../theme/app_colors.dart';
@@ -57,6 +57,10 @@ part 'notification/notification_screen.dart';
 part 'notification/widgets/notification_card.dart';
 part 'notification/widgets/notification_mock_data.dart';
 part 'profile_screen.dart/profile_screen.dart';
+part 'profile_setting/profile_setting.dart';
+part 'profile_setting/widget/profile_setting_body.dart';
+part 'profile_setting/widget/profile_setting_mobile_mode.dart';
+part 'profile_setting/widget/profile_setting_tablet_mode.dart';
 part 'profile_setup/profile_setup_screen.dart';
 part 'wager_created/wager_created_screen.dart';
 part 'wager_created/widgets/wager_created_body.dart';
@@ -71,9 +75,13 @@ part 'wallet_screen/wallet_screen.dart';
 part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 
+
 part 'account_setting_screen/widget/account_setting_tablet_bar.dart';
 part 'account_setting_screen/widget/account_setting_mobile.dart';
 part 'account_setting_screen/account_setting_screen.dart';
 
+
+
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
+part 'withdraw_funds/withdraw_funds_dialog.dart';
