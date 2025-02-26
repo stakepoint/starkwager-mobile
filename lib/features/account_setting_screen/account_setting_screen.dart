@@ -79,7 +79,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                       boxShadow: [
                                         BoxShadow(
                                           color:
-                                              AppColors.black.withOpacity(0.1),
+                                              AppColors.grayCool400,
                                           blurRadius: 4,
                                           offset: const Offset(0, 2),
                                         ),
