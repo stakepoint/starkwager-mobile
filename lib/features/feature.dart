@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:reown_appkit/modal/appkit_modal_impl.dart';
+import 'package:starkwager/core/constants/app_values.dart';
 import 'package:starkwager/core/constants/assets.dart';
 import 'package:starkwager/core/constants/screen_size.dart';
 import 'package:starkwager/core/providers/navigation_provider.dart';
@@ -18,7 +21,6 @@ import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
-import '../core/constants/app_values.dart';
 import '../core/constants/screen_layout.dart';
 import '../routing/routes.dart';
 import '../theme/app_colors.dart';
@@ -55,6 +57,10 @@ part 'notification/notification_screen.dart';
 part 'notification/widgets/notification_card.dart';
 part 'notification/widgets/notification_mock_data.dart';
 part 'profile_screen.dart/profile_screen.dart';
+part 'profile_setting/profile_setting.dart';
+part 'profile_setting/widget/profile_setting_body.dart';
+part 'profile_setting/widget/profile_setting_mobile_mode.dart';
+part 'profile_setting/widget/profile_setting_tablet_mode.dart';
 part 'profile_setup/profile_setup_screen.dart';
 part 'wager_created/wager_created_screen.dart';
 part 'wager_created/widgets/wager_created_body.dart';
@@ -70,3 +76,4 @@ part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
+part 'withdraw_funds/withdraw_funds_dialog.dart';
