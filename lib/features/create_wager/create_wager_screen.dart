@@ -173,7 +173,7 @@ Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
                 focusNode: focusNode,
                 keyboardType: TextInputType.number,
                 style: TextStyle(
-                  color: Colors.black,
+                 // color: Colors.black,
                   fontSize: 16,
                 ),
                 onTap: () {
@@ -196,9 +196,9 @@ Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
                   filled: true,
-                  fillColor: Color(0xFFEFF1F5),
+                  fillColor: context.textBoxTextColor,
                   hintText: '0',
-                  hintStyle: TextStyle(color: Colors.grey),
+                  hintStyle: TextStyle(color: context.textHintColor),
                   suffixIcon: Padding(
                     padding: EdgeInsets.only(right: 10.0),
                     child: InkWell(
@@ -238,10 +238,10 @@ Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
                         height: 40,
                         width: 50,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: context.secondaryBackgroundColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Icon(Icons.sync, color: Colors.black),
+                        child: Icon(Icons.sync, color: context.primaryTextColor),
                       ),
                     ),
                   ),
@@ -255,7 +255,7 @@ Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
                 left: 16,
                 top: 12,
                 child: Text(
-                  isStark ? 'amountInStark'.tr() : "amountInUsd",
+                  isStark ? 'amountInStark'.tr() : "amountInUsd".tr(),
                   style: TextStyle(
                     color: context.primaryTextColor,
                     fontSize: 14,
@@ -286,8 +286,8 @@ Column buildStakeTextField(BuildContext context, WidgetRef ref, String title) {
         children: [
           Text(
             isStark
-                ? '≈ ${equivalentAmount} USD'
-                : '≈ ${equivalentAmount} STRK',
+                ? '≈ $equivalentAmount USD'
+                : '≈ $equivalentAmount STRK',
             style: TextStyle(
               color: context.textHintColor,
               fontSize: 12,
