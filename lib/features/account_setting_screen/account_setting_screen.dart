@@ -78,8 +78,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                       borderRadius: BorderRadius.circular(16),
                                       boxShadow: [
                                         BoxShadow(
-                                          color:
-                                              AppColors.grayCool400,
+                                          color: AppColors.grayCool400,
                                           blurRadius: 4,
                                           offset: const Offset(0, 2),
                                         ),
