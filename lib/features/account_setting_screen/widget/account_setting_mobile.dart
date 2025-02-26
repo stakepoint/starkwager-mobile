@@ -22,18 +22,18 @@ class AccountSettingsMobileMode extends StatelessWidget
 
               GestureDetector(
                   onTap: () {
-                     if (context.isMobile) {
-                              GoRouter.of(context).go(Routes.home);
-                            } else {
-                              GoRouter.of(context).go(Routes.homeTablet);
-                            }
+                    if (context.isMobile) {
+                      GoRouter.of(context).go(Routes.home);
+                    } else {
+                      GoRouter.of(context).go(Routes.homeTablet);
+                    }
                   }, // Navigate back
                   child: SvgPicture.asset(AppIcons.arrowBack)),
 
               const SizedBox(height: 24),
               Text(
                 'accountSettings'.tr().toUpperCaseString,
-               style: AppTheme.of(context).headLineLarge32,
+                style: AppTheme.of(context).headLineLarge32,
                 textAlign: TextAlign.left,
               ),
               const SizedBox(height: 24),

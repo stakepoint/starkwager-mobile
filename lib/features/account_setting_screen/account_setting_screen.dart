@@ -84,7 +84,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                         ),
                                       ],
                                     ),
-                                    child:  Icon(Icons.camera_alt,
+                                    child: Icon(Icons.camera_alt,
                                         color: context.error, size: 20),
                                   ),
                                 ),
