@@ -7,7 +7,7 @@ class AccountSettingsTabletMode extends ConsumerWidget
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Padding(
-      padding: const EdgeInsets.only(left: 200, right: 20),
+      padding: const EdgeInsets.only(left: 120, right: 80),
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -19,9 +19,10 @@ class AccountSettingsTabletMode extends ConsumerWidget
                   onPressed: () => GoRouter.of(context).pop(), // Navigate back
                   icon: SvgPicture.asset(AppIcons.arrowBack),
                 ),
+                horizontalSpace(20),
                 Expanded(
                   child: TabletHeader(
-                    title: 'accountSettings'.tr(),
+                    title: 'accountSettings'.tr().toUpperCaseString,
                     onProfileTap: () =>
                         GoRouter.of(context).go(Routes.profileSetup),
                   ),

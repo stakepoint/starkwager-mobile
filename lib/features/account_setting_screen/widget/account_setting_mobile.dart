@@ -18,17 +18,14 @@ class AccountSettingsMobileMode extends StatelessWidget
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 33), // Instead of verticalSpace(33)
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () => GoRouter.of(context).pop(),
-                  icon: SvgPicture.asset(AppIcons.arrowBack),
-                ),
-              ],
-            ),
+
+            GestureDetector(
+                onTap: () => GoRouter.of(context).pop(), // Navigate back
+                child: SvgPicture.asset(AppIcons.arrowBack)),
+
             const SizedBox(height: 24),
             Text(
-              'accountSettings'.tr(),
+              'accountSettings'.tr().toUpperCaseString,
               style: AppTheme.of(context).titleExtraLarge24,
               textAlign: TextAlign.left,
             ),

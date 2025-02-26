@@ -11,7 +11,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
   final _usernameController = TextEditingController();
   final _fullnameController = TextEditingController();
   bool _isUsernameAvailable = false;
-  File? _selectedImage;
 
   @override
   void dispose() {
@@ -47,12 +46,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: 1,
-                          color: context.dividerColor,
-                          margin: const EdgeInsets.symmetric(
-                              vertical: AppValues.height24),
-                        ),
+                        verticalSpace(context.isMobile ? 24 : 120),
                         Padding(
                           padding:
                               const EdgeInsets.only(left: AppValues.padding8),
@@ -66,23 +60,13 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  child: _selectedImage != null
-                                      ? ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.file(
-                                            _selectedImage!,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        )
-                                      : ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(20),
-                                          child: Image.asset(
-                                            AppIcons.userImage,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(20),
+                                    child: Image.asset(
+                                      AppIcons.userImage,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ),
                                 Positioned(
                                   right: -4,
@@ -90,19 +74,19 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                      color: Colors.white,
+                                      color: AppColors.white,
                                       borderRadius: BorderRadius.circular(16),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black
-                                              .withValues(alpha: 0.1),
+                                          color:
+                                              AppColors.black.withOpacity(0.1),
                                           blurRadius: 4,
                                           offset: const Offset(0, 2),
                                         ),
                                       ],
                                     ),
                                     child: const Icon(Icons.camera_alt,
-                                        color: Colors.black, size: 20),
+                                        color: AppColors.black, size: 20),
                                   ),
                                 ),
                               ],
@@ -110,7 +94,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                           ),
                         ),
                         verticalSpace(AppValues.height20),
-                        FullNameEditText(
+                        CustomEditText(
                           controller: _fullnameController,
                           onValueChanged: (e) {},
                         ),
@@ -131,13 +115,13 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                 style:
                                     AppTheme.of(context).bodyLarge16.copyWith(
                                           color: _isUsernameAvailable
-                                              ? Colors.green
-                                              : Colors.red,
+                                              ? AppColors.success500
+                                              : AppColors.rambutan100,
                                         ),
                               ),
                             ),
                           ),
-                        SizedBox(height: 200),
+                        SizedBox(height: context.isMobile ? 270 : 200),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
                           height: context.isMobile
@@ -153,7 +137,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                             }
                           },
                         ),
-                        SizedBox(height: 50),
+                        SizedBox(height: context.isMobile ? 32 : 184),
                       ],
                     ),
                   ),

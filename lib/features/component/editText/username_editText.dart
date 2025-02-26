@@ -47,8 +47,8 @@ class UsernameEditText extends StatelessWidget {
   }
 }
 
-class FullNameEditText extends StatelessWidget {
-  const FullNameEditText(
+class CustomEditText extends StatelessWidget {
+  const CustomEditText(
       {super.key,
       required this.controller,
       required this.onValueChanged,
