@@ -171,10 +171,9 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               _isUsernameAvailable,
                           onPressed: () {
                             if (context.isMobile) {
-                              GoRouter.of(context).go(Routes.accountSettings);
+                              GoRouter.of(context).go(Routes.home);
                             } else {
-                              GoRouter.of(context)
-                                  .go(Routes.accountSettingsTablet);
+                              GoRouter.of(context).go(Routes.homeTablet);
                             }
                           },
                         ),

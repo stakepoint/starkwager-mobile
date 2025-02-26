@@ -74,18 +74,18 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                   child: Container(
                                     padding: const EdgeInsets.all(8),
                                     decoration: BoxDecoration(
-                                      color: AppColors.white,
+                                      color: context.tabTextColor,
                                       borderRadius: BorderRadius.circular(16),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: AppColors.grayCool400,
+                                          color: context.shadowColor,
                                           blurRadius: 4,
                                           offset: const Offset(0, 2),
                                         ),
                                       ],
                                     ),
-                                    child: const Icon(Icons.camera_alt,
-                                        color: AppColors.black, size: 20),
+                                    child: Icon(Icons.camera_alt,
+                                        color: context.error, size: 20),
                                   ),
                                 ),
                               ],
@@ -114,8 +114,8 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                                 style:
                                     AppTheme.of(context).bodyLarge16.copyWith(
                                           color: _isUsernameAvailable
-                                              ? AppColors.success500
-                                              : AppColors.rambutan100,
+                                              ? context.successColor
+                                              : context.secondaryWidgetColor,
                                         ),
                               ),
                             ),

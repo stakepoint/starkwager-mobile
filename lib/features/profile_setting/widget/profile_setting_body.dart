@@ -53,10 +53,19 @@ class ProfileSettingBody extends ConsumerWidget {
                 ],
               ),
               Spacer(),
-              SvgPicture.asset(
-                AppIcons.nextArrow,
-                height: 16,
-                width: 16,
+              GestureDetector(
+                onTap: () {
+                  if (context.isMobile) {
+                    GoRouter.of(context).go(Routes.accountSettings);
+                  } else {
+                    GoRouter.of(context).go(Routes.accountSettingsTablet);
+                  }
+                },
+                child: SvgPicture.asset(
+                  AppIcons.nextArrow,
+                  height: 16,
+                  width: 16,
+                ),
               ),
             ],
           ),

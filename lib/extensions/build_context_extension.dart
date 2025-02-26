@@ -58,6 +58,7 @@ extension ThemeModeExtension on BuildContext {
 
   Color get menuBackgroundColor =>
       isDarkMode ? AppColors.grayCool800 : AppColors.grayCool800;
+  Color get error => isDarkMode ? AppColors.rambutan100 : AppColors.rambutan100;
 
   Color get menuTextColor =>
       isDarkMode ? AppColors.grayneutral500 : AppColors.grayneutral500;

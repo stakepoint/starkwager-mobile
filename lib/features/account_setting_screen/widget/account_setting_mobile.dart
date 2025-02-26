@@ -11,27 +11,29 @@ class AccountSettingsMobileMode extends StatelessWidget
       automaticallyImplyLeading: false,
       backgroundColor: context.primaryBackgroundColor,
       foregroundColor: context.primaryBackgroundColor,
-      title: Padding(
-        padding:
-            const EdgeInsets.symmetric(horizontal: 16.0), // Consistent spacing
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 33), // Instead of verticalSpace(33)
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          horizontalSpace(16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 33), // Instead of verticalSpace(33)
 
-            GestureDetector(
-                onTap: () => GoRouter.of(context).pop(), // Navigate back
-                child: SvgPicture.asset(AppIcons.arrowBack)),
+              GestureDetector(
+                  onTap: () => GoRouter.of(context).pop(), // Navigate back
+                  child: SvgPicture.asset(AppIcons.arrowBack)),
 
-            const SizedBox(height: 24),
-            Text(
-              'accountSettings'.tr().toUpperCaseString,
-              style: AppTheme.of(context).titleExtraLarge24,
-              textAlign: TextAlign.left,
-            ),
-            const SizedBox(height: 24),
-          ],
-        ),
+              const SizedBox(height: 24),
+              Text(
+                'accountSettings'.tr().toUpperCaseString,
+                style: AppTheme.of(context).titleExtraLarge24,
+                textAlign: TextAlign.left,
+              ),
+              const SizedBox(height: 24),
+            ],
+          ),
+        ],
       ),
     );
   }
