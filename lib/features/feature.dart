@@ -8,7 +8,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:reown_appkit/modal/appkit_modal_impl.dart';
 import 'package:starkwager/core/constants/app_values.dart';
 import 'package:starkwager/core/constants/assets.dart';
@@ -18,13 +17,13 @@ import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
+import 'package:starkwager/features/profile_setup/avatar_widget.dart';
+import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
 import '../core/constants/screen_layout.dart';
 import '../routing/routes.dart';
 import '../theme/app_colors.dart';
-import '../theme/app_theme.dart';
-
 import 'connect_wallet/provider/wallet_connection_provider.dart';
 import 'connect_wallet/provider/wallet_connection_state.dart';
 import 'create_wager/provider/category_provider.dart';
@@ -76,9 +75,11 @@ part 'wallet_screen/wallet_screen.dart';
 part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
 
+
 part 'account_setting_screen/widget/account_setting_tablet_bar.dart';
 part 'account_setting_screen/widget/account_setting_mobile.dart';
 part 'account_setting_screen/account_setting_screen.dart';
+
 
 
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
