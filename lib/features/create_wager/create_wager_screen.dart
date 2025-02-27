@@ -582,7 +582,7 @@ class HashtagDialog extends ConsumerWidget {
               children: [
                 Text(
                   textAlign: TextAlign.center,
-                  'Hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
+                  'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
                   style: AppTheme.of(context).textMediumNormal,
                 ),
               ],
@@ -625,7 +625,7 @@ class HashtagBottomSheet extends ConsumerWidget {
               horizontalSpace(95),
               Text(
                 textAlign: TextAlign.center,
-                'addHastag(s)'.tr(),
+                'addHashtag(s)'.tr(),
                 style: AppTheme.of(context).titleExtraLarge24,
               ),
               Spacer(),
@@ -641,7 +641,7 @@ class HashtagBottomSheet extends ConsumerWidget {
             children: [
               Text(
                 textAlign: TextAlign.center,
-                'Hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
+                'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
                 style: AppTheme.of(context).textMediumNormal,
               ),
             ],
