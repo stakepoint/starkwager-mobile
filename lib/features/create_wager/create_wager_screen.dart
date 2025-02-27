@@ -112,7 +112,7 @@ class CreateWagerScreen extends ConsumerWidget {
                     'termsOrWagerDescription'.tr(), 'wager.strk/'.tr(), 1000,
                     maxLine: 3),
                 verticalSpace(AppValues.height30),
-                buildStakeTextField(context, 'stake'.tr()),
+                buildStakeTextField(context, ref, 'stake'.tr()),
                 verticalSpace(size.height * 0.06),
                 PrimaryButton(
                   buttonText: 'continue'.tr(),
@@ -130,6 +130,150 @@ class CreateWagerScreen extends ConsumerWidget {
   }
 
   //----------------------------------------------- STAKE FIELD ----------------------------------------------- //
+  Widget buildStakeTextField(
+      BuildContext context, WidgetRef ref, String title) {
+    final controller = ref.watch(textControllerProvider);
+    final isStark = ref.watch(isStarkProvider);
+    final stakeAmount = ref.watch(stakeAmountProvider);
+
+    // Format displayed values
+    final strk = stakeAmount;
+    final usd = stakeAmount * 0.24;
+
+    final String conversionText = stakeAmount > 0
+        ? (isStark
+            ? "${strk.toStringAsFixed(2)} STRK ≈ ${usd.toStringAsFixed(2)} USD"
+            : "${strk.toStringAsFixed(2)} STRK ≈ ${usd.toStringAsFixed(2)} USD")
+        : "1 STRK ≈ 0.24 USD";
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title.tr(),
+          style: AppTheme.of(context).textSmallMedium.copyWith(
+                color: context.primaryTextColor,
+              ),
+        ),
+        SizedBox(height: 5),
+        Stack(
+          children: [
+            TextFormField(
+              controller: controller,
+              keyboardType: TextInputType.numberWithOptions(
+                  decimal: true), // Allow decimal numbers
+              inputFormatters: [
+                FilteringTextInputFormatter.allow(
+                    RegExp(r'^\d*\.?\d{0,2}')), // Allow up to 2 decimal places
+              ],
+              style: TextStyle(fontSize: 16),
+              onChanged: (value) {
+                // Parse the input value to a double
+                final amount = double.tryParse(value) ?? 0.0;
+                if (isStark) {
+                  ref.read(stakeAmountProvider.notifier).state = amount;
+                } else {
+                  ref.read(stakeAmountProvider.notifier).state = amount / 0.24;
+                }
+              },
+              decoration: InputDecoration(
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+                filled: true,
+                fillColor: context.textBoxTextColor,
+                hintText: '0',
+                hintStyle: TextStyle(color: context.textHintColor),
+                suffixIcon: Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: InkWell(
+                    onTap: () {
+                      // Toggle mode
+                      final newIsStark = !isStark;
+                      ref.read(isStarkProvider.notifier).state = newIsStark;
+
+                      // Update text field without losing focus
+                      final currentText = controller.text;
+                      if (currentText.isNotEmpty) {
+                        final currentValue =
+                            double.tryParse(currentText) ?? 0.0;
+
+                        // Using post-frame callback to avoid state modification during build
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          if (newIsStark) {
+                            // Converting from USD to STRK
+                            controller.text =
+                                (currentValue / 0.24).toStringAsFixed(2);
+                          } else {
+                            // Converting from STRK to USD
+                            controller.text =
+                                (currentValue * 0.24).toStringAsFixed(2);
+                          }
+
+                          // Preserve cursor position
+                          controller.selection = TextSelection.fromPosition(
+                            TextPosition(offset: controller.text.length),
+                          );
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: context.primaryBackgroundColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(Icons.sync, color: context.primaryTextColor),
+                    ),
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            Positioned(
+              left: 16,
+              top: 12,
+              child: Text(
+                isStark ? 'amountInStark'.tr() : "amountInUsd".tr(),
+                style: TextStyle(
+                  color: context.primaryTextColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 10),
+        // Updated Row with Flexible for wrapping conversion text
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'youHave50.00Strk'.tr(),
+              style: TextStyle(
+                color: context.textHintColor,
+              ),
+            ),
+            Flexible(
+              child: Text(
+                conversionText,
+                style: TextStyle(
+                  color: context.textHintColor,
+                ),
+                softWrap: true, // Allow text to wrap
+                overflow: TextOverflow.visible, // Prevent clipping
+                textAlign: TextAlign.end, // Align text to the right
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 
   Future<void> _showCategoryDialog(BuildContext context, WidgetRef ref) async {
     Future<String?> showBottomSheet(BuildContext context, Widget child) async {
@@ -322,48 +466,6 @@ class CreateWagerScreen extends ConsumerWidget {
                   height: 1,
                 ),
               )),
-    );
-  }
-
-  Column buildStakeTextField(BuildContext context, String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,
-            style: AppTheme.of(context)
-                .textSmallMedium
-                .copyWith(fontWeight: FontWeight.w600)),
-        SizedBox(
-          height: 5,
-        ),
-        TextField(
-          keyboardType: TextInputType.number,
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            suffixText: "\$0",
-            prefixIcon: Image.asset(AppIcons.snSymbol),
-            filled: true,
-            fillColor: context.textBoxTextColor,
-            hintStyle: TextStyle(color: Colors.grey),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
-        verticalSpace(5),
-        Row(
-          children: [
-            Spacer(),
-            Text(
-              'youHave50.00Strk'.tr(),
-              style: TextStyle(
-                color: context.textHintColor,
-              ),
-            ),
-          ],
-        )
-      ],
     );
   }
 
