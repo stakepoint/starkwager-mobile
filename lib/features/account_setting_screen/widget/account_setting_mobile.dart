@@ -29,14 +29,6 @@ class AccountSettingsMobileMode extends StatelessWidget
                     }
                   }, // Navigate back
                   child: SvgPicture.asset(AppIcons.arrowBack)),
-
-              // const SizedBox(height: 24),
-              // Text(
-              //   'accountSettings'.tr().toUpperCaseString,
-              //   style: AppTheme.of(context).headLineLarge32,
-              //   textAlign: TextAlign.left,
-              // ),
-              // const SizedBox(height: 24),
             ],
           ),
         ],
