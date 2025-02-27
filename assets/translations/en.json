@@ -60,6 +60,8 @@
   "addHashtag(s)": "Add Hashtag(s)",
   "hashtagshelpotherusersfindyourwagereasilyandquickly": "Hashtags help other users find your\nwager easily and quickly",
   "recentTransactions": "Recent Transactions",
+  "accountSettings":"Account Settings",
+  "full_name":"Full Name",
   "trending": "Trending",
   "sports": "Sports",
   "entertainment": "Entertainment",
@@ -73,4 +75,5 @@
   "selectANewAvatar": "Select a new avatar from our list of specially curated avatar",
   "choose": "Choose",
   "notification": "Notification"
+
 }

@@ -74,6 +74,11 @@ part 'wager_screen/widget/wager_widget.dart';
 part 'wallet_screen/wallet_screen.dart';
 part 'wallet_screen/widget/recent_transaction.dart';
 part 'wallet_screen/widget/transaction_item.dart';
+
+part 'account_setting_screen/widget/account_setting_tablet_bar.dart';
+part 'account_setting_screen/widget/account_setting_mobile.dart';
+part 'account_setting_screen/account_setting_screen.dart';
+
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
 part 'withdraw_funds/withdraw_funds_dialog.dart';

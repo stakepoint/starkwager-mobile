@@ -3,12 +3,13 @@ part of '../../feature.dart';
 class TabletHeader extends StatelessWidget {
   final String title;
   final VoidCallback? onProfileTap;
+  final double horizontalSpaceHeader;
 
-  const TabletHeader({
-    super.key,
-    required this.title,
-    this.onProfileTap,
-  });
+  const TabletHeader(
+      {super.key,
+      required this.title,
+      this.onProfileTap,
+      this.horizontalSpaceHeader = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class TabletHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title, style: AppTheme.of(context).headLineLarge32),
+        horizontalSpace(horizontalSpaceHeader),
         Row(
           children: [
             GestureDetector(
