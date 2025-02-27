@@ -20,6 +20,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: context.isMobile
           ? AccountSettingsMobileMode()
@@ -37,7 +38,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                 child: Padding(
                   padding: EdgeInsets.symmetric(
                       horizontal: context.isMobile
-                          ? AppValues.padding24
+                          ? AppValues.padding16
                           : isLandscape
                               ? 184
                               : 120),
@@ -46,6 +47,11 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
+                        if (context.isMobile)
+                          Text(
+                            'accountSettings'.tr().toUpperCaseString,
+                            style: AppTheme.of(context).headLineLarge32,
+                          ),
                         verticalSpace(context.isMobile ? 24 : 120),
                         Padding(
                           padding:
@@ -120,7 +126,8 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ),
                             ),
                           ),
-                        SizedBox(height: context.isMobile ? 270 : 200),
+                        // SizedBox(height: context.isMobile ? 270 : 200),
+                        verticalSpace(size.height * 0.37),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
                           height: context.isMobile
@@ -136,7 +143,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                             }
                           },
                         ),
-                        SizedBox(height: context.isMobile ? 32 : 184),
+                        // verticalSpace(context.isMobile ? 32 : 184),
                       ],
                     ),
                   ),

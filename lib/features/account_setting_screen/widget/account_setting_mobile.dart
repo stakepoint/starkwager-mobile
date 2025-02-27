@@ -7,7 +7,7 @@ class AccountSettingsMobileMode extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: 150,
+      toolbarHeight: 80,
       automaticallyImplyLeading: false,
       backgroundColor: context.primaryBackgroundColor,
       foregroundColor: context.primaryBackgroundColor,
@@ -18,7 +18,7 @@ class AccountSettingsMobileMode extends StatelessWidget
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 33), // Instead of verticalSpace(33)
+              verticalSpace(13), // Instead of verticalSpace(33)
 
               GestureDetector(
                   onTap: () {
@@ -30,13 +30,13 @@ class AccountSettingsMobileMode extends StatelessWidget
                   }, // Navigate back
                   child: SvgPicture.asset(AppIcons.arrowBack)),
 
-              const SizedBox(height: 24),
-              Text(
-                'accountSettings'.tr().toUpperCaseString,
-                style: AppTheme.of(context).headLineLarge32,
-                textAlign: TextAlign.left,
-              ),
-              const SizedBox(height: 24),
+              // const SizedBox(height: 24),
+              // Text(
+              //   'accountSettings'.tr().toUpperCaseString,
+              //   style: AppTheme.of(context).headLineLarge32,
+              //   textAlign: TextAlign.left,
+              // ),
+              // const SizedBox(height: 24),
             ],
           ),
         ],
@@ -45,5 +45,5 @@ class AccountSettingsMobileMode extends StatelessWidget
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(150);
+  Size get preferredSize => const Size.fromHeight(80);
 }
