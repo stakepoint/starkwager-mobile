@@ -112,7 +112,7 @@ class CreateWagerScreen extends ConsumerWidget {
                     'termsOrWagerDescription'.tr(), 'wager.strk/'.tr(), 1000,
                     maxLine: 3),
                 verticalSpace(AppValues.height30),
-                buildStakeTextField(context, 'stake'.tr()),
+                buildStakeTextField(context, ref, 'stake'.tr()),
                 verticalSpace(size.height * 0.06),
                 PrimaryButton(
                   buttonText: 'continue'.tr(),
@@ -130,6 +130,166 @@ class CreateWagerScreen extends ConsumerWidget {
   }
 
   //----------------------------------------------- STAKE FIELD ----------------------------------------------- //
+
+  Widget buildStakeTextField(
+      BuildContext context, WidgetRef ref, String title) {
+    final controller = ref.watch(textControllerProvider);
+    final isStark = ref.watch(isStarkProvider);
+    final stakeAmount = ref.watch(stakeAmountProvider);
+
+    final NumberFormat decimalFormatter = NumberFormat("#,##0.00", "en_US");
+
+    final String conversionText = stakeAmount > 0
+        ? (isStark
+            ? " ${decimalFormatter.format(stakeAmount * 0.24)} USD" // Only show USD equivalent when in STRK mode
+            : " ${decimalFormatter.format(stakeAmount)} STRK") // Only show STRK equivalent when in USD mode
+        : isStark
+            ? "1 STRK ≈ 0.24 USD"
+            : "1 USD ≈ 4.17 STRK";
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          title.tr(),
+          style: AppTheme.of(context).textSmallMedium.copyWith(
+                color: context.primaryTextColor,
+              ),
+        ),
+        SizedBox(height: 5),
+        Stack(
+          children: [
+            TextFormField(
+              controller: controller,
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
+              style: TextStyle(fontSize: 16),
+              onChanged: (value) {
+                String numericValue = value.replaceAll(RegExp(r'[^\d]'), '');
+
+                if (numericValue.isEmpty) {
+                  ref.read(stakeAmountProvider.notifier).state = 0.0;
+                  controller.text = '';
+                  return;
+                }
+
+                int length = numericValue.length;
+                String wholePart =
+                    length > 2 ? numericValue.substring(0, length - 2) : '0';
+                String decimalPart = length >= 2
+                    ? numericValue.substring(length - 2)
+                    : numericValue.padLeft(2, '0');
+
+                double amount = double.parse('$wholePart.$decimalPart');
+
+                if (isStark) {
+                  ref.read(stakeAmountProvider.notifier).state = amount;
+                } else {
+                  ref.read(stakeAmountProvider.notifier).state = amount / 0.24;
+                }
+
+                String formattedValue = decimalFormatter.format(amount);
+
+                if (formattedValue != controller.text) {
+                  controller.value = TextEditingValue(
+                    text: formattedValue,
+                    selection:
+                        TextSelection.collapsed(offset: formattedValue.length),
+                  );
+                }
+              },
+              decoration: InputDecoration(
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+                filled: true,
+                fillColor: context.textBoxTextColor,
+                hintText: '0',
+                hintStyle: TextStyle(color: context.textHintColor),
+                suffixIcon: Padding(
+                  padding: EdgeInsets.only(right: 10.0),
+                  child: InkWell(
+                    onTap: () {
+                      final newIsStark = !isStark;
+                      ref.read(isStarkProvider.notifier).state = newIsStark;
+
+                      final currentText = controller.text;
+                      if (currentText.isNotEmpty) {
+                        final currentValue = double.tryParse(currentText
+                                .replaceAll(RegExp(r'[^\d.]'), '')) ??
+                            0.0;
+
+                        WidgetsBinding.instance.addPostFrameCallback((_) {
+                          double newValue;
+                          if (newIsStark) {
+                            newValue = currentValue / 0.24;
+                          } else {
+                            newValue = currentValue * 0.24;
+                          }
+
+                          controller.text = decimalFormatter.format(newValue);
+
+                          controller.selection = TextSelection.fromPosition(
+                            TextPosition(offset: controller.text.length),
+                          );
+                        });
+                      }
+                    },
+                    child: Container(
+                      height: 40,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: context.primaryBackgroundColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Icon(Icons.sync, color: context.primaryTextColor),
+                    ),
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+            ),
+            Positioned(
+              left: 16,
+              top: 12,
+              child: Text(
+                isStark ? 'amountInStark'.tr() : "amountInUsd".tr(),
+                style: TextStyle(
+                  color: context.primaryTextColor,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'youHave50.00Strk'.tr(),
+              style: TextStyle(
+                color: context.textHintColor,
+              ),
+            ),
+            Flexible(
+              child: Text(
+                conversionText,
+                style: TextStyle(
+                  color: context.textHintColor,
+                ),
+                softWrap: true,
+                overflow: TextOverflow.visible,
+                textAlign: TextAlign.end,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 
   Future<void> _showCategoryDialog(BuildContext context, WidgetRef ref) async {
     Future<String?> showBottomSheet(BuildContext context, Widget child) async {
@@ -322,48 +482,6 @@ class CreateWagerScreen extends ConsumerWidget {
                   height: 1,
                 ),
               )),
-    );
-  }
-
-  Column buildStakeTextField(BuildContext context, String title) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(title,
-            style: AppTheme.of(context)
-                .textSmallMedium
-                .copyWith(fontWeight: FontWeight.w600)),
-        SizedBox(
-          height: 5,
-        ),
-        TextField(
-          keyboardType: TextInputType.number,
-          textAlignVertical: TextAlignVertical.center,
-          decoration: InputDecoration(
-            suffixText: "\$0",
-            prefixIcon: Image.asset(AppIcons.snSymbol),
-            filled: true,
-            fillColor: context.textBoxTextColor,
-            hintStyle: TextStyle(color: Colors.grey),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide.none,
-            ),
-          ),
-        ),
-        verticalSpace(5),
-        Row(
-          children: [
-            Spacer(),
-            Text(
-              'youHave50.00Strk'.tr(),
-              style: TextStyle(
-                color: context.textHintColor,
-              ),
-            ),
-          ],
-        )
-      ],
     );
   }
 
