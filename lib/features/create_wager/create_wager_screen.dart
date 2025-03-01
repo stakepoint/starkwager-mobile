@@ -367,7 +367,7 @@ class CreateWagerScreen extends ConsumerWidget {
     );
   }
 
-//----------------------------------------------- CATEGORYWAGER TEXTFIELD ----------------------------------------------- //
+//----------------------------------------------- CATEGORY WAGER TEXTFIELD ----------------------------------------------- //
 
   Widget buildCreateWagerTextField(
       BuildContext context, String title, String hintText, int maxLength,

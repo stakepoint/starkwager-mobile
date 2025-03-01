@@ -52,16 +52,6 @@ Create a new branch following our branch naming convention:
 ```bash
 git checkout -b feature/issue-title-code
 ```
-### Branch Naming Convention
-
-All branches should be created with the following naming pattern:
-
-Where XXX is the issue number from our issue tracking system. For example:
-- `STRKWGR-001`
-- `STRKWGR-022`
-- `STRKWGR-123`
-
----
 
 ### 4. Write Code
 - Follow coding standards.
