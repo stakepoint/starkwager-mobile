@@ -73,6 +73,8 @@
   "withdrawYourFunds": "Withdraw Your Funds",
   "selectANewAvatar": "Select a new avatar from our list of specially curated avatar",
   "choose": "Choose",
-  "notification": "Notification"
-
+  "notification": "Notification",
+  "amountInStark": "Amount in Stark",
+  "strkToUsdRate": "1 STRK = 0.24 USD",
+  "amountInUsd": "Amount in USD"
 }
