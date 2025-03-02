@@ -1,8 +1,8 @@
 
-<p align="center">
+<div align="center">
   
   ![Container](https://github.com/user-attachments/assets/9bff87ad-48d6-4237-8139-81d9ff94ede8)
-</p>
+</div>
 
 # StarkWager - mobile 🎲
 
