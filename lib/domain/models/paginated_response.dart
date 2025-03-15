@@ -1,11 +1,11 @@
-const int PER_PAGE_LIMIT = 20;
+const int perPageLimit = 20;
 
 class PaginatedResponse<T> {
   final int total;
 
   final int skip;
 
-  static const limit = PER_PAGE_LIMIT;
+  static const limit = perPageLimit;
 
   final List<T> data;
 
