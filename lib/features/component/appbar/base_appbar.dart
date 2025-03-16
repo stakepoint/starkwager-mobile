@@ -23,7 +23,12 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: context.isMobile
           ? IconButton(
               onPressed: () => GoRouter.of(context).pop(),
-              icon: SvgPicture.asset(AppIcons.arrowBack),
+              icon: SvgPicture.asset(AppIcons.arrowBack,
+                  colorFilter: ColorFilter.mode(
+                    context.iconColor,
+                    BlendMode.srcIn,
+                  )
+              ),
             )
           : Padding(
               padding: const EdgeInsets.only(left: 20),

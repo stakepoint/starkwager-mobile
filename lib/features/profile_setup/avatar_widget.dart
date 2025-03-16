@@ -28,6 +28,7 @@ class AvatarDialog extends StatelessWidget {
       margin:
           context.isMobile ? const EdgeInsets.symmetric(horizontal: 16) : null,
       width: !context.isMobile ? 550 : double.infinity,
+      //color: context.containerColor,
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -186,7 +187,7 @@ void showAvatarDialog(BuildContext context,
       ? showModalBottomSheet(
           context: context,
           isScrollControlled: true,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.black,
           builder: (context) => AvatarDialog(
             onIconSelected: onIconSelected,
             isBottomSheet: true,

@@ -33,7 +33,11 @@ class HomeScreen extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               ProfileMenu(),
-                              SvgPicture.asset(AppIcons.notificationIcon),
+                              SvgPicture.asset(AppIcons.notificationIcon,
+                                  colorFilter: ColorFilter.mode(
+                                context.iconColor,
+                                BlendMode.srcIn,
+                              )),
                             ],
                           ),
                         ),

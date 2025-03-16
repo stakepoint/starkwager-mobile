@@ -8,6 +8,7 @@ class WagersScreen extends ConsumerWidget {
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     return Scaffold(
+        backgroundColor: context.primaryBackgroundColor,
       floatingActionButton: ScreenLayout.isTablet(context)
           ? isPortrait
               ? newWagerButton(context)

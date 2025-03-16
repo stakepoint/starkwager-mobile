@@ -60,15 +60,7 @@ class _HomeScreenBodyContentState
               ? context.tabSelectedBackgroundColor
               : context.tabUnselectedBackgroundColor,
           borderRadius: BorderRadius.circular(16),
-          boxShadow: isSelected
-              ? [
-                  BoxShadow(
-                    color: context.shadowColor,
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  )
-                ]
-              : null,
+
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -99,7 +91,7 @@ class _HomeScreenBodyContentState
                 title,
                 style: AppTheme.of(context).textSmallMedium.copyWith(
                       fontSize: 15,
-                      color: AppColors.tabSelectedColor,
+                      color: context.unselectedTabTextColor,
                       height: 1.2,
                     ),
               ),
@@ -109,7 +101,7 @@ class _HomeScreenBodyContentState
                 width: 20,
                 height: 20,
                 colorFilter: ColorFilter.mode(
-                  AppColors.tabSelectedColor,
+                  context.unselectedTabTextColor,
                   BlendMode.srcIn,
                 ),
               ),

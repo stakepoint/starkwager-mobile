@@ -133,7 +133,7 @@ class WagerSummaryScreen extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  WagerSummaryCancelClaim(),
+                  WagerSummaryViewProof(),
                 ],
               ),
             ),
@@ -183,7 +183,11 @@ class WagerSummaryScreen extends ConsumerWidget {
                             if (hasHashtag)
                               Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
-                                child: SvgPicture.asset(AppIcons.hashTagIcon),
+                                child: SvgPicture.asset(AppIcons.hashTagIcon,
+                                    colorFilter: ColorFilter.mode(
+                                      context.iconColor,
+                                      BlendMode.srcIn,
+                                    )),
                               ),
                             Flexible(
                               child: SingleChildScrollView(

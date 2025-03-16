@@ -37,6 +37,10 @@ class ProfileSettingBody extends ConsumerWidget {
                       AppIcons.profileIcon2,
                       height: 24,
                       width: 24,
+                        colorFilter: ColorFilter.mode(
+                          context.iconColor,
+                          BlendMode.srcIn,
+                        )
                     )),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -73,6 +77,10 @@ class ProfileSettingBody extends ConsumerWidget {
                     AppIcons.nextArrow,
                     height: 16,
                     width: 16,
+                      colorFilter: ColorFilter.mode(
+                        context.iconColor,
+                        BlendMode.srcIn,
+                      )
                   ),
                 ),
               ],

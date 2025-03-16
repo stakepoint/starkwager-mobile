@@ -13,7 +13,7 @@ class CustomBottomNavigation extends StatelessWidget {
     required this.currentIndex,
     this.isVertical = false,
     required this.selectedColor,
-    this.unselectedColor = AppColors.grayneutral500,
+    this.unselectedColor = AppColors.grayNeutral500,
     required this.items,
     required this.onIndexChanged,
   });

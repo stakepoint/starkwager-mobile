@@ -44,6 +44,7 @@ class PrimaryButton extends StatelessWidget {
           style: buttonTextStyle ??
               AppTheme.of(context).bodyExtraLarge18.copyWith(
                     fontWeight: FontWeight.w500,
+                color: context.buttonTextColor
                   ),
         ),
       ),
