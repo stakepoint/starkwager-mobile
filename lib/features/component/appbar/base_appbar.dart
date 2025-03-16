@@ -40,6 +40,10 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
                     child: IconButton(
                       icon: SvgPicture.asset(
                         AppIcons.arrowBack,
+                          colorFilter: ColorFilter.mode(
+                            context.iconColor,
+                            BlendMode.srcIn,
+                          )
                       ),
                       onPressed: () => GoRouter.of(context).pop(),
                     ),
@@ -62,7 +66,11 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
                 horizontalSpace(8),
                 CopyItemContainer(value: userName),
                 horizontalSpace(AppValues.padding20),
-                SvgPicture.asset(AppIcons.notificationPath),
+                SvgPicture.asset(AppIcons.notificationPath,
+                    colorFilter: ColorFilter.mode(
+                  context.iconColor,
+                  BlendMode.srcIn,
+                )),
               ],
             ),
           )

@@ -33,6 +33,10 @@ class TabletHeader extends StatelessWidget {
                 AppIcons.notificationIcon,
                 width: 20,
                 height: 20,
+                  colorFilter: ColorFilter.mode(
+                    context.iconColor,
+                    BlendMode.srcIn,
+                  )
               ),
             ),
           ],
