@@ -60,7 +60,6 @@ class _HomeScreenBodyContentState
               ? context.tabSelectedBackgroundColor
               : context.tabUnselectedBackgroundColor,
           borderRadius: BorderRadius.circular(16),
-
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,

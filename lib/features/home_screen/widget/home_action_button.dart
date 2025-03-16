@@ -37,7 +37,8 @@ class HomeActionButton extends StatelessWidget {
                 color: context.secondaryBackgroundColor,
               ),
               child: Center(
-                child: SvgPicture.asset(iconPath,
+                child: SvgPicture.asset(
+                  iconPath,
                   colorFilter: ColorFilter.mode(
                     context.iconColor,
                     BlendMode.srcIn,

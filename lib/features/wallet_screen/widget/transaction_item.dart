@@ -37,9 +37,9 @@ class TransactionItem extends StatelessWidget {
             child: SvgPicture.asset(
               isWithdrawal ? AppIcons.upwardArrow : AppIcons.downwardArrow,
               colorFilter: ColorFilter.mode(
-              isWithdrawal ? context.iconColor : AppColors.success500,
-              BlendMode.srcIn,
-            ),
+                isWithdrawal ? context.iconColor : AppColors.success500,
+                BlendMode.srcIn,
+              ),
             ),
           ),
           const SizedBox(width: 12),

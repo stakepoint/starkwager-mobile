@@ -42,9 +42,9 @@ class WagerSummarySendProof extends StatelessWidget {
                   SvgPicture.asset(AppIcons.sendProofPath),
                   horizontalSpace(14),
                   Text('sendProof'.tr(),
-                      style: AppTheme.of(context).textMediumMedium.copyWith(
-                        color: context.buttonTextColor
-                      )),
+                      style: AppTheme.of(context)
+                          .textMediumMedium
+                          .copyWith(color: context.buttonTextColor)),
                 ],
               ),
             ),

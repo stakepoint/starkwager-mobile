@@ -69,11 +69,13 @@ extension ThemeModeExtension on BuildContext {
 
   Color get transparentColor => Colors.transparent;
 
-  Color get tabTextColor => isDarkMode ? AppColors.primaryColor : AppColors.white;
+  Color get tabTextColor =>
+      isDarkMode ? AppColors.primaryColor : AppColors.white;
 
   Color get iconColor => isDarkMode ? AppColors.white : AppColors.primaryColor;
 
-  Color get unselectedTabTextColor => isDarkMode ? AppColors.white : AppColors.primaryColor;
+  Color get unselectedTabTextColor =>
+      isDarkMode ? AppColors.white : AppColors.primaryColor;
 
   Color get shadowColor => AppColors.black.withValues(alpha: 0.1);
 

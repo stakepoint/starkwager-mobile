@@ -35,9 +35,9 @@ class HomeScreen extends ConsumerWidget {
                               ProfileMenu(),
                               SvgPicture.asset(AppIcons.notificationIcon,
                                   colorFilter: ColorFilter.mode(
-                                context.iconColor,
-                                BlendMode.srcIn,
-                              )),
+                                    context.iconColor,
+                                    BlendMode.srcIn,
+                                  )),
                             ],
                           ),
                         ),

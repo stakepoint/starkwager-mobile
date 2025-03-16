@@ -104,9 +104,10 @@ class _HomeScreenTabletMenuBarState
           children: [
             SvgPicture.asset(AppIcons.handshakeIcon),
             const SizedBox(width: 12),
-            Text('newWager'.tr(), style: AppTheme.of(context).textMediumMedium.copyWith(
-              color: context.buttonTextColor
-            )),
+            Text('newWager'.tr(),
+                style: AppTheme.of(context)
+                    .textMediumMedium
+                    .copyWith(color: context.buttonTextColor)),
           ],
         ),
       ),
