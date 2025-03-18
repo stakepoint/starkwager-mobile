@@ -27,7 +27,7 @@ class TabWidget extends StatelessWidget {
             color: context.primaryButtonColor,
           ),
           indicatorSize: TabBarIndicatorSize.tab,
-          labelColor: context.primaryTextColor,
+          labelColor: context.buttonTextColor,
           unselectedLabelColor: context.textHintColor,
           labelStyle: AppTheme.of(context).textRegularMedium,
           unselectedLabelStyle: AppTheme.of(context).textRegularMedium,

@@ -33,11 +33,13 @@ class ProfileSettingBody extends ConsumerWidget {
                         borderRadius: BorderRadius.circular(20),
                         // shape: BoxShape.rectangle,
                         color: context.textBoxTextColor),
-                    child: SvgPicture.asset(
-                      AppIcons.profileIcon2,
-                      height: 24,
-                      width: 24,
-                    )),
+                    child: SvgPicture.asset(AppIcons.profileIcon2,
+                        height: 24,
+                        width: 24,
+                        colorFilter: ColorFilter.mode(
+                          context.iconColor,
+                          BlendMode.srcIn,
+                        ))),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -69,11 +71,13 @@ class ProfileSettingBody extends ConsumerWidget {
                       GoRouter.of(context).go(Routes.accountSettingsTablet);
                     }
                   },
-                  child: SvgPicture.asset(
-                    AppIcons.nextArrow,
-                    height: 16,
-                    width: 16,
-                  ),
+                  child: SvgPicture.asset(AppIcons.nextArrow,
+                      height: 16,
+                      width: 16,
+                      colorFilter: ColorFilter.mode(
+                        context.iconColor,
+                        BlendMode.srcIn,
+                      )),
                 ),
               ],
             ),

@@ -18,6 +18,7 @@ import 'package:starkwager/extensions/currency_extension.dart';
 import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
 import 'package:starkwager/features/create_wager/provider/stake_provider.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_view_proof.dart';
 import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
@@ -28,7 +29,6 @@ import '../theme/app_colors.dart';
 import 'connect_wallet/provider/wallet_connection_provider.dart';
 import 'connect_wallet/provider/wallet_connection_state.dart';
 import 'create_wager/provider/category_provider.dart';
-import 'create_wager/widgets/wager_summary_cancel_claim.dart';
 
 part 'component/appbar/base_appbar.dart';
 part 'component/appbar/mobile_header.dart';

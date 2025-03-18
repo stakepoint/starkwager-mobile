@@ -19,6 +19,7 @@ class CreateWagerScreen extends ConsumerWidget {
     }
 
     return Scaffold(
+      backgroundColor: context.primaryBackgroundColor,
       appBar: BaseAppbar(
           context: context, title: 'createWager'.tr(), userName: '@noyi24_7'),
       body: SingleChildScrollView(

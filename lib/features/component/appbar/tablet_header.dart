@@ -29,11 +29,13 @@ class TabletHeader extends StatelessWidget {
               onTap: () {
                 _showNotificationDialog(context);
               },
-              child: SvgPicture.asset(
-                AppIcons.notificationIcon,
-                width: 20,
-                height: 20,
-              ),
+              child: SvgPicture.asset(AppIcons.notificationIcon,
+                  width: 20,
+                  height: 20,
+                  colorFilter: ColorFilter.mode(
+                    context.iconColor,
+                    BlendMode.srcIn,
+                  )),
             ),
           ],
         ),

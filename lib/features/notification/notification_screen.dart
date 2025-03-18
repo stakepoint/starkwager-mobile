@@ -17,7 +17,11 @@ class _NotificationScreenState extends State<NotificationScreen> {
         backgroundColor: context.primaryBackgroundColor,
         leading: IconButton(
           onPressed: () => GoRouter.of(context).pop(),
-          icon: SvgPicture.asset(AppIcons.arrowBack),
+          icon: SvgPicture.asset(AppIcons.arrowBack,
+              colorFilter: ColorFilter.mode(
+                context.iconColor,
+                BlendMode.srcIn,
+              )),
         ),
       ),
       body: Container(

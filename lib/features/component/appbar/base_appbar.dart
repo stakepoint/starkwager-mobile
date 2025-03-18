@@ -23,7 +23,11 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
       title: context.isMobile
           ? IconButton(
               onPressed: () => GoRouter.of(context).pop(),
-              icon: SvgPicture.asset(AppIcons.arrowBack),
+              icon: SvgPicture.asset(AppIcons.arrowBack,
+                  colorFilter: ColorFilter.mode(
+                    context.iconColor,
+                    BlendMode.srcIn,
+                  )),
             )
           : Padding(
               padding: const EdgeInsets.only(left: 20),
@@ -33,9 +37,11 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
                   Visibility(
                     visible: showBackButton == null ? true : false,
                     child: IconButton(
-                      icon: SvgPicture.asset(
-                        AppIcons.arrowBack,
-                      ),
+                      icon: SvgPicture.asset(AppIcons.arrowBack,
+                          colorFilter: ColorFilter.mode(
+                            context.iconColor,
+                            BlendMode.srcIn,
+                          )),
                       onPressed: () => GoRouter.of(context).pop(),
                     ),
                   ),
@@ -57,7 +63,11 @@ class BaseAppbar extends StatelessWidget implements PreferredSizeWidget {
                 horizontalSpace(8),
                 CopyItemContainer(value: userName),
                 horizontalSpace(AppValues.padding20),
-                SvgPicture.asset(AppIcons.notificationPath),
+                SvgPicture.asset(AppIcons.notificationPath,
+                    colorFilter: ColorFilter.mode(
+                      context.iconColor,
+                      BlendMode.srcIn,
+                    )),
               ],
             ),
           )

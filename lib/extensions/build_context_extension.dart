@@ -22,19 +22,22 @@ extension ThemeModeExtension on BuildContext {
       isDarkMode ? AppColors.mono90 : AppColors.mono0;
 
   Color get primaryTextColor =>
-      isDarkMode ? AppColors.mono20 : AppColors.blue950;
+      isDarkMode ? AppColors.white : AppColors.blue950;
 
   Color get secondaryTextColor =>
       isDarkMode ? AppColors.mono40 : AppColors.grayCool100;
 
   Color get subTitleTextColor =>
-      isDarkMode ? AppColors.grayCool600 : AppColors.grayCool600;
+      isDarkMode ? AppColors.grayCool25 : AppColors.grayCool600;
 
   Color get successColor =>
       isDarkMode ? AppColors.success500 : AppColors.success500;
 
   Color get textBoxTextColor =>
-      isDarkMode ? AppColors.grayCool100 : AppColors.grayCool100;
+      isDarkMode ? AppColors.gradient40 : AppColors.grayCool100;
+
+  Color get buttonTextColor =>
+      isDarkMode ? AppColors.tabSelectedColor : AppColors.tabSelectedColor;
 
   Color get dividerColor =>
       isDarkMode ? AppColors.mono80 : AppColors.dividerColour;
@@ -43,16 +46,17 @@ extension ThemeModeExtension on BuildContext {
       isDarkMode ? AppColors.gradient40 : AppColors.white;
 
   Color get tabSelectedBackgroundColor =>
-      isDarkMode ? AppColors.gradient40 : AppColors.tabSelectedColor;
+      isDarkMode ? AppColors.white : AppColors.tabSelectedColor;
 
   Color get tabUnselectedBackgroundColor =>
-      isDarkMode ? AppColors.gradient20 : AppColors.tabUnselectedColor;
+      isDarkMode ? AppColors.gradient40 : AppColors.tabUnselectedColor;
 
   Color get primaryButtonColor =>
       isDarkMode ? AppColors.buttonColor : AppColors.buttonColor;
 
   Color get textHintColor =>
-      isDarkMode ? AppColors.grayCool25 : AppColors.grayCool400;
+      isDarkMode ? AppColors.grayNeutral500 : AppColors.grayCool400;
+
   Color get avatarBgColor =>
       isDarkMode ? AppColors.grayCool200 : AppColors.grayCool200;
 
@@ -61,11 +65,17 @@ extension ThemeModeExtension on BuildContext {
   Color get error => isDarkMode ? AppColors.rambutan100 : AppColors.rambutan100;
 
   Color get menuTextColor =>
-      isDarkMode ? AppColors.grayneutral500 : AppColors.grayneutral500;
+      isDarkMode ? AppColors.grayNeutral500 : AppColors.grayNeutral500;
 
   Color get transparentColor => Colors.transparent;
 
-  Color get tabTextColor => isDarkMode ? AppColors.white : AppColors.white;
+  Color get tabTextColor =>
+      isDarkMode ? AppColors.primaryColor : AppColors.white;
+
+  Color get iconColor => isDarkMode ? AppColors.white : AppColors.primaryColor;
+
+  Color get unselectedTabTextColor =>
+      isDarkMode ? AppColors.white : AppColors.primaryColor;
 
   Color get shadowColor => AppColors.black.withValues(alpha: 0.1);
 

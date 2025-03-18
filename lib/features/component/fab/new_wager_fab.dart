@@ -24,7 +24,12 @@ Widget newWagerButton(BuildContext context) {
         children: [
           SvgPicture.asset(AppIcons.handshakeIcon),
           SizedBox(width: 12),
-          Text('newWager'.tr(), style: AppTheme.of(context).textMediumMedium),
+          Text(
+            'newWager'.tr(),
+            style: AppTheme.of(context)
+                .textMediumMedium
+                .copyWith(color: context.buttonTextColor),
+          ),
         ],
       ),
     ),

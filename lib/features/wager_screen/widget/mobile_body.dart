@@ -25,8 +25,6 @@ class _MobileBodyState extends ConsumerState<MobileBody>
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
     final isPortrait =
         MediaQuery.of(context).orientation == Orientation.portrait;
     return Column(
@@ -36,7 +34,7 @@ class _MobileBodyState extends ConsumerState<MobileBody>
 
         verticalSpace(25),
         ScreenLayout.isTablet(context)
-            ? isLandscape
+            ? context.isLandscape
                 ? Padding(
                     padding: const EdgeInsets.only(right: 70),
                     child: Row(
@@ -65,12 +63,12 @@ class _MobileBodyState extends ConsumerState<MobileBody>
 //----------------------------------------------- TAB BAR ----------------------------------------------- //
 
         ScreenLayout.isTablet(context)
-            ? isLandscape
+            ? context.isLandscape
                 ? verticalSpace(100)
                 : verticalSpace(44)
             : verticalSpace(24),
         ScreenLayout.isTablet(context)
-            ? isLandscape
+            ? context.isLandscape
                 ? Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 270),
                     child: TabWidget(

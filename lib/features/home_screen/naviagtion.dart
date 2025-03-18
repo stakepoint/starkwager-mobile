@@ -83,7 +83,7 @@ class _ScaffoldWithNavBarState extends ConsumerState<ScaffoldWithNavBar> {
           currentIndex: currentIndex,
           items: _navigationItems,
           selectedColor: context.primaryButtonColor,
-          unselectedColor: AppColors.grayneutral500,
+          unselectedColor: AppColors.grayNeutral500,
           isVertical: false,
           onIndexChanged: (index) {
             if (ScreenLayout.isTablet(context)) {

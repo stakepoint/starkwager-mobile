@@ -34,7 +34,13 @@ class CopyItemContainer extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: AppTheme.of(context).textSmallMedium),
               ),
-              SvgPicture.asset(AppIcons.copyIcon)
+              SvgPicture.asset(
+                AppIcons.copyIcon,
+                colorFilter: ColorFilter.mode(
+                  context.iconColor,
+                  BlendMode.srcIn,
+                ),
+              )
             ],
           ),
         ),
