@@ -76,5 +76,10 @@
   "notification": "Notification",
   "amountInStark": "Amount in Stark",
   "strkToUsdRate": "1 STRK = 0.24 USD",
-  "amountInUsd": "Amount in USD"
+  "amountInUsd": "Amount in USD",
+  "importantDisclaimer": "Important Disclaimer",
+  "winningsCreditedAfterConfirmation": "Remember, your winnings are credited only after your opponent confirms your claim.",
+  "avoidClaimingWithoutProof": "Avoid claiming victory without solid proof, as this can complicate issue resolution.",
+  "cancel": "Cancel",
+  "proceedWithClaim": "Proceed with Claim"
 }

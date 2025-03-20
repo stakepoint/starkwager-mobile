@@ -35,7 +35,21 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                      print('Claim cancelled');
+                    },
+                    onClose: () {
+                      // Handle close action
+                      print('Dialog closed');
+                    },
+                  ),
+                );
+              },
             ),
           if (context.isTablet && context.isPortrait)
             PrimaryButton(
@@ -47,7 +61,21 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                      print('Claim cancelled');
+                    },
+                    onClose: () {
+                      // Handle close action
+                      print('Dialog closed');
+                    },
+                  ),
+                );
+              },
             ),
           if (context.isTablet && context.isLandscape)
             PrimaryButton(
@@ -59,7 +87,21 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                      print('Claim cancelled');
+                    },
+                    onClose: () {
+                      // Handle close action
+                      print('Dialog closed');
+                    },
+                  ),
+                );
+              },
             ),
         ],
       ),
