@@ -208,10 +208,15 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
-      insetPadding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
-        child: _buildContent(context),
+      child: Container(
+        width: 400, // Fixed width for tablet mode
+        constraints: BoxConstraints(
+          maxWidth: MediaQuery.of(context).size.width * 0.8,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
+          child: _buildContent(context),
+        ),
       ),
     );
   }
