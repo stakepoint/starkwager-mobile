@@ -1,0 +1,109 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:starkwager/core/constants/assets.dart';
+import 'package:starkwager/extensions/build_context_extension.dart';
+import 'package:starkwager/theme/app_theme.dart';
+import 'package:starkwager/utils/ui_widgets.dart';
+
+class ThemeSelectionBottomSheet extends StatelessWidget {
+  const ThemeSelectionBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: context.primaryBackgroundColor,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      padding: EdgeInsets.only(top: 24, bottom: 24),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Spacer(),
+                  Text(
+                    'selectCategory'.tr(),
+                    style: AppTheme.of(context).titleExtraLarge24.copyWith(
+                          color: context.primaryTextColor,
+                        ),
+                  ),
+                  Spacer(),
+                  GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: SvgPicture.asset(AppIcons.close)),
+                ],
+              ),
+            ),
+            verticalSpace(40),
+            _buildThemeOption(context, 'system', isSelected: true),
+            _buildDivider(context),
+            _buildThemeOption(context, 'dark'),
+            _buildDivider(context),
+            _buildThemeOption(context, 'light'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildThemeOption(BuildContext context, String themeName,
+      {bool isSelected = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            themeName.tr(),
+            style: AppTheme.of(context).textSmallMedium.copyWith(
+                  color: context.primaryTextColor,
+                ),
+          ),
+          if (isSelected) ...[
+            horizontalSpace(8),
+            SvgPicture.asset(
+              AppIcons.checked,
+              width: 16,
+              height: 16,
+            )
+          ],
+        ],
+      ),
+    );
+  }
+
+  Widget _buildDivider(BuildContext context) {
+    return Container(
+      height: 1,
+      margin: EdgeInsets.symmetric(horizontal: 24),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return Flex(
+            direction: Axis.horizontal,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: List.generate(
+              (constraints.maxWidth / 20).ceil(),
+              (index) => SizedBox(
+                width: 8,
+                height: 1,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(color: context.dividerColor),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

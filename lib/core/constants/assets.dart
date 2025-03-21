@@ -35,6 +35,8 @@ class AppIcons {
   static const boxStack = '$baseIconPath/box_stack.svg';
   static const closeRed = '$baseIconPath/close_red.svg';
   static const tick = '$baseIconPath/tick.svg';
+  static const downWardArrowIos = '$baseIconPath/down_arrow_ios.svg';
+  static const sunlight = '$baseIconPath/sunlight.svg';
 
   // Category Icons
   static const trendingIcon = '$baseIconPath/trend_up.svg';
