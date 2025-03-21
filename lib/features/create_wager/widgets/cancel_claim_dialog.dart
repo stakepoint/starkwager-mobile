@@ -17,7 +17,7 @@ class DashedLinePainter extends CustomPainter {
     final paint = Paint()
       ..color = color
       ..strokeWidth = size.height;
-    
+
     while (startX < size.width) {
       canvas.drawLine(
         Offset(startX, 0),
@@ -67,7 +67,8 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
       isDismissible: true,
       enableDrag: true,
       constraints: BoxConstraints(
-        maxWidth: MediaQuery.of(context).size.width - 32, // 16px padding on each side
+        maxWidth:
+            MediaQuery.of(context).size.width - 32, // 16px padding on each side
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
@@ -99,16 +100,16 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
         Text(
           'importantDisclaimer'.tr(),
           style: AppTheme.of(context).titleExtraLarge24.copyWith(
-            fontWeight: FontWeight.w600,
-          ),
+                fontWeight: FontWeight.w600,
+              ),
         ),
         verticalSpace(24),
         Text(
           'winningsCreditedAfterConfirmation'.tr(),
           textAlign: TextAlign.center,
           style: AppTheme.of(context).bodyLarge16.copyWith(
-            color: context.subTitleTextColor,
-          ),
+                color: context.subTitleTextColor,
+              ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -128,8 +129,8 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
           'avoidClaimingWithoutProof'.tr(),
           textAlign: TextAlign.center,
           style: AppTheme.of(context).bodyLarge16.copyWith(
-            color: context.subTitleTextColor,
-          ),
+                color: context.subTitleTextColor,
+              ),
         ),
         verticalSpace(32),
         Row(
@@ -225,4 +226,4 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
   Widget build(BuildContext context) {
     return const SizedBox.shrink();
   }
-} 
+}
