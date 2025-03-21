@@ -23,6 +23,7 @@
   "walletBalance": "Wallet Balance",
   "accountSettings": "Account Settings",
   "changeYourProfilepictureUsername": "Change your profile picture, username\n and other, important information.",
+  "changethemeOfApp": "Change theme of your app to fit the style\nyou want.",
   "noWagersCreatedYet": "No wagers created yet",
   "stake": "Stake",
   "sendWagerInvite": "Your wager has been created, send wager invite 🚀",
@@ -90,5 +91,9 @@
   "addNote": "Add a note (Optional)",
   "wagerstrk": "wager.strk/",
   "snapProof": "Snap Proof",
-  "Upload": "Upload"
+  "Upload": "Upload",
+  "theme": "Theme",
+  "system": "System",
+  "dark": "Dark",
+  "light": "Light"
 }
