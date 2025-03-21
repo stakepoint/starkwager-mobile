@@ -41,11 +41,9 @@ class WagerSummaryViewProof extends StatelessWidget {
                   builder: (context) => CancelClaimDialog(
                     onCancel: () {
                       // Handle cancel action
-                      print('Claim cancelled');
                     },
                     onClose: () {
                       // Handle close action
-                      print('Dialog closed');
                     },
                   ),
                 );
@@ -67,11 +65,9 @@ class WagerSummaryViewProof extends StatelessWidget {
                   builder: (context) => CancelClaimDialog(
                     onCancel: () {
                       // Handle cancel action
-                      print('Claim cancelled');
                     },
                     onClose: () {
                       // Handle close action
-                      print('Dialog closed');
                     },
                   ),
                 );
@@ -93,11 +89,9 @@ class WagerSummaryViewProof extends StatelessWidget {
                   builder: (context) => CancelClaimDialog(
                     onCancel: () {
                       // Handle cancel action
-                      print('Claim cancelled');
                     },
                     onClose: () {
                       // Handle close action
-                      print('Dialog closed');
                     },
                   ),
                 );
