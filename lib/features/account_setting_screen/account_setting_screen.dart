@@ -126,8 +126,8 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ),
                             ),
                           ),
-                        // SizedBox(height: context.isMobile ? 270 : 200),
-                        verticalSpace(size.height * 0.37),
+                        verticalSpace(
+                            size.height * (Platform.isIOS ? 0.3 : 0.37)),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
                           height: context.isMobile
@@ -143,7 +143,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                             }
                           },
                         ),
-                        // verticalSpace(context.isMobile ? 32 : 184),
                       ],
                     ),
                   ),
