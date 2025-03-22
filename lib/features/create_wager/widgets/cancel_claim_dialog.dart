@@ -144,7 +144,7 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: context.isDarkMode 
+                  backgroundColor: context.isDarkMode
                       ? Colors.white
                       : context.cancelButtonLight,
                   foregroundColor: context.isDarkMode
@@ -159,10 +159,10 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
                 child: Text(
                   'cancel'.tr(),
                   style: AppTheme.of(context).textMediumMedium.copyWith(
-                    color: context.isDarkMode
-                        ? Colors.black
-                        : context.primaryTextColor,
-                  ),
+                        color: context.isDarkMode
+                            ? Colors.black
+                            : context.primaryTextColor,
+                      ),
                 ),
               ),
             ),
@@ -193,7 +193,9 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
       padding: const EdgeInsets.only(bottom: 48),
       child: Container(
         decoration: BoxDecoration(
-          color: context.isDarkMode ? context.dialogDarkBackground : context.containerColor,
+          color: context.isDarkMode
+              ? context.dialogDarkBackground
+              : context.containerColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -213,7 +215,9 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
 
   Widget _buildDialogContent(BuildContext context) {
     return Dialog(
-      backgroundColor: context.isDarkMode ? context.dialogDarkBackground : context.containerColor,
+      backgroundColor: context.isDarkMode
+          ? context.dialogDarkBackground
+          : context.containerColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
