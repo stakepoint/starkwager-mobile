@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starkwager/core/constants/screen_layout.dart';
 
-//TODO:me - remove import
-
 import '../theme/app_colors.dart';
 
 extension ThemeModeExtension on BuildContext {

@@ -300,7 +300,7 @@ class CreateWagerScreen extends ConsumerWidget {
         isScrollControlled: true,
         builder: (context) => Container(
           decoration: BoxDecoration(
-            color: context.primaryBackgroundColor,
+            color: context.containerColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
@@ -412,7 +412,11 @@ class CreateWagerScreen extends ConsumerWidget {
                     style: AppTheme.of(context).titleExtraLarge24,
                   ),
                   IconButton(
-                    icon: SvgPicture.asset(AppIcons.close),
+                    icon: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: context.primaryTextColor,
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],

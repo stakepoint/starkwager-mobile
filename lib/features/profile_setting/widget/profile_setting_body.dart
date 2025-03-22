@@ -44,12 +44,10 @@ class ProfileSettingBody extends ConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'accountSettings'.tr(),
-                      style: AppTheme.of(context).bodyLarge16.copyWith(
-                          color: context.primaryTextColor,
-                          fontWeight: FontWeight.w500),
-                    ),
+                    Text('accountSettings'.tr(),
+                        style: AppTheme.of(context).bodyLarge16.copyWith(
+                            color: context.primaryTextColor,
+                            fontWeight: FontWeight.w500)),
                     Text(
                       context.isMobile
                           ? 'changeYourProfilepictureUsername...'.tr()
