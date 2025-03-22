@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:starkwager/core/constants/app_values.dart';
-import 'package:starkwager/core/constants/assets.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
@@ -45,7 +43,10 @@ class AvatarDialog extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.topRight,
                   child: GestureDetector(
-                    child: SvgPicture.asset(AppIcons.close),
+                    child: Icon(
+                      Icons.close,
+                      color: context.primaryTextColor,
+                    ),
                     onTap: () => Navigator.pop(context),
                   ),
                 ),

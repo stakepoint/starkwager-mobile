@@ -139,11 +139,15 @@ class _WithdrawFundsDialogState extends State<WithdrawFundsDialog> {
           child: Align(
             alignment: Alignment.centerRight,
             child: IconButton(
-              icon: SvgPicture.asset(AppIcons.close),
+              icon: Icon(
+                Icons.close,
+                color: context.primaryTextColor,
+              ),
               onPressed: () => Navigator.pop(context),
             ),
           ),
         ),
+        horizontalSpace(12)
       ],
     );
   }
