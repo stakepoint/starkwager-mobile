@@ -36,8 +36,11 @@ class WagerSummaryViewProof extends StatelessWidget {
               height: 56,
               isActive: true,
               onPressed: () {
-                showDialog(
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
                   context: context,
+                  isScrollControlled: true,
+                  useRootNavigator: true,
                   builder: (context) => CancelClaimDialog(
                     onCancel: () {
                       // Handle cancel action
