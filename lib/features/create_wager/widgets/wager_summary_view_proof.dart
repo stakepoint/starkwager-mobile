@@ -1,14 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/features/feature.dart';
 import 'package:starkwager/theme/app_theme.dart';
 
-class WagerSummaryViewProof extends StatelessWidget {
+class WagerSummaryViewProof extends ConsumerWidget {
   const WagerSummaryViewProof({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       height: 154,
       width: MediaQuery.sizeOf(context).width,
@@ -35,7 +36,22 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  isScrollControlled: true,
+                  useRootNavigator: true,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                    },
+                    onClose: () {
+                      // Handle close action
+                    },
+                  ),
+                );
+              },
             ),
           if (context.isTablet && context.isPortrait)
             PrimaryButton(
@@ -47,7 +63,19 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                    },
+                    onClose: () {
+                      // Handle close action
+                    },
+                  ),
+                );
+              },
             ),
           if (context.isTablet && context.isLandscape)
             PrimaryButton(
@@ -59,7 +87,19 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => CancelClaimDialog(
+                    onCancel: () {
+                      // Handle cancel action
+                    },
+                    onClose: () {
+                      // Handle close action
+                    },
+                  ),
+                );
+              },
             ),
         ],
       ),
