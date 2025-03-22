@@ -145,11 +145,11 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: context.isDarkMode 
-                      ? Colors.white  // White background in dark mode
-                      : const Color(0xFFF5F5F7), // Lighter color in light mode
+                      ? Colors.white
+                      : context.cancelButtonLight,
                   foregroundColor: context.isDarkMode
-                      ? Colors.black  // Black text in dark mode for contrast
-                      : context.primaryTextColor, // Original text color in light mode
+                      ? Colors.black
+                      : context.primaryTextColor,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(16),
@@ -160,8 +160,8 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
                   'cancel'.tr(),
                   style: AppTheme.of(context).textMediumMedium.copyWith(
                     color: context.isDarkMode
-                        ? Colors.black  // Black text in dark mode
-                        : context.primaryTextColor, // Original text color in light mode
+                        ? Colors.black
+                        : context.primaryTextColor,
                   ),
                 ),
               ),
@@ -189,14 +189,11 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
   }
 
   Widget _buildBottomSheetContent(BuildContext context) {
-    // Define the dark mode color
-    final Color darkModeColor = const Color.fromRGBO(31, 42, 55, 1);
-    
     return Padding(
       padding: const EdgeInsets.only(bottom: 48),
       child: Container(
         decoration: BoxDecoration(
-          color: context.isDarkMode ? darkModeColor : context.containerColor,
+          color: context.isDarkMode ? context.dialogDarkBackground : context.containerColor,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
@@ -215,11 +212,8 @@ class _CancelClaimDialogState extends State<CancelClaimDialog> {
   }
 
   Widget _buildDialogContent(BuildContext context) {
-    // Define the dark mode color
-    final Color darkModeColor = const Color.fromRGBO(31, 42, 55, 1);
-    
     return Dialog(
-      backgroundColor: context.isDarkMode ? darkModeColor : context.containerColor,
+      backgroundColor: context.isDarkMode ? context.dialogDarkBackground : context.containerColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
