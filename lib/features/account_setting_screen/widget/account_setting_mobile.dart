@@ -23,9 +23,9 @@ class AccountSettingsMobileMode extends StatelessWidget
               GestureDetector(
                   onTap: () {
                     if (context.isMobile) {
-                      GoRouter.of(context).go(Routes.home);
+                      GoRouter.of(context).pop();
                     } else {
-                      GoRouter.of(context).go(Routes.homeTablet);
+                      GoRouter.of(context).pop();
                     }
                   }, // Navigate back
                   child: SvgPicture.asset(AppIcons.arrowBack)),

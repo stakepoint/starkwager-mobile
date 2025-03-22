@@ -12,15 +12,14 @@ class AccountSettingsTabletMode extends ConsumerWidget
         child: Column(
           children: [
             verticalSpace(32),
-            // Row to include Back Arrow and Title
             Row(
               children: [
                 IconButton(
                   onPressed: () {
                     if (context.isMobile) {
-                      GoRouter.of(context).go(Routes.home);
+                      GoRouter.of(context).pop();
                     } else {
-                      GoRouter.of(context).go(Routes.homeTablet);
+                      GoRouter.of(context).pop();
                     }
                   }, // Navigate back
                   icon: SvgPicture.asset(AppIcons.arrowBack),
