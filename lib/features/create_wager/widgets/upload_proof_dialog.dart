@@ -182,7 +182,8 @@ class _ProofUploadBottomSheetState extends State<ProofUploadBottomSheet> {
                         AppIcons.upload1,
                         width: 24,
                         height: 24,
-                        color: context.buttonTextColor,
+                        colorFilter: ColorFilter.mode(
+                            context.buttonTextColor, BlendMode.srcIn),
                       ),
                     ),
                   ),
@@ -201,7 +202,8 @@ class _ProofUploadBottomSheetState extends State<ProofUploadBottomSheet> {
                         AppIcons.upload2,
                         width: 24,
                         height: 24,
-                        color: context.buttonTextColor,
+                        colorFilter: ColorFilter.mode(
+                            context.buttonTextColor, BlendMode.srcIn),
                       ),
                     ),
                   ),
@@ -449,7 +451,8 @@ class _ProofUploadDialogState extends State<ProofUploadDialog> {
                                   AppIcons.upload1,
                                   width: 24,
                                   height: 24,
-                                  color: context.buttonTextColor,
+                                  colorFilter: ColorFilter.mode(
+                                      context.buttonTextColor, BlendMode.srcIn),
                                 ),
                               ),
                             ),
@@ -468,7 +471,8 @@ class _ProofUploadDialogState extends State<ProofUploadDialog> {
                                   AppIcons.upload2,
                                   width: 24,
                                   height: 24,
-                                  color: context.buttonTextColor,
+                                  colorFilter: ColorFilter.mode(
+                                      context.buttonTextColor, BlendMode.srcIn),
                                 ),
                               ),
                             ),
