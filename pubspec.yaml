@@ -42,6 +42,8 @@ dependencies:
   appcheck: ^1.5.2
   image_picker: ^1.1.2
   reown_appkit: ^1.3.0
+  dotted_border: ^2.1.0
+  dotted_line: ^3.2.3
 
 dev_dependencies:
   flutter_test:
