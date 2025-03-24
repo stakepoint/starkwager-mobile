@@ -60,6 +60,16 @@ extension ThemeModeExtension on BuildContext {
   Color get avatarBgColor =>
       isDarkMode ? AppColors.grayCool200 : AppColors.grayCool200;
 
+  Color get uploadDialog =>
+      isDarkMode ? AppColors.grayNeutral800 : AppColors.white;
+
+  Color get rotateColor => isDarkMode ? AppColors.white : AppColors.grayCool100;
+
+  Color get textField =>
+      isDarkMode ? AppColors.grayNeutral700 : AppColors.grayCool100;
+
+  Color get snapProofColor => isDarkMode ? AppColors.white : AppColors.mono0;
+
   Color get menuBackgroundColor =>
       isDarkMode ? AppColors.grayCool800 : AppColors.grayCool800;
   Color get error => isDarkMode ? AppColors.rambutan100 : AppColors.rambutan100;
