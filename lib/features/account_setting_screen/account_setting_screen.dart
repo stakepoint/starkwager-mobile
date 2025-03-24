@@ -43,7 +43,9 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ? 184
                               : 120),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: maxWidth),
+                    constraints: BoxConstraints(
+                        maxWidth: maxWidth,
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.79),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -126,8 +128,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ),
                             ),
                           ),
-                        verticalSpace(
-                            size.height * (Platform.isIOS ? 0.3 : 0.37)),
+                        Spacer(),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
                           height: context.isMobile
