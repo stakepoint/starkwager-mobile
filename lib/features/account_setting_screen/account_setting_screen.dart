@@ -20,7 +20,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: context.isMobile
           ? AccountSettingsMobileMode()
