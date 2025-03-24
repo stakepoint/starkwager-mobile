@@ -8,6 +8,60 @@ import 'package:starkwager/theme/app_theme.dart';
 class WagerSummaryViewProof extends ConsumerWidget {
   const WagerSummaryViewProof({super.key});
 
+  void _showCancelClaimDialog(BuildContext context) {
+    if (context.isMobile) {
+      // Show bottom sheet on mobile devices
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        isDismissible: true,
+        enableDrag: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        builder: (context) => Padding(
+          padding: const EdgeInsets.only(bottom: 48),
+          child: CancelClaimDialog(
+            onCancel: () {
+              // Handle cancel action
+            },
+            onClose: () {
+              // Handle close action
+            },
+          ),
+        ),
+      );
+    } else {
+      // Show dialog on tablet devices
+      showDialog(
+        context: context,
+        builder: (context) => Dialog(
+          backgroundColor: context.isDarkMode 
+              ? context.dialogDarkBackground 
+              : context.containerColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            width: 400, // Fixed width for tablet mode
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.8,
+            ),
+            child: CancelClaimDialog(
+              onCancel: () {
+                // Handle cancel action
+              },
+              onClose: () {
+                // Handle close action
+              },
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
@@ -36,22 +90,7 @@ class WagerSummaryViewProof extends ConsumerWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {
-                showModalBottomSheet(
-                  backgroundColor: Colors.transparent,
-                  context: context,
-                  isScrollControlled: true,
-                  useRootNavigator: true,
-                  builder: (context) => CancelClaimDialog(
-                    onCancel: () {
-                      // Handle cancel action
-                    },
-                    onClose: () {
-                      // Handle close action
-                    },
-                  ),
-                );
-              },
+              onPressed: () => _showCancelClaimDialog(context),
             ),
           if (context.isTablet && context.isPortrait)
             PrimaryButton(
@@ -63,19 +102,7 @@ class WagerSummaryViewProof extends ConsumerWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => CancelClaimDialog(
-                    onCancel: () {
-                      // Handle cancel action
-                    },
-                    onClose: () {
-                      // Handle close action
-                    },
-                  ),
-                );
-              },
+              onPressed: () => _showCancelClaimDialog(context),
             ),
           if (context.isTablet && context.isLandscape)
             PrimaryButton(
@@ -87,19 +114,7 @@ class WagerSummaryViewProof extends ConsumerWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => CancelClaimDialog(
-                    onCancel: () {
-                      // Handle cancel action
-                    },
-                    onClose: () {
-                      // Handle close action
-                    },
-                  ),
-                );
-              },
+              onPressed: () => _showCancelClaimDialog(context),
             ),
         ],
       ),
