@@ -37,8 +37,8 @@ class WagerSummaryViewProof extends ConsumerWidget {
       showDialog(
         context: context,
         builder: (context) => Dialog(
-          backgroundColor: context.isDarkMode 
-              ? context.dialogDarkBackground 
+          backgroundColor: context.isDarkMode
+              ? context.dialogDarkBackground
               : context.containerColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
