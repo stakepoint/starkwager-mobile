@@ -19,7 +19,7 @@ class CreateWagerScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      backgroundColor: context.containerColor,
+      backgroundColor: context.primaryBackgroundColor,
       appBar: BaseAppbar(
           context: context, title: 'createWager'.tr(), userName: '@noyi24_7'),
       body: SingleChildScrollView(
@@ -300,7 +300,7 @@ class CreateWagerScreen extends ConsumerWidget {
         isScrollControlled: true,
         builder: (context) => Container(
           decoration: BoxDecoration(
-            color: context.containerColor,
+            color: context.primaryBackgroundColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(20),
               topRight: Radius.circular(20),
