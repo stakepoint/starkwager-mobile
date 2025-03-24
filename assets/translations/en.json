@@ -76,5 +76,14 @@
   "notification": "Notification",
   "amountInStark": "Amount in Stark",
   "strkToUsdRate": "1 STRK = 0.24 USD",
-  "amountInUsd": "Amount in USD"
+  "amountInUsd": "Amount in USD",
+  "uploadProof": "Upload Your Proof",
+  "uploadapictureorvideo":"Upload a picture or video proof of your win over the wager placed.",
+  "SelectGallery": "Select from Gallery",
+  "selectYourProof": "Select your proof from your gallery.",
+  "select": "Select",
+  "addNote": "Add a note (Optional)",
+  "wagerstrk": "wager.strk/",
+  "snapProof": "Snap Proof",
+  "Upload": "Upload"
 }
