@@ -43,7 +43,8 @@ extension ThemeModeExtension on BuildContext {
       isDarkMode ? AppColors.mono80 : AppColors.dividerColour;
 
   Color get containerColor =>
-      isDarkMode ? AppColors.gradient40 : AppColors.white;
+      isDarkMode ? AppColors.grayNeutral800 : AppColors.white;
+  // AppColors.gradient40
 
   Color get tabSelectedBackgroundColor =>
       isDarkMode ? AppColors.white : AppColors.tabSelectedColor;
