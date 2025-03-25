@@ -147,11 +147,14 @@ class _WagerSummaryViewProofDialogState
               child: IconButton(
                 icon: SvgPicture.asset(
                   AppIcons.close,
-                  color: Colors.white,
+                  colorFilter: ColorFilter.mode(
+                    Colors.white,
+                    BlendMode.srcIn,
+                  ),
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -246,7 +249,10 @@ class _WagerSummaryViewProofDialogState
             child: IconButton(
               icon: SvgPicture.asset(
                 AppIcons.close,
-                color: context.iconColor,
+                colorFilter: ColorFilter.mode(
+                  Colors.white,
+                  BlendMode.srcIn,
+                ),
               ),
               onPressed: () => Navigator.pop(context),
             ),
