@@ -19,6 +19,7 @@ import 'package:starkwager/extensions/string_extension.dart';
 import 'package:starkwager/features/create_wager/provider/hashtag_provider.dart';
 import 'package:starkwager/features/create_wager/provider/stake_provider.dart';
 import 'package:starkwager/features/create_wager/widgets/wager_summary_view_proof.dart';
+import 'package:starkwager/features/create_wager/widgets/wager_summary_cancel_claim.dart';
 import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';

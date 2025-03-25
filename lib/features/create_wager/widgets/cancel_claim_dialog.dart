@@ -52,7 +52,7 @@ class CancelClaimDialog extends StatelessWidget {
             : context.containerColor,
         borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
       ),
-      padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
+      padding: EdgeInsets.fromLTRB(24, 32, 24, context.isMobile ? 48 : 16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.center,
