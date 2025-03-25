@@ -8,9 +8,9 @@ class ProfileSettingBody extends ConsumerWidget {
     return GestureDetector(
       onTap: () {
         if (context.isMobile) {
-          GoRouter.of(context).go(Routes.accountSettings);
+          GoRouter.of(context).push(Routes.accountSettings);
         } else {
-          GoRouter.of(context).go(Routes.accountSettingsTablet);
+          GoRouter.of(context).push(Routes.accountSettingsTablet);
         }
       },
       child: Column(
@@ -64,9 +64,9 @@ class ProfileSettingBody extends ConsumerWidget {
                 GestureDetector(
                   onTap: () {
                     if (context.isMobile) {
-                      GoRouter.of(context).go(Routes.accountSettings);
+                      GoRouter.of(context).push(Routes.accountSettings);
                     } else {
-                      GoRouter.of(context).go(Routes.accountSettingsTablet);
+                      GoRouter.of(context).push(Routes.accountSettingsTablet);
                     }
                   },
                   child: SvgPicture.asset(AppIcons.nextArrow,
