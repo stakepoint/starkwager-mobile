@@ -133,7 +133,7 @@ class WagerSummaryScreen extends ConsumerWidget {
                       ],
                     ),
                   ),
-                  WagerSummaryViewProof(),
+                  WagerSummaryCancelClaim(),
                 ],
               ),
             ),

@@ -94,6 +94,10 @@ extension ThemeModeExtension on BuildContext {
 
   Color get menuShadowColor => AppColors.black.withValues(alpha: 0.2);
 
+  // Dialog colors
+  Color get dialogDarkBackground => AppColors.dialogDarkBackground;
+  Color get cancelButtonLight => AppColors.cancelButtonLight;
+
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,
         colorScheme: Theme.of(this).colorScheme.copyWith(
