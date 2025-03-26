@@ -91,7 +91,7 @@ class _WagerSummaryViewProofDialogState
             _buildDescription(),
             verticalSpace(AppValues.height20),
             _buildActionButton(setModalState),
-            verticalSpace(AppValues.height15),
+            verticalSpace(AppValues.height32),
           ],
         ),
       ),
