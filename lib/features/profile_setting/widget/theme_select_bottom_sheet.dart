@@ -65,7 +65,7 @@ class ThemeSelectionBottomSheet extends ConsumerWidget {
                       children: [
                         Spacer(),
                         Text(
-                          'selectTheme'.tr(),
+                          'selectCategory'.tr(),
                           style:
                               AppTheme.of(context).titleExtraLarge24.copyWith(
                                     color: context.primaryTextColor,
