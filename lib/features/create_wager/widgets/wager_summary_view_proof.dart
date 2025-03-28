@@ -7,6 +7,21 @@ import 'package:starkwager/theme/app_theme.dart';
 class WagerSummaryViewProof extends StatelessWidget {
   const WagerSummaryViewProof({super.key});
 
+  void _showProofDialog(BuildContext context) {
+    showModalBottomSheet(
+      backgroundColor: context.primaryBackgroundColor,
+      context: context,
+      isScrollControlled: true,
+      useRootNavigator: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(20),
+        ),
+      ),
+      builder: (context) => WagerSummaryViewProofDialog(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +50,9 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                _showProofDialog(context);
+              },
             ),
           if (context.isTablet && context.isPortrait)
             PrimaryButton(
@@ -47,7 +64,9 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                _showProofDialog(context);
+              },
             ),
           if (context.isTablet && context.isLandscape)
             PrimaryButton(
@@ -59,7 +78,9 @@ class WagerSummaryViewProof extends StatelessWidget {
               buttonText: 'viewProof'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () {
+                _showProofDialog(context);
+              },
             ),
         ],
       ),
