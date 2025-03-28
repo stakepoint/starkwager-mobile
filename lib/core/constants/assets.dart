@@ -56,7 +56,6 @@ class AppIcons {
   static const snSymbol = '$baseImagePath/sn_symbol.png';
   static const argentIcon = '$baseImagePath/argent_icon.png';
   static const braavosIcon = '$baseImagePath/braavos_icon.png';
-  static const proofImage = '$baseImagePath/proofImage.jpg';
 
   //-------------------------------------------- AVATAR IMAGES -------------------------------------------- //
   static const avatar1 = '$baseImagePath/avatar/avatar1.png';
