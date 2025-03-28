@@ -8,8 +8,6 @@ import 'core/providers/app_theme_mode_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  /// Localization
   await EasyLocalization.ensureInitialized();
 
   runApp(ProviderScope(
