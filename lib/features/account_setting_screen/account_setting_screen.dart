@@ -20,7 +20,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: context.isMobile
           ? AccountSettingsMobileMode()
@@ -43,7 +42,9 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ? 184
                               : 120),
                   child: ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: maxWidth),
+                    constraints: BoxConstraints(
+                        maxWidth: maxWidth,
+                        maxHeight: MediaQuery.sizeOf(context).height * 0.79),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -126,8 +127,7 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                               ),
                             ),
                           ),
-                        // SizedBox(height: context.isMobile ? 270 : 200),
-                        verticalSpace(size.height * 0.37),
+                        Spacer(),
                         PrimaryButton(
                           buttonText: 'Update Changes'.tr(),
                           height: context.isMobile
@@ -143,7 +143,6 @@ class _AccountSettingsState extends ConsumerState<AccountSettings> {
                             }
                           },
                         ),
-                        // verticalSpace(context.isMobile ? 32 : 184),
                       ],
                     ),
                   ),

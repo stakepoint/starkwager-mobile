@@ -16,6 +16,7 @@ class AppColors {
   static const grayCool600 = Color(0xFF4A5578);
   static const grayCool800 = Color(0xFF30374F);
   static const grayCool900 = Color(0xFF111322);
+  static const grayNeutral700 = Color(0xFF384250);
 
   static const grayNeutral500 = Color(0xFF6C737F);
   static const grayNeutral800 = Color(0xFF1F2A37);
@@ -46,4 +47,10 @@ class AppColors {
   static const gradient60 = Color(0x99000000);
   static const gradient80 = Color(0xCC000000);
   static const gradient100 = Color(0xFF000000);
+
+  // Dialog colors
+  static const dialogDarkBackground =
+      Color(0xFF1F2A37); // Dark mode dialog background
+  static const cancelButtonLight =
+      Color(0xFFF5F5F7); // Light mode cancel button
 }

@@ -43,7 +43,8 @@ extension ThemeModeExtension on BuildContext {
       isDarkMode ? AppColors.mono80 : AppColors.dividerColour;
 
   Color get containerColor =>
-      isDarkMode ? AppColors.gradient40 : AppColors.white;
+      isDarkMode ? AppColors.grayNeutral800 : AppColors.white;
+  // AppColors.gradient40
 
   Color get tabSelectedBackgroundColor =>
       isDarkMode ? AppColors.white : AppColors.tabSelectedColor;
@@ -59,6 +60,16 @@ extension ThemeModeExtension on BuildContext {
 
   Color get avatarBgColor =>
       isDarkMode ? AppColors.grayCool200 : AppColors.grayCool200;
+
+  Color get uploadDialog =>
+      isDarkMode ? AppColors.grayNeutral800 : AppColors.white;
+
+  Color get rotateColor => isDarkMode ? AppColors.white : AppColors.grayCool100;
+
+  Color get textField =>
+      isDarkMode ? AppColors.grayNeutral700 : AppColors.grayCool100;
+
+  Color get snapProofColor => isDarkMode ? AppColors.white : AppColors.mono0;
 
   Color get menuBackgroundColor =>
       isDarkMode ? AppColors.grayCool800 : AppColors.grayCool800;
@@ -82,6 +93,10 @@ extension ThemeModeExtension on BuildContext {
   Color get sidebarBackgroundColor => AppColors.black;
 
   Color get menuShadowColor => AppColors.black.withValues(alpha: 0.2);
+
+  // Dialog colors
+  Color get dialogDarkBackground => AppColors.dialogDarkBackground;
+  Color get cancelButtonLight => AppColors.cancelButtonLight;
 
   ThemeData get lightTheme => ThemeData.light().copyWith(
         scaffoldBackgroundColor: AppColors.mono0,

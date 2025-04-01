@@ -325,7 +325,7 @@ class CreateWagerScreen extends ConsumerWidget {
     Widget buildCategorySelectionDialog(
         BuildContext context, List<String> categories) {
       return AlertDialog(
-        backgroundColor: context.primaryBackgroundColor,
+        backgroundColor: context.containerColor,
         surfaceTintColor: context.primaryBackgroundColor,
         titlePadding: EdgeInsets.zero,
         title: Container(
@@ -340,7 +340,11 @@ class CreateWagerScreen extends ConsumerWidget {
                 style: AppTheme.of(context).titleExtraLarge24,
               ),
               IconButton(
-                icon: SvgPicture.asset(AppIcons.close),
+                icon: Icon(
+                  Icons.close,
+                  size: 24,
+                  color: context.primaryTextColor,
+                ),
                 onPressed: () => Navigator.pop(context),
               ),
             ],
@@ -408,7 +412,11 @@ class CreateWagerScreen extends ConsumerWidget {
                     style: AppTheme.of(context).titleExtraLarge24,
                   ),
                   IconButton(
-                    icon: SvgPicture.asset(AppIcons.close),
+                    icon: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: context.primaryTextColor,
+                    ),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
@@ -570,7 +578,7 @@ class HashtagDialog extends ConsumerWidget {
       child: Container(
         padding: const EdgeInsets.all(24),
         decoration: BoxDecoration(
-          color: context.primaryBackgroundColor,
+          color: context.containerColor,
           borderRadius: BorderRadius.circular(20),
         ),
         constraints: const BoxConstraints(maxWidth: 500),
@@ -588,7 +596,11 @@ class HashtagDialog extends ConsumerWidget {
                 ),
                 Spacer(),
                 IconButton(
-                  icon: const Icon(Icons.close, size: 24),
+                  icon: Icon(
+                    Icons.close,
+                    size: 24,
+                    color: context.primaryTextColor,
+                  ),
                   onPressed: () => Navigator.pop(context),
                 ),
               ],
@@ -629,7 +641,8 @@ class HashtagBottomSheet extends ConsumerWidget {
 
     return Container(
       padding: const EdgeInsets.all(24),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
+        color: context.containerColor,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
@@ -647,7 +660,11 @@ class HashtagBottomSheet extends ConsumerWidget {
               ),
               Spacer(),
               IconButton(
-                icon: const Icon(Icons.close, size: 24),
+                icon: Icon(
+                  Icons.close,
+                  size: 24,
+                  color: context.primaryTextColor,
+                ),
                 onPressed: () => Navigator.pop(context),
               ),
             ],

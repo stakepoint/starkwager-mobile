@@ -7,6 +7,60 @@ import 'package:starkwager/theme/app_theme.dart';
 class WagerSummaryCancelClaim extends StatelessWidget {
   const WagerSummaryCancelClaim({super.key});
 
+  void _showCancelClaimDialog(BuildContext context) {
+    if (context.isMobile) {
+      showModalBottomSheet(
+        context: context,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        isDismissible: true,
+        enableDrag: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        builder: (context) => Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: CancelClaimDialog(
+            onCancel: () {
+              Navigator.pop(context);
+            },
+            onClose: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) => Dialog(
+          backgroundColor: context.isDarkMode
+              ? context.dialogDarkBackground
+              : context.containerColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Container(
+            width: 400,
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.8,
+            ),
+            child: CancelClaimDialog(
+              onCancel: () {
+                Navigator.pop(context);
+              },
+              onClose: () {
+                Navigator.pop(context);
+              },
+            ),
+          ),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -63,7 +117,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
               buttonText: 'cancelClaim'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () => _showCancelClaimDialog(context),
             ),
           if (context.isTablet && context.isPortrait)
             PrimaryButton(
@@ -75,7 +129,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
               height: 56,
               width: 176,
               isActive: true,
-              onPressed: () {},
+              onPressed: () => _showCancelClaimDialog(context),
             ),
           if (context.isTablet && context.isLandscape)
             PrimaryButton(
@@ -87,7 +141,7 @@ class WagerSummaryCancelClaim extends StatelessWidget {
               buttonText: 'cancelClaim'.tr(),
               height: 56,
               isActive: true,
-              onPressed: () {},
+              onPressed: () => _showCancelClaimDialog(context),
             ),
         ],
       ),
