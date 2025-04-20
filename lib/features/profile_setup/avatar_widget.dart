@@ -1,11 +1,80 @@
+import 'package:avatar_plus/avatar_plus.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:starkwager/core/constants/app_values.dart';
 import 'package:starkwager/extensions/build_context_extension.dart';
 import 'package:starkwager/theme/app_theme.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
+import 'dart:math';
 
 import '../feature.dart';
+
+// Generate a random string of specified length
+String _generateRandomString(int length) {
+  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  final random = Random();
+  return String.fromCharCodes(
+    Iterable.generate(
+      length, 
+      (_) => chars.codeUnitAt(random.nextInt(chars.length)),
+    ),
+  );
+}
+
+// List of 15 random strings for avatars
+final List<String> avatarStrings = List.generate(
+  15, 
+  (_) => _generateRandomString(10),
+);
+
+// Custom avatar widget that displays a colorful circle with initials
+class CustomAvatarPlus extends StatelessWidget {
+  final String text;
+  final double size;
+  final Color? backgroundColor;
+
+  const CustomAvatarPlus({
+    Key? key,
+    required this.text,
+    this.size = 60,
+    this.backgroundColor,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Generate a color based on the text
+    final color = backgroundColor ?? _getColorFromText(text);
+
+    // Get the initials (first 2 characters)
+    final initials = text.length > 2 ? text.substring(0, 2).toUpperCase() : text.toUpperCase();
+
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        color: color,
+      ),
+      child: Center(
+        child: AvatarPlus(
+            initials,
+          trBackground: true,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  // Generate a color based on the text
+  Color _getColorFromText(String text) {
+    final random = Random(text.codeUnits.fold<int>(0, (prev, element) => prev + element));
+    return Color.fromARGB(
+      255,
+      random.nextInt(200) + 55, // Avoid too dark colors
+      random.nextInt(200) + 55,
+      random.nextInt(200) + 55,
+    );
+  }
+}
 
 class AvatarDialog extends StatelessWidget {
   final Function(String) onIconSelected;
@@ -14,10 +83,10 @@ class AvatarDialog extends StatelessWidget {
   AvatarDialog(
       {super.key, required this.onIconSelected, this.isBottomSheet = false});
 
-  final ValueNotifier<String?> selectedImage = ValueNotifier(null);
+  final ValueNotifier<String?> selectedAvatarString = ValueNotifier(null);
 
-  setImage(String v) {
-    selectedImage.value = v;
+  setAvatarString(String v) {
+    selectedAvatarString.value = v;
   }
 
   @override
@@ -26,7 +95,6 @@ class AvatarDialog extends StatelessWidget {
       margin:
           context.isMobile ? const EdgeInsets.symmetric(horizontal: 16) : null,
       width: !context.isMobile ? 550 : double.infinity,
-      //color: context.containerColor,
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -65,8 +133,8 @@ class AvatarDialog extends StatelessWidget {
           ),
           verticalSpace(AppValues.height40),
           ValueListenableBuilder(
-            valueListenable: selectedImage,
-            builder: (context, image, _) => GridView.builder(
+            valueListenable: selectedAvatarString,
+            builder: (context, avatarString, _) => GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -77,10 +145,11 @@ class AvatarDialog extends StatelessWidget {
               ),
               itemCount: 15,
               itemBuilder: (context, index) {
+                final currentAvatarString = avatarStrings[index % avatarStrings.length];
                 return AvatarItem(
                   index: index,
-                  onTap: setImage,
-                  isSelected: image == index.getImage,
+                  onTap: setAvatarString,
+                  isSelected: avatarString == currentAvatarString,
                 );
               },
             ),
@@ -91,8 +160,8 @@ class AvatarDialog extends StatelessWidget {
             child: PrimaryButton(
                 buttonText: 'choose'.tr(),
                 onPressed: () {
-                  if (selectedImage.value != null) {
-                    onIconSelected(selectedImage.value!);
+                  if (selectedAvatarString.value != null) {
+                    onIconSelected(selectedAvatarString.value!);
                     Navigator.pop(context);
                   }
                 },
@@ -138,20 +207,12 @@ class AvatarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final colors = [
-      Colors.red,
-      Colors.blue,
-      Colors.green,
-      Colors.orange,
-      Colors.purple,
-      Colors.teal,
-      Colors.amber,
-      Colors.indigo
-    ];
+    // Get the avatar string for this index
+    final avatarString = avatarStrings[index % avatarStrings.length];
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTap: () => onTap('assets/avatar/avatar${index + 1}.png'),
+      onTap: () => onTap(avatarString),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24),
@@ -163,18 +224,9 @@ class AvatarItem extends StatelessWidget {
         ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            index.getImage,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) {
-              return Center(
-                child: Icon(
-                  Icons.person,
-                  color: colors[index % colors.length],
-                  size: 32,
-                ),
-              );
-            },
+          child: CustomAvatarPlus(
+            text: avatarString,
+            size: 60,
           ),
         ),
       ),
@@ -202,6 +254,3 @@ void showAvatarDialog(BuildContext context,
         );
 }
 
-extension AvatarExt on int {
-  String get getImage => 'assets/avatar/avatar${this + 1}.png';
-}
