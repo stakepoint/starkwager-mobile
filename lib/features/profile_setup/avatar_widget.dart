@@ -35,11 +35,11 @@ class CustomAvatarPlus extends StatelessWidget {
   final Color? backgroundColor;
 
   const CustomAvatarPlus({
-    Key? key,
+    super.key,
     required this.text,
     this.size = 60,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
