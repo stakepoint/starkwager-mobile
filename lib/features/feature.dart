@@ -23,6 +23,7 @@ import 'package:starkwager/features/create_wager/widgets/wager_summary_cancel_cl
 import 'package:starkwager/features/profile_setting/widget/theme_select_bottom_sheet.dart';
 import 'package:starkwager/features/profile_setup/avatar_widget.dart';
 import 'package:starkwager/theme/app_theme.dart';
+import 'package:starkwager/utils/border_painter.dart';
 import 'package:starkwager/utils/ui_widgets.dart';
 
 import '../core/constants/screen_layout.dart';
@@ -83,4 +84,5 @@ part 'wallet_screen/widget/transaction_item.dart';
 part 'wallet_screen/widget/wallet_screen_tablet_mode.dart';
 part 'wallet_screen/widget/waltet_screen_body.dart';
 part 'withdraw_funds/withdraw_funds_dialog.dart';
+part 'package:starkwager/features/create_wager/widgets/wager_summary_view_proof_dialog.dart';
 part 'create_wager/widgets/cancel_claim_dialog.dart';
