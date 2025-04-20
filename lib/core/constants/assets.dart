@@ -37,6 +37,8 @@ class AppIcons {
   static const tick = '$baseIconPath/tick.svg';
   static const upload1 = '$baseIconPath/upload1.svg';
   static const upload2 = '$baseIconPath/upload2.svg';
+  static const downWardArrowIos = '$baseIconPath/down_arrow_ios.svg';
+  static const sunlight = '$baseIconPath/sunlight.svg';
 
   // Category Icons
   static const trendingIcon = '$baseIconPath/trend_up.svg';
@@ -58,6 +60,7 @@ class AppIcons {
   static const snSymbol = '$baseImagePath/sn_symbol.png';
   static const argentIcon = '$baseImagePath/argent_icon.png';
   static const braavosIcon = '$baseImagePath/braavos_icon.png';
+  static const proofImage = '$baseImagePath/proofImage.jpg';
 
   //-------------------------------------------- AVATAR IMAGES -------------------------------------------- //
   static const avatar1 = '$baseImagePath/avatar/avatar1.png';
