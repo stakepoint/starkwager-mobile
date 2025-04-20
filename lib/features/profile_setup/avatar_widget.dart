@@ -11,11 +11,12 @@ import '../feature.dart';
 
 // Generate a random string of specified length
 String _generateRandomString(int length) {
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const chars =
+      'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   final random = Random();
   return String.fromCharCodes(
     Iterable.generate(
-      length, 
+      length,
       (_) => chars.codeUnitAt(random.nextInt(chars.length)),
     ),
   );
@@ -23,7 +24,7 @@ String _generateRandomString(int length) {
 
 // List of 15 random strings for avatars
 final List<String> avatarStrings = List.generate(
-  15, 
+  15,
   (_) => _generateRandomString(10),
 );
 
@@ -46,7 +47,9 @@ class CustomAvatarPlus extends StatelessWidget {
     final color = backgroundColor ?? _getColorFromText(text);
 
     // Get the initials (first 2 characters)
-    final initials = text.length > 2 ? text.substring(0, 2).toUpperCase() : text.toUpperCase();
+    final initials = text.length > 2
+        ? text.substring(0, 2).toUpperCase()
+        : text.toUpperCase();
 
     return Container(
       width: size,
@@ -56,7 +59,7 @@ class CustomAvatarPlus extends StatelessWidget {
       ),
       child: Center(
         child: AvatarPlus(
-            initials,
+          initials,
           trBackground: true,
           fit: BoxFit.cover,
         ),
@@ -66,7 +69,8 @@ class CustomAvatarPlus extends StatelessWidget {
 
   // Generate a color based on the text
   Color _getColorFromText(String text) {
-    final random = Random(text.codeUnits.fold<int>(0, (prev, element) => prev + element));
+    final random =
+        Random(text.codeUnits.fold<int>(0, (prev, element) => prev + element));
     return Color.fromARGB(
       255,
       random.nextInt(200) + 55, // Avoid too dark colors
@@ -145,7 +149,8 @@ class AvatarDialog extends StatelessWidget {
               ),
               itemCount: 15,
               itemBuilder: (context, index) {
-                final currentAvatarString = avatarStrings[index % avatarStrings.length];
+                final currentAvatarString =
+                    avatarStrings[index % avatarStrings.length];
                 return AvatarItem(
                   index: index,
                   onTap: setAvatarString,
@@ -253,4 +258,3 @@ void showAvatarDialog(BuildContext context,
           ),
         );
 }
-

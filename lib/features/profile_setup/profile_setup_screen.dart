@@ -97,7 +97,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               children: [
                                 ValueListenableBuilder(
                                   valueListenable: selectedAvatar,
-                                  builder: (context, avatarString, _) => Container(
+                                  builder: (context, avatarString, _) =>
+                                      Container(
                                     width: 80,
                                     height: 80,
                                     decoration: BoxDecoration(
