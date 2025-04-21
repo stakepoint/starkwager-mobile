@@ -9,8 +9,8 @@ class InstalledWalletShimmer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Shimmer.fromColors(
-      baseColor: Theme.of(context).colorScheme.secondary.withOpacity(0.5),
-      highlightColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+      baseColor: Theme.of(context).colorScheme.secondary.withAlpha(50),
+      highlightColor: Theme.of(context).colorScheme.secondary.withAlpha(51),
       child: InstalledWalletWidget(
         title: title,
         icon: icon,
