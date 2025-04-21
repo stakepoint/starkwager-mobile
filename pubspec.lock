@@ -62,6 +62,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  avatar_plus:
+    dependency: "direct main"
+    description:
+      name: avatar_plus
+      sha256: fcc16b58f0d4669084d719d0fc7dd69203aa05779ec1bdd0c95ecef85ff48367
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   base_x:
     dependency: transitive
     description:
@@ -1219,7 +1227,7 @@ packages:
     source: hosted
     version: "2.0.1"
   shimmer:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shimmer
       sha256: "5f88c883a22e9f9f299e5ba0e4f7e6054857224976a5d9f839d4ebdc94a14ac9"

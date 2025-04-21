@@ -97,7 +97,8 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                               children: [
                                 ValueListenableBuilder(
                                   valueListenable: selectedAvatar,
-                                  builder: (context, image, _) => Container(
+                                  builder: (context, avatarString, _) =>
+                                      Container(
                                     width: 80,
                                     height: 80,
                                     decoration: BoxDecoration(
@@ -105,10 +106,15 @@ class _ProfileSetupScreenState extends ConsumerState<ProfileSetupScreen> {
                                     ),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20),
-                                      child: Image.asset(
-                                        image ?? AppIcons.userImage,
-                                        fit: BoxFit.cover,
-                                      ),
+                                      child: avatarString != null
+                                          ? CustomAvatarPlus(
+                                              text: avatarString,
+                                              size: 80,
+                                            )
+                                          : Image.asset(
+                                              AppIcons.userImage,
+                                              fit: BoxFit.cover,
+                                            ),
                                     ),
                                   ),
                                 ),
