@@ -19,10 +19,25 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ref.listen<WalletConnectionState>(walletConnectionProvider, (previous, next) async {
+      if (next is WalletConnected) {
+        final chainId = next.service.selectedChain!.chainId;
+        final namespace = ReownAppKitModalNetworks.getNamespaceForChainId(
+          chainId,
+        );
+        final address = next.service.session!.getAddress(namespace)!;
+
+        // Call create login endpoint with this address and trigger AuthLoading state
+        await ref.read(authNotifierProvider.notifier).createLoginWithAddress(address);
+        // Optionally, navigate to profile setup screen after login
+        //Navigator.of(context).pushReplacementNamed('/profile-setup', arguments: address);
+      }
+    });
     final argent = ref.watch(argentCheckProvider);
     final braavos = ref.watch(braavosCheckProvider);
     final metamask = ref.watch(metamaskCheckProvider);
     final walletState = ref.watch(walletConnectionProvider);
+    final authState = ref.watch(authNotifierProvider);
 
     if (walletState is WalletConnected) {
       w3mService = walletState.service;
@@ -81,58 +96,88 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
                       verticalSpace(AppValues.height30),
                       verticalDivider(color: context.dividerColor),
                       verticalSpace(AppValues.height30),
-                      argent.when(
-                          data: (isInstalled) => InstalledWalletWidget(
-                                title: 'Argent',
-                                icon: Image.asset(AppIcons.argentIcon),
-                                isInstalled: isInstalled,
-                                onTap: () {},
-                              ),
-                          error: (error, stack) => InstalledWalletWidget(
-                                title: 'Argent',
-                                icon: Image.asset(AppIcons.argentIcon),
-                                isInstalled: false,
-                                onTap: () {},
-                              ),
-                          loading: () => const CircularProgressIndicator()),
-                      verticalSpace(AppValues.height15),
-                      braavos.when(
-                          data: (isInstalled) => InstalledWalletWidget(
-                                title: 'Braavos',
-                                icon: Image.asset(AppIcons.braavosIcon),
-                                isInstalled: isInstalled,
-                                onTap: () {},
-                              ),
-                          error: (error, stack) => InstalledWalletWidget(
-                                title: 'Braavos',
-                                icon: Image.asset(AppIcons.braavosIcon),
-                                isInstalled: false,
-                                onTap: () {},
-                              ),
-                          loading: () => const CircularProgressIndicator()),
-                      verticalSpace(AppValues.height15),
-                      metamask.when(
-                          data: (isInstalled) => InstalledWalletWidget(
-                                title: 'Metamask',
-                                icon: SvgPicture.asset(AppIcons.metaMaskIcon,
-                                    width: AppValues.width24,
-                                    height: AppValues.height24),
-                                isInstalled: isInstalled,
-                                onTap: () {
-                                  w3mService!.openModalView();
-                                },
-                              ),
-                          error: (error, stack) => InstalledWalletWidget(
-                                title: 'Metamask',
-                                icon: SvgPicture.asset(AppIcons.metaMaskIcon,
-                                    width: AppValues.width24,
-                                    height: AppValues.height24),
-                                isInstalled: false,
-                                onTap: () {
-                                  w3mService!.openModalView();
-                                },
-                              ),
-                          loading: () => const CircularProgressIndicator()),
+                      if (authState is AuthLoading) ...[
+                        InstalledWalletShimmer(
+                          title: 'Argent',
+                          icon: Image.asset(AppIcons.argentIcon),
+                        ),
+                        verticalSpace(AppValues.height15),
+                        InstalledWalletShimmer(
+                          title: 'Braavos',
+                          icon: Image.asset(AppIcons.braavosIcon),
+                        ),
+                        verticalSpace(AppValues.height15),
+                        InstalledWalletShimmer(
+                          title: 'Metamask',
+                          icon: SvgPicture.asset(AppIcons.metaMaskIcon,
+                              width: AppValues.width24,
+                              height: AppValues.height24),
+                        ),
+                      ] else ...[
+                        argent.when(
+                            data: (isInstalled) => InstalledWalletWidget(
+                                  title: 'Argent',
+                                  icon: Image.asset(AppIcons.argentIcon),
+                                  isInstalled: isInstalled,
+                                  onTap: () {},
+                                ),
+                            error: (error, stack) => InstalledWalletWidget(
+                                  title: 'Argent',
+                                  icon: Image.asset(AppIcons.argentIcon),
+                                  isInstalled: false,
+                                  onTap: () {},
+                                ),
+                            loading: () => InstalledWalletShimmer(
+                                  title: 'Argent',
+                                  icon: Image.asset(AppIcons.argentIcon),
+                                )),
+                        verticalSpace(AppValues.height15),
+                        braavos.when(
+                            data: (isInstalled) => InstalledWalletWidget(
+                                  title: 'Braavos',
+                                  icon: Image.asset(AppIcons.braavosIcon),
+                                  isInstalled: isInstalled,
+                                  onTap: () {},
+                                ),
+                            error: (error, stack) => InstalledWalletWidget(
+                                  title: 'Braavos',
+                                  icon: Image.asset(AppIcons.braavosIcon),
+                                  isInstalled: false,
+                                  onTap: () {},
+                                ),
+                            loading: () => InstalledWalletShimmer(
+                                  title: 'Braavos',
+                                  icon: Image.asset(AppIcons.braavosIcon),
+                                )),
+                        verticalSpace(AppValues.height15),
+                        metamask.when(
+                            data: (isInstalled) => InstalledWalletWidget(
+                                  title: 'Metamask',
+                                  icon: SvgPicture.asset(AppIcons.metaMaskIcon,
+                                      width: AppValues.width24,
+                                      height: AppValues.height24),
+                                  isInstalled: isInstalled,
+                                  onTap: () {
+                                    w3mService!.openModalView();
+                                  },
+                                ),
+                            error: (error, stack) => InstalledWalletWidget(
+                                  title: 'Metamask',
+                                  icon: SvgPicture.asset(AppIcons.metaMaskIcon,
+                                      width: AppValues.width24,
+                                      height: AppValues.height24),
+                                  isInstalled: false,
+                                  onTap: () {
+                                    w3mService!.openModalView();
+                                  },
+                                ),
+                            loading: () => InstalledWalletShimmer(
+                                  title: 'Metamask',
+                                  icon: SvgPicture.asset(AppIcons.metaMaskIcon,
+                                      width: AppValues.width24,
+                                      height: AppValues.height24),
+                                )),
+                      ],
                       verticalSpace(AppValues.height15),
                     ],
                   ),

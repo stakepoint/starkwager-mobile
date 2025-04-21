@@ -45,6 +45,7 @@ dependencies:
   dotted_border: ^2.1.0
   dotted_line: ^3.2.3
   avatar_plus: ^0.0.1
+  shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
