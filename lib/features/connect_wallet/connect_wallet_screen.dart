@@ -19,7 +19,8 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<WalletConnectionState>(walletConnectionProvider, (previous, next) async {
+    ref.listen<WalletConnectionState>(walletConnectionProvider,
+        (previous, next) async {
       if (next is WalletConnected) {
         final chainId = next.service.selectedChain!.chainId;
         final namespace = ReownAppKitModalNetworks.getNamespaceForChainId(
@@ -28,7 +29,9 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
         final address = next.service.session!.getAddress(namespace)!;
 
         // Call create login endpoint with this address and trigger AuthLoading state
-        await ref.read(authNotifierProvider.notifier).createLoginWithAddress(address);
+        await ref
+            .read(authNotifierProvider.notifier)
+            .createLoginWithAddress(address);
         // Optionally, navigate to profile setup screen after login
         //Navigator.of(context).pushReplacementNamed('/profile-setup', arguments: address);
       }

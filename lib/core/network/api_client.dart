@@ -128,7 +128,8 @@ class ApiClient {
         if (error.response != null) {
           final statusCode = error.response!.statusCode;
           final responseData = error.response!.data;
-          if (responseData is Map<String, dynamic> && responseData.containsKey('message')) {
+          if (responseData is Map<String, dynamic> &&
+              responseData.containsKey('message')) {
             errorMessage = responseData['message'];
           } else {
             errorMessage = 'Error $statusCode: Server error';

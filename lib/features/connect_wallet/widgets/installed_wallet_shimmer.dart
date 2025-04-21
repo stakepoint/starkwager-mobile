@@ -3,7 +3,8 @@ part of '../../feature.dart';
 class InstalledWalletShimmer extends ConsumerWidget {
   final String title;
   final Widget icon;
-  const InstalledWalletShimmer({super.key, required this.title, required this.icon});
+  const InstalledWalletShimmer(
+      {super.key, required this.title, required this.icon});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

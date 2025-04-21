@@ -16,21 +16,17 @@ class ServerFailure extends Failure {
 }
 
 class NetworkFailure extends Failure {
-  const NetworkFailure({required String message})
-      : super(message: message);
+  const NetworkFailure({required String message}) : super(message: message);
 }
 
 class CacheFailure extends Failure {
-  const CacheFailure({required String message})
-      : super(message: message);
+  const CacheFailure({required String message}) : super(message: message);
 }
 
 class ValidationFailure extends Failure {
-  const ValidationFailure({required String message})
-      : super(message: message);
+  const ValidationFailure({required String message}) : super(message: message);
 }
 
 class NotFoundFailure extends Failure {
-  const NotFoundFailure({required String message})
-      : super(message: message);
+  const NotFoundFailure({required String message}) : super(message: message);
 }

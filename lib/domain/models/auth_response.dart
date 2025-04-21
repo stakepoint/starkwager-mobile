@@ -6,7 +6,8 @@ class AuthResponse {
   final User user;
   final Tokens tokens;
 
-  AuthResponse({required this.message, required this.user, required this.tokens});
+  AuthResponse(
+      {required this.message, required this.user, required this.tokens});
 
   factory AuthResponse.fromJson(Map<String, dynamic> json) => AuthResponse(
         message: json['message'],

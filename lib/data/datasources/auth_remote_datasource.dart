@@ -14,7 +14,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   @override
   Future<AuthResponse> createLogin(String address) async {
     try {
-      final response = await apiClient.post('/auth/create-login', data: {'address': address});
+      final response = await apiClient
+          .post('/auth/create-login', data: {'address': address});
       final data = response.data as Map<String, dynamic>;
       if (data['tokens'] == null) {
         throw ServerFailure(
