@@ -26,7 +26,7 @@ final categoriesNotifierProvider =
 // Provider to expose just the list of category names for UI consumption
 final categoriesProvider = Provider<List<String>>((ref) {
   final state = ref.watch(categoriesNotifierProvider);
-  
+
   if (state is CategoryLoaded) {
     return state.categories.categories
         .map((category) => category.name)

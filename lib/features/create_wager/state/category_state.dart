@@ -36,4 +36,4 @@ class CategoriesNotifier extends StateNotifier<CategoryState> {
       state = CategoryError(e.toString());
     }
   }
-} 
+}

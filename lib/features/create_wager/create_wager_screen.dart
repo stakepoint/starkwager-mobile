@@ -61,7 +61,7 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
     final size = MediaQuery.of(context).size;
     final selectedHashtags = ref.watch(selectedHashtagsProvider);
     final selectedCategory = ref.watch(selectedCategoryProvider);
-    
+
     String getDisplayText() {
       if (selectedHashtags.isEmpty) {
         return 'addHashtags'.tr();
@@ -108,9 +108,9 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      _categoriesError != null 
-                        ? 'Error loading categories: $_categoriesError'
-                        : 'Error loading hashtags: $_hashtagsError',
+                      _categoriesError != null
+                          ? 'Error loading categories: $_categoriesError'
+                          : 'Error loading hashtags: $_hashtagsError',
                       style: TextStyle(color: Colors.red),
                     ),
                   ),
@@ -131,13 +131,20 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                child: _isLoadingCategories 
-                                ? Center(child: SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2)))
-                                : Text(
-                                    selectedCategory ?? 'selectCategory'.tr(),
-                                    style: AppTheme.of(context).textMediumMedium,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                child: _isLoadingCategories
+                                    ? Center(
+                                        child: SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(
+                                                strokeWidth: 2)))
+                                    : Text(
+                                        selectedCategory ??
+                                            'selectCategory'.tr(),
+                                        style: AppTheme.of(context)
+                                            .textMediumMedium,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context
@@ -163,13 +170,19 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                child: _isLoadingHashtags 
-                                ? Center(child: SizedBox(height: 20, width: 20, child: CircularProgressIndicator(strokeWidth: 2)))
-                                : Text(
-                                    getDisplayText(),
-                                    style: AppTheme.of(context).textMediumMedium,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                child: _isLoadingHashtags
+                                    ? Center(
+                                        child: SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(
+                                                strokeWidth: 2)))
+                                    : Text(
+                                        getDisplayText(),
+                                        style: AppTheme.of(context)
+                                            .textMediumMedium,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context.primaryTextColor),

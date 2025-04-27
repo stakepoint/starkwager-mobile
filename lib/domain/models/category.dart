@@ -31,4 +31,4 @@ class CategoriesResponse {
         .toList();
     return CategoriesResponse(categories: categories);
   }
-} 
+}

@@ -29,7 +29,7 @@ class HashtagRemoteDatasourceImpl implements HashtagRemoteDatasource {
 
       // Get the access token
       final token = authState.response.tokens.accessToken;
-      
+
       // Make the API request with the token
       final response = await apiClient.get(
         '/hashtags',
@@ -39,7 +39,7 @@ class HashtagRemoteDatasourceImpl implements HashtagRemoteDatasource {
           },
         ),
       );
-      
+
       final data = response.data as Map<String, dynamic>;
       return HashtagsResponse.fromJson(data);
     } on DioException catch (e) {
@@ -54,4 +54,4 @@ class HashtagRemoteDatasourceImpl implements HashtagRemoteDatasource {
       throw ServerFailure(message: e.toString());
     }
   }
-} 
+}

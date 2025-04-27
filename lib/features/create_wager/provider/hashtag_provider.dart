@@ -33,11 +33,9 @@ final hashtagsApiNotifierProvider =
 // Provider to expose just the list of hashtag names for UI consumption
 final hashtagsListProvider = Provider<List<String>>((ref) {
   final state = ref.watch(hashtagsApiNotifierProvider);
-  
+
   if (state is HashtagApiLoaded) {
-    return state.hashtags.hashtags
-        .map((hashtag) => hashtag.name)
-        .toList();
+    return state.hashtags.hashtags.map((hashtag) => hashtag.name).toList();
   } else {
     // Fallback if hashtags haven't loaded yet
     return [

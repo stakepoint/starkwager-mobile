@@ -9,4 +9,4 @@ class GetAllHashtags {
   Future<HashtagsResponse> call() async {
     return await repository.getAllHashtags();
   }
-} 
+}

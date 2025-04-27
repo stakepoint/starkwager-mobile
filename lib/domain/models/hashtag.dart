@@ -31,4 +31,4 @@ class HashtagsResponse {
         .toList();
     return HashtagsResponse(hashtags: hashtags);
   }
-} 
+}

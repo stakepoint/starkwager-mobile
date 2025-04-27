@@ -9,4 +9,4 @@ class GetAllCategories {
   Future<CategoriesResponse> call() async {
     return await repository.getAllCategories();
   }
-} 
+}
