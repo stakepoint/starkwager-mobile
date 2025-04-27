@@ -2,7 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/network/api_client.dart';
 import '../../../data/datasources/category_remote_datasource.dart';
 import '../../../data/repositories/category_repository_impl.dart';
-import '../../../domain/models/category.dart';
 import '../../../domain/usecases/get_all_categories.dart';
 import '../state/category_state.dart';
 

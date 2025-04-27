@@ -104,7 +104,7 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.only(bottom: 10),
                     decoration: BoxDecoration(
-                      color: Colors.red.withOpacity(0.1),
+                      color: Colors.red.withValues(alpha: 26),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
