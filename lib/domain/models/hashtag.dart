@@ -24,8 +24,18 @@ class HashtagsResponse {
 
   HashtagsResponse({required this.hashtags});
 
-  factory HashtagsResponse.fromJson(Map<String, dynamic> json) {
-    final List<dynamic> hashtagsData = json['data'] ?? [];
+  factory HashtagsResponse.fromJson(dynamic json) {
+    // Handle both array response and object with data field
+    List<dynamic> hashtagsData = [];
+    
+    if (json is List) {
+      // Direct array response
+      hashtagsData = json;
+    } else if (json is Map<String, dynamic>) {
+      // Response with data field
+      hashtagsData = json['data'] ?? [];
+    }
+    
     final hashtags = hashtagsData
         .map((hashtagJson) => Hashtag.fromJson(hashtagJson))
         .toList();

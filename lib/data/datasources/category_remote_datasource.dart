@@ -29,7 +29,7 @@ class CategoryRemoteDatasourceImpl implements CategoryRemoteDatasource {
 
       // Get the access token
       final token = authState.response.tokens.accessToken;
-
+      
       // Make the API request with the token
       final response = await apiClient.get(
         '/categories/all',
@@ -39,9 +39,9 @@ class CategoryRemoteDatasourceImpl implements CategoryRemoteDatasource {
           },
         ),
       );
-
-      final data = response.data as Map<String, dynamic>;
-      return CategoriesResponse.fromJson(data);
+      
+      // Pass the direct response data to the fromJson method
+      return CategoriesResponse.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure(
         message: e.message ?? 'An error occurred while fetching categories',

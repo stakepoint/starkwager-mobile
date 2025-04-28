@@ -29,7 +29,7 @@ class HashtagRemoteDatasourceImpl implements HashtagRemoteDatasource {
 
       // Get the access token
       final token = authState.response.tokens.accessToken;
-
+      
       // Make the API request with the token
       final response = await apiClient.get(
         '/hashtags',
@@ -39,9 +39,9 @@ class HashtagRemoteDatasourceImpl implements HashtagRemoteDatasource {
           },
         ),
       );
-
-      final data = response.data as Map<String, dynamic>;
-      return HashtagsResponse.fromJson(data);
+      
+      // Pass the direct response data to the fromJson method
+      return HashtagsResponse.fromJson(response.data);
     } on DioException catch (e) {
       throw ServerFailure(
         message: e.message ?? 'An error occurred while fetching hashtags',
