@@ -27,7 +27,7 @@ class CategoriesResponse {
   factory CategoriesResponse.fromJson(dynamic json) {
     // Handle both array response and object with data field
     List<dynamic> categoriesData = [];
-    
+
     if (json is List) {
       // Direct array response
       categoriesData = json;
@@ -35,7 +35,7 @@ class CategoriesResponse {
       // Response with data field
       categoriesData = json['data'] ?? [];
     }
-    
+
     final categories = categoriesData
         .map((categoryJson) => Category.fromJson(categoryJson))
         .toList();
