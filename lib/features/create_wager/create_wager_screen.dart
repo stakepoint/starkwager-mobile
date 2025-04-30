@@ -394,10 +394,7 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
               topRight: Radius.circular(20),
             ),
           ),
-          child: FractionallySizedBox(
-            heightFactor: 0.6,
-            child: child,
-          ),
+          child: child,
         ),
       );
     }
@@ -484,74 +481,85 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
     }
 
     Widget buildBottomSheet(List<String> categories) {
-      return SizedBox(
-        width: 500,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(right: 20, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(),
-                  Container(),
-                  Text(
-                    'selectCategory'.tr(),
-                    style: AppTheme.of(context).titleExtraLarge24,
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.close,
-                      size: 24,
-                      color: context.primaryTextColor,
+      return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: SizedBox(
+          width: 500,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(right: 20, top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(),
+                    Container(),
+                    Text(
+                      'selectCategory'.tr(),
+                      style: AppTheme.of(context).titleExtraLarge24,
                     ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ),
-            verticalSpace(30),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: categories.map((category) {
-                    return Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).pop(category);
-                            ref.read(selectedCategoryProvider.notifier).state =
-                                category;
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 20),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  category,
-                                  style: AppTheme.of(context).textSmallMedium,
-                                ),
-                                SizedBox(width: 5),
-                                if (ref.watch(selectedCategoryProvider) ==
-                                    category)
-                                  SvgPicture.asset(AppIcons.checked),
-                              ],
-                            ),
-                          ),
-                        ),
-                        if (category != categories[categories.length - 1])
-                          buildDotedBorder(context),
-                      ],
-                    );
-                  }).toList(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        size: 24,
+                        color: context.primaryTextColor,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              verticalSpace(20),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.5,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: categories.map((category) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).pop(category);
+                              ref
+                                  .read(selectedCategoryProvider.notifier)
+                                  .state = category;
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    category,
+                                    style: AppTheme.of(context).textSmallMedium,
+                                  ),
+                                  SizedBox(width: 5),
+                                  if (ref.watch(selectedCategoryProvider) ==
+                                      category)
+                                    SvgPicture.asset(AppIcons.checked),
+                                ],
+                              ),
+                            ),
+                          ),
+                          if (category != categories[categories.length - 1])
+                            buildDotedBorder(context),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
