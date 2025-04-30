@@ -143,8 +143,8 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                                             'selectCategory'.tr(),
                                         style: AppTheme.of(context)
                                             .textMediumMedium,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context
@@ -178,11 +178,11 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                                             child: CircularProgressIndicator(
                                                 strokeWidth: 2)))
                                     : Text(
-                                        getDisplayText(),
+                                  getDisplayText(),
                                         style: AppTheme.of(context)
                                             .textMediumMedium,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context.primaryTextColor),
@@ -674,16 +674,15 @@ class HashtagDialog extends ConsumerWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(width: 48), // Space for visual balance
-                Expanded(
-                  child: Text(
-                    'addHashtag(s)'.tr(),
-                    textAlign: TextAlign.center,
-                    style: AppTheme.of(context).titleExtraLarge24,
-                  ),
+                horizontalSpace(140),
+                Text(
+                  textAlign: TextAlign.center,
+                  'addHashtag(s)'.tr(),
+                  style: AppTheme.of(context).titleExtraLarge24,
                 ),
+                Spacer(),
                 IconButton(
                   icon: Icon(
                     Icons.close,
@@ -695,10 +694,15 @@ class HashtagDialog extends ConsumerWidget {
               ],
             ),
             verticalSpace(8),
-            Text(
-              'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
-              textAlign: TextAlign.center,
-              style: AppTheme.of(context).textMediumNormal,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  textAlign: TextAlign.center,
+                  'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
+                  style: AppTheme.of(context).textMediumNormal,
+                ),
+              ],
             ),
             verticalSpace(24),
             Wrap(
@@ -734,16 +738,15 @@ class HashtagBottomSheet extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const SizedBox(width: 48), // Space for visual balance
-              Expanded(
-                child: Text(
-                  'addHashtag(s)'.tr(),
-                  textAlign: TextAlign.center,
-                  style: AppTheme.of(context).titleExtraLarge24,
-                ),
+              horizontalSpace(95),
+              Text(
+                textAlign: TextAlign.center,
+                'addHashtag(s)'.tr(),
+                style: AppTheme.of(context).titleExtraLarge24,
               ),
+              Spacer(),
               IconButton(
                 icon: Icon(
                   Icons.close,
@@ -755,10 +758,15 @@ class HashtagBottomSheet extends ConsumerWidget {
             ],
           ),
           verticalSpace(8),
-          Text(
-            'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
-            textAlign: TextAlign.center,
-            style: AppTheme.of(context).textMediumNormal,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                textAlign: TextAlign.center,
+                'hashtagshelpotherusersfindyourwagereasilyandquickly'.tr(),
+                style: AppTheme.of(context).textMediumNormal,
+              ),
+            ],
           ),
           verticalSpace(24),
           Wrap(
