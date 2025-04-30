@@ -681,23 +681,26 @@ class HashtagDialog extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Stack(
+              alignment: Alignment.center,
               children: [
-                horizontalSpace(140),
-                Text(
-                  textAlign: TextAlign.center,
-                  'addHashtag(s)'.tr(),
-                  style: AppTheme.of(context).titleExtraLarge24,
-                ),
-                Spacer(),
-                IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    size: 24,
-                    color: context.primaryTextColor,
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'addHashtag(s)'.tr(),
+                    style: AppTheme.of(context).titleExtraLarge24,
                   ),
-                  onPressed: () => Navigator.pop(context),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: context.primaryTextColor,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
                 ),
               ],
             ),
@@ -745,23 +748,26 @@ class HashtagBottomSheet extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Stack(
+            alignment: Alignment.center,
             children: [
-              horizontalSpace(95),
-              Text(
-                textAlign: TextAlign.center,
-                'addHashtag(s)'.tr(),
-                style: AppTheme.of(context).titleExtraLarge24,
-              ),
-              Spacer(),
-              IconButton(
-                icon: Icon(
-                  Icons.close,
-                  size: 24,
-                  color: context.primaryTextColor,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'addHashtag(s)'.tr(),
+                  style: AppTheme.of(context).titleExtraLarge24,
                 ),
-                onPressed: () => Navigator.pop(context),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    size: 24,
+                    color: context.primaryTextColor,
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
               ),
             ],
           ),
@@ -807,8 +813,12 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
         ),
         decoration: BoxDecoration(
           color: isSelected
-              ? context.primaryTextColor
-              : context.secondaryTextColor,
+              ? context.isDarkMode
+                  ? AppColors.buttonColor // Yellow in dark mode
+                  : AppColors.tabSelectedColor // Blue in light mode
+              : context.isDarkMode
+                  ? AppColors.grayNeutral800 // Dark in dark mode
+                  : AppColors.grayCool100, // Light gray in light mode
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -818,7 +828,9 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               AppIcons.hashTagIcon,
               colorFilter: ColorFilter.mode(
                   isSelected
-                      ? context.primaryBackgroundColor
+                      ? context.isDarkMode
+                          ? AppColors.grayNeutral800 // Dark text on yellow in dark mode
+                          : AppColors.white // White text on blue in light mode
                       : context.primaryTextColor,
                   BlendMode.srcIn),
             ),
@@ -827,7 +839,9 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               hashtag,
               style: AppTheme.of(context).textRegularMedium.copyWith(
                     color: isSelected
-                        ? context.primaryBackgroundColor
+                        ? context.isDarkMode
+                            ? AppColors.grayNeutral800 // Dark text on yellow in dark mode
+                            : AppColors.white // White text on blue in light mode
                         : context.primaryTextColor,
                   ),
             ),
