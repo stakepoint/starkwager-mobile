@@ -143,8 +143,8 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                                             'selectCategory'.tr(),
                                         style: AppTheme.of(context)
                                             .textMediumMedium,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context
@@ -178,11 +178,11 @@ class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
                                             child: CircularProgressIndicator(
                                                 strokeWidth: 2)))
                                     : Text(
-                                  getDisplayText(),
+                                        getDisplayText(),
                                         style: AppTheme.of(context)
                                             .textMediumMedium,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context.primaryTextColor),
