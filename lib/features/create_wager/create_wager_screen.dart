@@ -829,7 +829,8 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               colorFilter: ColorFilter.mode(
                   isSelected
                       ? context.isDarkMode
-                          ? AppColors.grayNeutral800 // Dark text on yellow in dark mode
+                          ? AppColors
+                              .grayNeutral800 // Dark text on yellow in dark mode
                           : AppColors.white // White text on blue in light mode
                       : context.primaryTextColor,
                   BlendMode.srcIn),
@@ -840,8 +841,10 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               style: AppTheme.of(context).textRegularMedium.copyWith(
                     color: isSelected
                         ? context.isDarkMode
-                            ? AppColors.grayNeutral800 // Dark text on yellow in dark mode
-                            : AppColors.white // White text on blue in light mode
+                            ? AppColors
+                                .grayNeutral800 // Dark text on yellow in dark mode
+                            : AppColors
+                                .white // White text on blue in light mode
                         : context.primaryTextColor,
                   ),
             ),
