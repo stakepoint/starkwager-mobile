@@ -26,7 +26,8 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
         final namespace = ReownAppKitModalNetworks.getNamespaceForChainId(
           chainId,
         );
-        final address = next.service.session!.getAddress(namespace)!;
+        final address = next.service.session?.getAddress(namespace);
+        if(address == null) return;        
 
         // Call create login endpoint with this address and trigger AuthLoading state
         await ref
