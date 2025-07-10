@@ -31,7 +31,7 @@ final argentCheckProvider = FutureProvider<bool>((ref) async {
       return isArgentInstalled;
     }
   } catch (e) {
-    print("$e");
+    debugPrint("$e");
   }
   return false;
 });
@@ -61,7 +61,7 @@ final braavosCheckProvider = FutureProvider<bool>((ref) async {
       return isBraavosInstalled;
     }
   } catch (e) {
-    print("$e");
+    debugPrint("$e");
   }
   return false;
 });
@@ -91,7 +91,7 @@ final metamaskCheckProvider = FutureProvider<bool>((ref) async {
       return isMetaMaskInstalled;
     }
   } catch (e) {
-    print("$e");
+    debugPrint("$e");
   }
   return false;
 });
