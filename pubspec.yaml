@@ -48,6 +48,7 @@ dependencies:
   shimmer: ^3.0.0
   starknet: ^0.1.2+1
   flutter_dotenv: ^5.2.1
+  avnu_provider: ^0.0.2
 
 dev_dependencies:
   flutter_test:
