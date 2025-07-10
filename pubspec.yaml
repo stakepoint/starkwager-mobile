@@ -46,6 +46,8 @@ dependencies:
   dotted_line: ^3.2.3
   avatar_plus: ^0.0.1
   shimmer: ^3.0.0
+  starknet: ^0.1.2+1
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:

@@ -1,13 +1,67 @@
 part of '../feature.dart';
 
-class CreateWagerScreen extends ConsumerWidget {
+class CreateWagerScreen extends ConsumerStatefulWidget {
   const CreateWagerScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<CreateWagerScreen> createState() => _CreateWagerScreenState();
+}
+
+class _CreateWagerScreenState extends ConsumerState<CreateWagerScreen> {
+  bool _isLoadingCategories = false;
+  bool _isLoadingHashtags = false;
+  String? _categoriesError;
+  String? _hashtagsError;
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch categories and hashtags when screen initializes
+    SchedulerBinding.instance.addPostFrameCallback((_) {
+      // Initial fetch of categories and hashtags
+      _fetchCategoriesAndHashtags();
+    });
+  }
+
+  void _fetchCategoriesAndHashtags() async {
+    setState(() {
+      _isLoadingCategories = true;
+      _isLoadingHashtags = true;
+      _categoriesError = null;
+      _hashtagsError = null;
+    });
+
+    try {
+      await ref.read(categoriesNotifierProvider.notifier).fetchCategories();
+    } catch (e) {
+      setState(() {
+        _categoriesError = e.toString();
+      });
+    } finally {
+      setState(() {
+        _isLoadingCategories = false;
+      });
+    }
+
+    try {
+      await ref.read(hashtagsApiNotifierProvider.notifier).fetchHashtags();
+    } catch (e) {
+      setState(() {
+        _hashtagsError = e.toString();
+      });
+    } finally {
+      setState(() {
+        _isLoadingHashtags = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final selectedHashtags = ref.watch(selectedHashtagsProvider);
     final selectedCategory = ref.watch(selectedCategoryProvider);
+
     String getDisplayText() {
       if (selectedHashtags.isEmpty) {
         return 'addHashtags'.tr();
@@ -44,6 +98,23 @@ class CreateWagerScreen extends ConsumerWidget {
                 verticalSpace(size.height * 0.02),
                 if (context.isMobile) Divider(),
                 verticalSpace(size.height * 0.03),
+                // Show API states if needed for debugging
+                if (_categoriesError != null || _hashtagsError != null)
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.red.withValues(alpha: 26),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Text(
+                      _categoriesError != null
+                          ? 'Error loading categories: $_categoriesError'
+                          : 'Error loading hashtags: $_hashtagsError',
+                      style: TextStyle(color: Colors.red),
+                    ),
+                  ),
+                // Continue with the rest of the UI
                 Row(
                   children: [
                     Expanded(
@@ -60,11 +131,20 @@ class CreateWagerScreen extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                child: Text(
-                                  selectedCategory ?? 'selectCategory'.tr(),
-                                  style: AppTheme.of(context).textMediumMedium,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                child: _isLoadingCategories
+                                    ? Center(
+                                        child: SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(
+                                                strokeWidth: 2)))
+                                    : Text(
+                                        selectedCategory ??
+                                            'selectCategory'.tr(),
+                                        style: AppTheme.of(context)
+                                            .textMediumMedium,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context
@@ -90,11 +170,19 @@ class CreateWagerScreen extends ConsumerWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Expanded(
-                                child: Text(
-                                  getDisplayText(),
-                                  style: AppTheme.of(context).textMediumMedium,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
+                                child: _isLoadingHashtags
+                                    ? Center(
+                                        child: SizedBox(
+                                            height: 20,
+                                            width: 20,
+                                            child: CircularProgressIndicator(
+                                                strokeWidth: 2)))
+                                    : Text(
+                                        getDisplayText(),
+                                        style: AppTheme.of(context)
+                                            .textMediumMedium,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                               ),
                               Icon(Icons.arrow_drop_down,
                                   color: context.primaryTextColor),
@@ -306,10 +394,7 @@ class CreateWagerScreen extends ConsumerWidget {
               topRight: Radius.circular(20),
             ),
           ),
-          child: FractionallySizedBox(
-            heightFactor: 0.6,
-            child: child,
-          ),
+          child: child,
         ),
       );
     }
@@ -396,74 +481,85 @@ class CreateWagerScreen extends ConsumerWidget {
     }
 
     Widget buildBottomSheet(List<String> categories) {
-      return SizedBox(
-        width: 500,
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(right: 20, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(),
-                  Container(),
-                  Text(
-                    'selectCategory'.tr(),
-                    style: AppTheme.of(context).titleExtraLarge24,
-                  ),
-                  IconButton(
-                    icon: Icon(
-                      Icons.close,
-                      size: 24,
-                      color: context.primaryTextColor,
+      return Padding(
+        padding:
+            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: SizedBox(
+          width: 500,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(right: 20, top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(),
+                    Container(),
+                    Text(
+                      'selectCategory'.tr(),
+                      style: AppTheme.of(context).titleExtraLarge24,
                     ),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            ),
-            verticalSpace(30),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: categories.map((category) {
-                    return Column(
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.of(context).pop(category);
-                            ref.read(selectedCategoryProvider.notifier).state =
-                                category;
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            padding: EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 20),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  category,
-                                  style: AppTheme.of(context).textSmallMedium,
-                                ),
-                                SizedBox(width: 5),
-                                if (ref.watch(selectedCategoryProvider) ==
-                                    category)
-                                  SvgPicture.asset(AppIcons.checked),
-                              ],
-                            ),
-                          ),
-                        ),
-                        if (category != categories[categories.length - 1])
-                          buildDotedBorder(context),
-                      ],
-                    );
-                  }).toList(),
+                    IconButton(
+                      icon: Icon(
+                        Icons.close,
+                        size: 24,
+                        color: context.primaryTextColor,
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              verticalSpace(20),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 0.5,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: categories.map((category) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).pop(category);
+                              ref
+                                  .read(selectedCategoryProvider.notifier)
+                                  .state = category;
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 20),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    category,
+                                    style: AppTheme.of(context).textSmallMedium,
+                                  ),
+                                  SizedBox(width: 5),
+                                  if (ref.watch(selectedCategoryProvider) ==
+                                      category)
+                                    SvgPicture.asset(AppIcons.checked),
+                                ],
+                              ),
+                            ),
+                          ),
+                          if (category != categories[categories.length - 1])
+                            buildDotedBorder(context),
+                        ],
+                      );
+                    }).toList(),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }
@@ -585,23 +681,26 @@ class HashtagDialog extends ConsumerWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            Stack(
+              alignment: Alignment.center,
               children: [
-                horizontalSpace(140),
-                Text(
-                  textAlign: TextAlign.center,
-                  'addHashtag(s)'.tr(),
-                  style: AppTheme.of(context).titleExtraLarge24,
-                ),
-                Spacer(),
-                IconButton(
-                  icon: Icon(
-                    Icons.close,
-                    size: 24,
-                    color: context.primaryTextColor,
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'addHashtag(s)'.tr(),
+                    style: AppTheme.of(context).titleExtraLarge24,
                   ),
-                  onPressed: () => Navigator.pop(context),
+                ),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: IconButton(
+                    icon: Icon(
+                      Icons.close,
+                      size: 24,
+                      color: context.primaryTextColor,
+                    ),
+                    onPressed: () => Navigator.pop(context),
+                  ),
                 ),
               ],
             ),
@@ -642,30 +741,33 @@ class HashtagBottomSheet extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: context.containerColor,
+        color: context.primaryBackgroundColor,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
+          Stack(
+            alignment: Alignment.center,
             children: [
-              horizontalSpace(95),
-              Text(
-                textAlign: TextAlign.center,
-                'addHashtag(s)'.tr(),
-                style: AppTheme.of(context).titleExtraLarge24,
-              ),
-              Spacer(),
-              IconButton(
-                icon: Icon(
-                  Icons.close,
-                  size: 24,
-                  color: context.primaryTextColor,
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'addHashtag(s)'.tr(),
+                  style: AppTheme.of(context).titleExtraLarge24,
                 ),
-                onPressed: () => Navigator.pop(context),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    size: 24,
+                    color: context.primaryTextColor,
+                  ),
+                  onPressed: () => Navigator.pop(context),
+                ),
               ),
             ],
           ),
@@ -711,8 +813,12 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
         ),
         decoration: BoxDecoration(
           color: isSelected
-              ? context.primaryTextColor
-              : context.secondaryTextColor,
+              ? context.isDarkMode
+                  ? AppColors.buttonColor // Yellow in dark mode
+                  : AppColors.tabSelectedColor // Blue in light mode
+              : context.isDarkMode
+                  ? AppColors.grayNeutral800 // Dark in dark mode
+                  : AppColors.grayCool100, // Light gray in light mode
           borderRadius: BorderRadius.circular(20),
         ),
         child: Row(
@@ -722,7 +828,10 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               AppIcons.hashTagIcon,
               colorFilter: ColorFilter.mode(
                   isSelected
-                      ? context.primaryBackgroundColor
+                      ? context.isDarkMode
+                          ? AppColors
+                              .grayNeutral800 // Dark text on yellow in dark mode
+                          : AppColors.white // White text on blue in light mode
                       : context.primaryTextColor,
                   BlendMode.srcIn),
             ),
@@ -731,7 +840,11 @@ List<Widget> _buildHashtagChips(BuildContext context, List<String> hashtags,
               hashtag,
               style: AppTheme.of(context).textRegularMedium.copyWith(
                     color: isSelected
-                        ? context.primaryBackgroundColor
+                        ? context.isDarkMode
+                            ? AppColors
+                                .grayNeutral800 // Dark text on yellow in dark mode
+                            : AppColors
+                                .white // White text on blue in light mode
                         : context.primaryTextColor,
                   ),
             ),
