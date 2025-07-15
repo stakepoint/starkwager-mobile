@@ -96,7 +96,8 @@ final metamaskCheckProvider = FutureProvider<bool>((ref) async {
   return false;
 });
 
-final walletConnectionProvider = StateNotifierProvider<WalletConnectionNotifier, WalletConnectionState>(
+final walletConnectionProvider =
+    StateNotifierProvider<WalletConnectionNotifier, WalletConnectionState>(
   (ref) => WalletConnectionNotifier(),
 );
 
@@ -154,7 +155,8 @@ class WalletConnectionNotifier extends StateNotifier<WalletConnectionState> {
 
   Future<void> listenToWalletConnection() async {
     try {
-      w3mService.onModalConnect.subscribe((_) => WalletConnectionState.connected(service: w3mService));
+      w3mService.onModalConnect.subscribe(
+          (_) => WalletConnectionState.connected(service: w3mService));
     } catch (e) {
       state = const WalletConnectionFailed(
         errorCode: '',

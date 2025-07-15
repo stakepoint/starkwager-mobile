@@ -25,7 +25,13 @@ class AvnuRemoteDataSourceImpl implements AvnuRemoteDataSource {
       '/paymaster/v1/deploy-account',
       data: {
         "userAddress": userAddress,
-        "deploymentData": {"class_hash": classHash, "salt": salt, "unique": unique, "calldata": calldata, "sigdata": sigdata}
+        "deploymentData": {
+          "class_hash": classHash,
+          "salt": salt,
+          "unique": unique,
+          "calldata": calldata,
+          "sigdata": sigdata
+        }
       },
     );
     return ref.data;

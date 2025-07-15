@@ -7,7 +7,8 @@ class AvnuRepositoryImpl implements AvnuRepository {
   late AvnuReadProvider _avnuReadProvider;
   final AvnuRemoteDataSource _avnuRemoteDataSource;
 
-  AvnuRepositoryImpl({required AvnuRemoteDataSource avnuRemoteDataSource}) : _avnuRemoteDataSource = avnuRemoteDataSource {
+  AvnuRepositoryImpl({required AvnuRemoteDataSource avnuRemoteDataSource})
+      : _avnuRemoteDataSource = avnuRemoteDataSource {
     _initialize();
   }
 
@@ -66,13 +67,18 @@ class AvnuRepositoryImpl implements AvnuRepository {
       required String gasTokenAddress,
       required String maxGasTokenAmount,
       required String accountClassHash}) async {
-    return await _avnuProvider.buildTypedData(userAddress, calls, gasTokenAddress, maxGasTokenAmount, accountClassHash);
+    return await _avnuProvider.buildTypedData(userAddress, calls,
+        gasTokenAddress, maxGasTokenAmount, accountClassHash);
   }
 
   @override
   Future<AvnuExecute> executeContract(
-      {required String userAddress, required String typedData, required List<String> signature, Map<dynamic, dynamic>? deploymentData}) async {
-    return await _avnuProvider.execute(userAddress, typedData, signature, deploymentData);
+      {required String userAddress,
+      required String typedData,
+      required List<String> signature,
+      Map<dynamic, dynamic>? deploymentData}) async {
+    return await _avnuProvider.execute(
+        userAddress, typedData, signature, deploymentData);
   }
 
   @override

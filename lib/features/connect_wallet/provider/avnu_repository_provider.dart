@@ -6,7 +6,8 @@ import 'package:starkwager/data/repositories/avnu_repository_impl.dart';
 import 'package:starkwager/domain/repositories/avnu_repository.dart';
 
 final avnuRemoteDataSourceProvider = Provider<AvnuRemoteDataSource>((ref) {
-  return AvnuRemoteDataSourceImpl(ApiClient(Dio(BaseOptions(baseUrl: "https://sepolia.api.avnu.fi/"))));
+  return AvnuRemoteDataSourceImpl(
+      ApiClient(Dio(BaseOptions(baseUrl: "https://sepolia.api.avnu.fi/"))));
 });
 
 final avnuRepositoryProvider = Provider<AvnuRepository>((ref) {

@@ -27,7 +27,7 @@ class _ConnectWalletScreen extends ConsumerState<ConnectWalletScreen> {
           chainId,
         );
         final address = next.service.session?.getAddress(namespace);
-        if(address == null) return;        
+        if (address == null) return;
 
         // Call create login endpoint with this address and trigger AuthLoading state
         await ref

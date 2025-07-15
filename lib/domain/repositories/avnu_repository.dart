@@ -26,7 +26,10 @@ abstract class AvnuRepository {
       required String accountClassHash});
 
   Future<AvnuExecute> executeContract(
-      {required String userAddress, required String typedData, required List<String> signature, Map<dynamic, dynamic>? deploymentData});
+      {required String userAddress,
+      required String typedData,
+      required List<String> signature,
+      Map<dynamic, dynamic>? deploymentData});
 
   Future<AvnuGasTokenPrices> getGasTokenPrices();
 
