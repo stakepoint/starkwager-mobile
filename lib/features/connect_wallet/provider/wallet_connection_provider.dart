@@ -9,25 +9,29 @@ import 'package:starkwager/features/connect_wallet/provider/wallet_connection_st
 final argentCheckProvider = FutureProvider<bool>((ref) async {
   final appCheck = AppCheck();
   late bool isArgentInstalled;
-  if (Platform.isAndroid) {
-    const package = "im.argent.contractwalletclient";
-    await appCheck.checkAvailability(package).then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isArgentInstalled = true;
-        }
-      },
-    );
-    return isArgentInstalled;
-  } else if (Platform.isIOS) {
-    await appCheck.checkAvailability("argent://").then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isArgentInstalled = true;
-        }
-      },
-    );
-    return isArgentInstalled;
+  try {
+    if (Platform.isAndroid) {
+      const package = "im.argent.contractwalletclient";
+      await appCheck.checkAvailability(package).then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isArgentInstalled = true;
+          }
+        },
+      );
+      return isArgentInstalled;
+    } else if (Platform.isIOS) {
+      await appCheck.checkAvailability("argent://").then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isArgentInstalled = true;
+          }
+        },
+      );
+      return isArgentInstalled;
+    }
+  } catch (e) {
+    debugPrint("$e");
   }
   return false;
 });
@@ -35,25 +39,29 @@ final argentCheckProvider = FutureProvider<bool>((ref) async {
 final braavosCheckProvider = FutureProvider<bool>((ref) async {
   final appCheck = AppCheck();
   late bool isBraavosInstalled;
-  if (Platform.isAndroid) {
-    const package = "app.braavos.wallet";
-    await appCheck.checkAvailability(package).then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isBraavosInstalled = true;
-        }
-      },
-    );
-    return isBraavosInstalled;
-  } else if (Platform.isIOS) {
-    await appCheck.checkAvailability("braavos://").then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isBraavosInstalled = true;
-        }
-      },
-    );
-    return isBraavosInstalled;
+  try {
+    if (Platform.isAndroid) {
+      const package = "app.braavos.wallet";
+      await appCheck.checkAvailability(package).then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isBraavosInstalled = true;
+          }
+        },
+      );
+      return isBraavosInstalled;
+    } else if (Platform.isIOS) {
+      await appCheck.checkAvailability("braavos://").then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isBraavosInstalled = true;
+          }
+        },
+      );
+      return isBraavosInstalled;
+    }
+  } catch (e) {
+    debugPrint("$e");
   }
   return false;
 });
@@ -61,25 +69,29 @@ final braavosCheckProvider = FutureProvider<bool>((ref) async {
 final metamaskCheckProvider = FutureProvider<bool>((ref) async {
   final appCheck = AppCheck();
   late bool isMetaMaskInstalled;
-  if (Platform.isAndroid) {
-    const package = "app.metamask.wallet";
-    await appCheck.checkAvailability(package).then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isMetaMaskInstalled = true;
-        }
-      },
-    );
-    return isMetaMaskInstalled;
-  } else if (Platform.isIOS) {
-    await appCheck.checkAvailability("metamask://").then(
-      (app) {
-        if (app?.appName.toString() != null) {
-          isMetaMaskInstalled = true;
-        }
-      },
-    );
-    return isMetaMaskInstalled;
+  try {
+    if (Platform.isAndroid) {
+      const package = "io.metamask";
+      await appCheck.checkAvailability(package).then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isMetaMaskInstalled = true;
+          }
+        },
+      );
+      return isMetaMaskInstalled;
+    } else if (Platform.isIOS) {
+      await appCheck.checkAvailability("metamask://").then(
+        (app) {
+          if (app?.appName.toString() != null) {
+            isMetaMaskInstalled = true;
+          }
+        },
+      );
+      return isMetaMaskInstalled;
+    }
+  } catch (e) {
+    debugPrint("$e");
   }
   return false;
 });
@@ -130,7 +142,7 @@ class WalletConnectionNotifier extends StateNotifier<WalletConnectionState> {
       );
 
       if (!w3mService.isConnected) {
-        listenToWalletConnection();
+        await listenToWalletConnection();
       }
       state = WalletConnectionState.connected(service: w3mService);
     } catch (e) {

@@ -7,7 +7,9 @@ class ApiClient {
 
   ApiClient(this._dio) {
     _dio.options = BaseOptions(
-      baseUrl: AppConfigs.baseUrl,
+      baseUrl: _dio.options.baseUrl.isNotEmpty
+          ? _dio.options.baseUrl
+          : AppConfigs.baseUrl,
       connectTimeout: const Duration(milliseconds: 30000),
       receiveTimeout: const Duration(milliseconds: 30000),
       responseType: ResponseType.json,

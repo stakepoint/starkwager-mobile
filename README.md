@@ -43,6 +43,17 @@ flutter run
 ```
 ---
 
+## 🛠 Environment Variables
+
+This project requires the following environment variable for proper operation:
+
+- `API_KEY`: Your API key for the Avnu provider. This is used by `AvnuRepositoryImpl` to connect to the StarkNet node. Set this value in your environment or pass it at build time.
+
+Example (for development):
+```bash
+flutter run --dart-define=API_KEY=your_api_key_here
+```
+
 
 ## Contribute to StarkWager
 We welcome contributions to StarkWager! Check out our [Contributor's Guide](https://github.com/stakepoint/stark-wager-mobile/blob/dev/CONTRIBUTING.md) to get started.

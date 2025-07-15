@@ -7,9 +7,10 @@
       "type": "dart",
       "program": "lib/main.dart",
       "toolArgs": [
-        "run"
+        "run",
+        "--dart-define=API_KEY=your_api_key_here"
       ],
       "args": []
     }
   ]
-} 
+}
